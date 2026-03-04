@@ -1,143 +1,162 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Portfólio Profissional</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encanto de Ursos 🧸</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-            scroll-behavior: smooth;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
 
-        body {
-            background: #f4f4f4;
-            color: #333;
-        }
+body{
+    background:#fff5f7;
+    color:#333;
+}
 
-        header {
-            background: #111;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
+/* Header */
+header{
+    background:#ff8fab;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
 
-        .hero {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
-        }
+header h1{
+    font-size:28px;
+}
 
-        .input-area {
-            margin-top: 20px;
-        }
+/* Produtos */
+.produtos{
+    padding:50px 20px;
+    text-align:center;
+}
 
-        input {
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            width: 200px;
-            outline: none;
-        }
+.produtos h2{
+    margin-bottom:30px;
+    font-size:26px;
+}
 
-        button {
-            padding: 10px 15px;
-            border: none;
-            background: #fff;
-            color: #333;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+.grid{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+}
 
-        button:hover {
-            background: #333;
-            color: white;
-        }
+.card{
+    background:white;
+    width:250px;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
 
-        section {
-            padding: 60px 20px;
-            text-align: center;
-        }
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
 
-        footer {
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-    </style>
+.card img{
+    width:100%;
+    border-radius:10px;
+}
+
+.card h3{
+    margin:15px 0 10px;
+}
+
+.preco{
+    font-size:18px;
+    font-weight:bold;
+    color:#ff477e;
+}
+
+button{
+    margin-top:15px;
+    padding:10px;
+    border:none;
+    border-radius:6px;
+    background:#ff8fab;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#ff477e;
+}
+
+/* Footer */
+footer{
+    background:#ff8fab;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+/* Responsivo */
+@media(max-width:768px){
+    .grid{
+        flex-direction:column;
+        align-items:center;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1 id="logoNome">SeuNome</h1>
+    <h1>🧸 Encanto de Ursos</h1>
+    <p>Os ursinhos mais fofos para você!</p>
 </header>
 
-<section class="hero">
-    <h2>Olá, eu sou <span id="nomeHero">Seu Nome</span> 👋</h2>
-    <p>Desenvolvedor Front-End</p>
+<section class="produtos">
+    <h2>Nossos Ursinhos</h2>
 
-    <div class="input-area">
-        <input type="text" id="inputNome" placeholder="Digite seu nome">
-        <button id="btnSalvar">Salvar Nome</button>
+    <div class="grid">
+
+        <div class="card">
+            <img src="https://i.imgur.com/4AiXzf8.jpeg" alt="Urso Caramelo">
+            <h3>Urso Caramelo</h3>
+            <p class="preco">R$ 89,90</p>
+            <button>Comprar</button>
+        </div>
+
+        <div class="card">
+            <img src="https://i.imgur.com/ZXBtVw7.jpeg" alt="Urso Panda Fofinho">
+            <h3>Urso Panda Fofinho</h3>
+            <p class="preco">R$ 109,90</p>
+            <button>Comprar</button>
+        </div>
+
+        <div class="card">
+            <img src="https://i.imgur.com/eTmWoAN.jpeg" alt="Urso Rosa Encantado">
+            <h3>Urso Rosa Encantado</h3>
+            <p class="preco">R$ 79,90</p>
+            <button>Comprar</button>
+        </div>
+
+        <div class="card">
+            <img src="https://i.imgur.com/QCNbOAo.jpeg" alt="Urso Gigante Amoroso">
+            <h3>Urso Gigante Amoroso</h3>
+            <p class="preco">R$ 199,90</p>
+            <button>Comprar</button>
+        </div>
+
     </div>
 </section>
 
-<section>
-    <h2>Sobre Mim</h2>
-    <p>Sou apaixonado por tecnologia e desenvolvimento web.</p>
-</section>
-
 <footer>
-    <p>© 2026 <span id="nomeFooter">Seu Nome</span> - Todos os direitos reservados</p>
+    © 2026 Encanto de Ursos - Todos os direitos reservados 🧸
 </footer>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-
-        const input = document.getElementById("inputNome");
-        const btn = document.getElementById("btnSalvar");
-
-        const nomeSalvo = localStorage.getItem("nomePortfolio");
-
-        if (nomeSalvo) {
-            atualizarNomeNaTela(nomeSalvo);
-            input.value = nomeSalvo;
-        }
-
-        btn.addEventListener("click", salvarNome);
-
-        input.addEventListener("keypress", function(e) {
-            if (e.key === "Enter") {
-                salvarNome();
-            }
-        });
-
-        function salvarNome() {
-            const nome = input.value.trim();
-
-            if (nome !== "") {
-                localStorage.setItem("nomePortfolio", nome);
-                atualizarNomeNaTela(nome);
-            }
-        }
-
-        function atualizarNomeNaTela(nome) {
-            document.getElementById("logoNome").textContent = nome;
-            document.getElementById("nomeHero").textContent = nome;
-            document.getElementById("nomeFooter").textContent = nome;
-        }
-
-    });
-</script>
 
 </body>
 </html>
