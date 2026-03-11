@@ -1,10 +1,9 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Loja de Ursos de Pelúcia</title>
+<title>Ursinhos Encantados</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
 
@@ -13,145 +12,152 @@
 body{
 font-family:'Roboto',sans-serif;
 margin:0;
-padding:0;
-background-color:#fff0f5;
-position:relative;
+background:#fff0f5;
 }
 
-/* fundo */
-body::before{
-content:"🐻 ⭐ 🐻 ⭐ 🐻 ⭐ 🐻 ⭐ 🐻 ⭐ 🐻 ⭐";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-font-size:40px;
-opacity:0.07;
-display:flex;
-flex-wrap:wrap;
-align-content:space-around;
-justify-content:space-around;
-pointer-events:none;
-z-index:0;
-}
+/* HEADER */
 
 header{
 background:linear-gradient(90deg,#ff6f61,#ff9472);
 color:white;
 text-align:center;
-padding:3rem 1rem;
-box-shadow:0 4px 15px rgba(0,0,0,0.2);
-position:relative;
-z-index:1;
+padding:2rem;
 }
 
 header h1{
 font-family:'Pacifico',cursive;
-margin:0;
 font-size:3rem;
+margin:0;
+}
+
+/* BOTAO CARRINHO */
+
+.carrinho-btn{
+position:fixed;
+top:20px;
+right:20px;
+background:#ff6f61;
+color:white;
+border:none;
+padding:12px 18px;
+border-radius:20px;
+cursor:pointer;
+z-index:10;
+}
+
+/* AREA URSOS */
+
+.ursos-area{
+max-width:1100px;
+margin:auto;
+padding:20px;
 }
 
 .container{
-max-width:1200px;
-margin:3rem auto;
-padding:0 1rem;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:2rem;
-position:relative;
-z-index:1;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
+
+/* CARD */
 
 .card{
-background-color:white;
+background:white;
 border-radius:15px;
-overflow:hidden;
 box-shadow:0 6px 15px rgba(0,0,0,0.1);
-transition:transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover{
-transform:translateY(-8px);
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
+overflow:hidden;
 }
 
 .card img{
 width:100%;
-height:250px;
+height:220px;
 object-fit:cover;
 }
 
 .card-body{
-padding:1.2rem;
+padding:15px;
 text-align:center;
 }
 
-.card-body h2{
-margin:0 0 0.5rem 0;
-font-size:1.6rem;
-color:#444;
-}
-
-.card-body p{
-margin:0.3rem 0;
-color:#666;
-}
-
 .price{
-font-weight:bold;
 color:#ff6f61;
-font-size:1.3rem;
-margin:0.5rem 0;
+font-weight:bold;
 }
 
 .btn{
-display:inline-block;
-margin-top:10px;
-padding:10px 20px;
-background:linear-gradient(90deg,#ff6f61,#ff9472);
+background:#ff6f61;
 color:white;
-text-decoration:none;
-border-radius:25px;
-font-weight:bold;
-transition:0.3s;
 border:none;
+padding:10px 18px;
+border-radius:20px;
+cursor:pointer;
+margin-top:10px;
+}
+
+/* CARRINHO */
+
+.carrinho{
+position:fixed;
+right:-300px;
+top:0;
+width:300px;
+height:100%;
+background:white;
+box-shadow:-5px 0 15px rgba(0,0,0,0.2);
+padding:15px;
+transition:0.4s;
+overflow:auto;
+}
+
+.carrinho.ativo{
+right:0;
+}
+
+.item{
+border-bottom:1px solid #ddd;
+padding:10px 0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.remover{
+background:red;
+color:white;
+border:none;
+padding:4px 8px;
+border-radius:5px;
 cursor:pointer;
 }
 
-.btn:hover{
-transform:scale(1.05);
-}
-
-/* formulário */
+/* FORM */
 
 .form-area{
-grid-column:1/-1;
+max-width:500px;
+margin:40px auto;
 background:white;
 padding:20px;
-border-radius:15px;
+border-radius:10px;
 box-shadow:0 6px 15px rgba(0,0,0,0.1);
 }
 
 .form-area form{
 display:grid;
 gap:10px;
-max-width:500px;
-margin:auto;
 }
 
 .form-area input{
 padding:10px;
-border-radius:10px;
+border-radius:8px;
 border:1px solid #ccc;
 }
 
 footer{
 text-align:center;
-padding:1.5rem;
+padding:20px;
 background:#333;
 color:white;
-margin-top:3rem;
+margin-top:40px;
 }
 
 </style>
@@ -161,153 +167,189 @@ margin-top:3rem;
 
 <header>
 <h1>🐻 Ursinhos Encantados</h1>
-<p>Os melhores ursos de pelúcia para todas as idades!</p>
+<p>Escolha seu ursinho favorito</p>
 </header>
 
-<main class="container">
+<button class="carrinho-btn" onclick="toggleCarrinho()">🛒 Carrinho</button>
+
+<!-- PRODUTOS -->
+
+<section class="ursos-area">
+
+<h2>🧸 Ursos de Pelúcia</h2>
+
+<div class="container" id="produtos">
 
 <div class="card">
 <img src="imagensgpt/ursogrande.png">
 <div class="card-body">
-<h2>Teddy Fofo</h2>
-<p class="price">R$120</p>
-<p>📏 Tamanho: 30 cm</p>
-<p>🏪 Loja: Ursos & Cia</p>
-<a href="#" class="btn">Comprar 🛒</a>
+<h3>Teddy Fofo</h3>
+<p class="price">120</p>
+<button class="btn" onclick="addCarrinho('Teddy Fofo',120)">Adicionar 🛒</button>
 </div>
 </div>
 
 <div class="card">
 <img src="imagensgpt/ursomarrom.png">
 <div class="card-body">
-<h2>Urso Marrom</h2>
-<p class="price">R$150</p>
-<p>📏 Tamanho: 40 cm</p>
-<p>🏪 Loja: Pelúcias do Coração</p>
-<a href="#" class="btn">Comprar 🛒</a>
+<h3>Urso Marrom</h3>
+<p class="price">150</p>
+<button class="btn" onclick="addCarrinho('Urso Marrom',150)">Adicionar 🛒</button>
 </div>
 </div>
 
 <div class="card">
 <img src="imagensgpt/ursobranco.png">
 <div class="card-body">
-<h2>Ursinho Branco</h2>
-<p class="price">R$180</p>
-<p>📏 Tamanho: 50 cm</p>
-<p>🏪 Loja: Mundo Pelúcia</p>
-<a href="#" class="btn">Comprar 🛒</a>
+<h3>Ursinho Branco</h3>
+<p class="price">180</p>
+<button class="btn" onclick="addCarrinho('Ursinho Branco',180)">Adicionar 🛒</button>
 </div>
 </div>
 
-<div class="card">
-<img src="imagensgpt/ursoabraço.png">
-<div class="card-body">
-<h2>Urso Abraço</h2>
-<p class="price">R$200</p>
-<p>📏 Tamanho: 60 cm</p>
-<p>🏪 Loja: Ursos & Cia</p>
-<a href="#" class="btn">Comprar 🛒</a>
 </div>
-</div>
-
-  <div class="card">
-<img src="imagensgpt/pinguin.png" alt="Pinguim de Pelúcia">
-
-<div class="card-body">
-<h2>Pinguim Fofo</h2>
-
-<p class="price">R$ 95,00</p>
-
-<p>📏 Tamanho: 40 cm</p>
-
-<p>🏪 Loja: Ursinhos Encantados</p>
-
-<a href="imagensgpt/pinguin.png" target="_blank" class="btn">
-Ver Foto 🐧
-</a>
-
-<br>
-
-<a href="#" class="btn">Comprar 🛒</a>
-
-</div>
-</div>
-<!-- AREA INTERATIVA -->
-
-<section class="form-area">
-
-<h2 style="text-align:center;">➕ Adicionar Novo Ursinho</h2>
-
-<form id="ursoForm">
-
-<input type="text" id="nome" placeholder="Nome do urso" required>
-
-<input type="number" id="preco" placeholder="Preço R$" required>
-
-<input type="text" id="tamanho" placeholder="Tamanho (ex: 40 cm)" required>
-
-<input type="text" id="loja" placeholder="Nome da loja" required>
-
-<input type="text" id="imagem" placeholder="Link da imagem" required>
-
-<button class="btn">Adicionar Urso 🐻</button>
-
-</form>
-
-<p id="mensagem" style="text-align:center;margin-top:10px;"></p>
 
 </section>
 
-</main>
+<!-- CARRINHO -->
+
+<div class="carrinho" id="carrinho">
+
+<h2>🛒 Carrinho</h2>
+
+<div id="listaCarrinho"></div>
+
+<p><b>Total: R$ <span id="total">0</span></b></p>
+
+</div>
+
+<!-- FORM -->
+
+<section class="form-area">
+
+<h2>➕ Adicionar Novo Urso</h2>
+
+<form id="ursoForm">
+
+<input type="text" id="nome" placeholder="Nome">
+
+<input type="number" id="preco" placeholder="Preço">
+
+<input type="text" id="imagem" placeholder="Link da imagem">
+
+<button class="btn">Adicionar</button>
+
+</form>
+
+</section>
 
 <footer>
-© 2026 Ursinhos Encantados 💖
+© 2026 Ursinhos Encantados
 </footer>
 
 <script>
 
-let contador = 0
-let limite = 5
+/* CARRINHO */
 
-document.getElementById("ursoForm").addEventListener("submit", function(e){
+let carrinho = JSON.parse(localStorage.getItem("carrinho")) || []
+
+function salvarCarrinho(){
+localStorage.setItem("carrinho", JSON.stringify(carrinho))
+}
+
+function atualizarCarrinho(){
+
+let lista = document.getElementById("listaCarrinho")
+lista.innerHTML=""
+
+let total = 0
+
+carrinho.forEach((item,index)=>{
+
+let div = document.createElement("div")
+div.classList.add("item")
+
+div.innerHTML=`
+${item.nome} - R$${item.preco}
+<button class="remover" onclick="removerItem(${index})">X</button>
+`
+
+lista.appendChild(div)
+
+total += item.preco
+
+})
+
+document.getElementById("total").innerText = total
+
+}
+
+function addCarrinho(nome,preco){
+
+carrinho.push({nome,preco})
+
+salvarCarrinho()
+
+atualizarCarrinho()
+
+}
+
+function removerItem(index){
+
+carrinho.splice(index,1)
+
+salvarCarrinho()
+
+atualizarCarrinho()
+
+}
+
+/* ABRIR FECHAR */
+
+function toggleCarrinho(){
+
+document.getElementById("carrinho").classList.toggle("ativo")
+
+}
+
+/* NOVO URSO */
+
+document.getElementById("ursoForm").addEventListener("submit",function(e){
 
 e.preventDefault()
 
-if(contador >= limite){
-document.getElementById("mensagem").innerText="⚠️ Limite de 5 novos ursos atingido!"
-return
-}
-
 let nome = document.getElementById("nome").value
-let preco = document.getElementById("preco").value
-let tamanho = document.getElementById("tamanho").value
-let loja = document.getElementById("loja").value
+let preco = parseFloat(document.getElementById("preco").value)
 let imagem = document.getElementById("imagem").value
 
 let card = document.createElement("div")
 card.classList.add("card")
 
 card.innerHTML=`
+
 <img src="${imagem}">
+
 <div class="card-body">
-<h2>${nome}</h2>
-<p class="price">R$ ${preco}</p>
-<p>📏 Tamanho: ${tamanho}</p>
-<p>🏪 Loja: ${loja}</p>
-<a href="#" class="btn">Comprar 🛒</a>
+
+<h3>${nome}</h3>
+
+<p class="price">${preco}</p>
+
+<button class="btn" onclick="addCarrinho('${nome}',${preco})">Adicionar 🛒</button>
+
 </div>
+
 `
 
-document.querySelector(".container").appendChild(card)
-
-contador++
+document.getElementById("produtos").appendChild(card)
 
 document.getElementById("ursoForm").reset()
 
 })
 
+atualizarCarrinho()
+
 </script>
 
 </body>
 </html>
-```
