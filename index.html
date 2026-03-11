@@ -86,17 +86,6 @@ padding:1.2rem;
 text-align:center;
 }
 
-.card-body h2{
-margin:0 0 0.5rem 0;
-font-size:1.6rem;
-color:#444;
-}
-
-.card-body p{
-margin:0.3rem 0;
-color:#666;
-}
-
 .price{
 font-weight:bold;
 color:#ff6f61;
@@ -113,36 +102,12 @@ color:white;
 text-decoration:none;
 border-radius:25px;
 font-weight:bold;
-transition:0.3s;
 border:none;
 cursor:pointer;
 }
 
 .btn:hover{
 transform:scale(1.05);
-}
-
-/* formulário */
-
-.form-area{
-grid-column:1/-1;
-background:white;
-padding:20px;
-border-radius:15px;
-box-shadow:0 6px 15px rgba(0,0,0,0.1);
-}
-
-.form-area form{
-display:grid;
-gap:10px;
-max-width:500px;
-margin:auto;
-}
-
-.form-area input{
-padding:10px;
-border-radius:10px;
-border:1px solid #ccc;
 }
 
 /* CARRINHO */
@@ -166,6 +131,31 @@ padding:20px;
 transition:0.4s;
 overflow:auto;
 z-index:998;
+}
+
+/* PERSONALIZAR URSO */
+
+.personalizar{
+max-width:800px;
+margin:40px auto;
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 6px 15px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.personalizar form{
+display:grid;
+gap:10px;
+max-width:400px;
+margin:auto;
+}
+
+.personalizar input, .personalizar select{
+padding:10px;
+border-radius:10px;
+border:1px solid #ccc;
 }
 
 footer{
@@ -194,10 +184,8 @@ margin-top:3rem;
 <img src="imagensgpt/ursogrande.png">
 <div class="card-body">
 <h2>Teddy Fofo</h2>
-<p class="price">R$120,00</p>
-<p>📏 Tamanho: 30 cm</p>
-<p>🏪 Loja: Ursos & Cia</p>
-<a href="#" class="btn" onclick="adicionarCarrinho('Teddy Fofo',120)">Comprar 🛒</a>
+<p class="price">R$120</p>
+<button class="btn" onclick="adicionarCarrinho('Teddy Fofo',120)">Comprar 🛒</button>
 </div>
 </div>
 
@@ -205,10 +193,8 @@ margin-top:3rem;
 <img src="imagensgpt/ursomarrom.png">
 <div class="card-body">
 <h2>Urso Marrom</h2>
-<p class="price">R$150,00</p>
-<p>📏 Tamanho: 40 cm</p>
-<p>🏪 Loja: Pelúcias do Coração</p>
-<a href="#" class="btn" onclick="adicionarCarrinho('Urso Marrom',150)">Comprar 🛒</a>
+<p class="price">R$150</p>
+<button class="btn" onclick="adicionarCarrinho('Urso Marrom',150)">Comprar 🛒</button>
 </div>
 </div>
 
@@ -216,35 +202,43 @@ margin-top:3rem;
 <img src="imagensgpt/ursobranco.png">
 <div class="card-body">
 <h2>Ursinho Branco</h2>
-<p class="price">R$180,00</p>
-<p>📏 Tamanho: 50 cm</p>
-<p>🏪 Loja: Mundo Pelúcia</p>
-<a href="#" class="btn" onclick="adicionarCarrinho('Ursinho Branco',180)">Comprar 🛒</a>
+<p class="price">R$180</p>
+<button class="btn" onclick="adicionarCarrinho('Ursinho Branco',180)">Comprar 🛒</button>
 </div>
 </div>
 
-<div class="card">
-<img src="imagensgpt/ursoabraço.png">
-<div class="card-body">
-<h2>Urso Abraço</h2>
-<p class="price">R$200,00</p>
-<p>📏 Tamanho: 60 cm</p>
-<p>🏪 Loja: Ursos & Cia</p>
-<a href="#" class="btn" onclick="adicionarCarrinho('Urso Abraço',200)">Comprar 🛒</a>
-</div>
-</div>
-
-<div class="card">
-<img src="imagensgpt/pinguim.png">
-<div class="card-body">
-<h2>Pinguim</h2>
-<p class="price">R$85,00</p>
-<p>📏 Tamanho: 40 cm</p>
-<p>🏪 Loja: Ursos & Cia</p>
-<a href="#" class="btn" onclick="adicionarCarrinho('Pinguim',85)">Comprar 🛒</a>
-</div>
-</div>
 </main>
+
+<!-- PERSONALIZAR URSO -->
+
+<section class="personalizar">
+
+<h2>🧸 Personalize seu Urso</h2>
+
+<form id="personalizarUrso">
+
+<select id="corUrso">
+<option value="Marrom">Urso Marrom</option>
+<option value="Branco">Urso Branco</option>
+<option value="Bege">Urso Bege</option>
+</select>
+
+<select id="roupaUrso">
+<option value="Sem roupa">Sem roupa</option>
+<option value="Camiseta">Camiseta</option>
+<option value="Vestido">Vestido</option>
+<option value="Fantasia">Fantasia</option>
+</select>
+
+<input type="text" id="mensagemUrso" placeholder="Mensagem bordada">
+
+<button type="submit" class="btn">Criar Urso Personalizado</button>
+
+</form>
+
+<p id="previewUrso"></p>
+
+</section>
 
 <!-- CARRINHO -->
 
@@ -254,9 +248,7 @@ margin-top:3rem;
 
 <div id="listaCarrinho"></div>
 
-<p style="margin-top:10px;">
-<b>Total: R$ <span id="totalCarrinho">0</span></b>
-</p>
+<p><b>Total: R$ <span id="totalCarrinho">0</span></b></p>
 
 </div>
 
@@ -282,8 +274,6 @@ let total = 0
 carrinho.forEach((item,index)=>{
 
 let div = document.createElement("div")
-
-div.style.marginBottom="8px"
 
 div.innerHTML = `
 ${item.nome} - R$ ${item.preco}
@@ -335,6 +325,38 @@ box.style.right = "0"
 carrinhoAberto = !carrinhoAberto
 
 }
+
+/* PERSONALIZAR URSO */
+
+document.getElementById("personalizarUrso").addEventListener("submit",function(e){
+
+e.preventDefault()
+
+let cor = document.getElementById("corUrso").value
+let roupa = document.getElementById("roupaUrso").value
+let mensagem = document.getElementById("mensagemUrso").value
+
+let descricao = cor + " / " + roupa
+
+if(mensagem !== ""){
+descricao += " / '" + mensagem + "'"
+}
+
+document.getElementById("previewUrso").innerText =
+"Seu urso foi criado: " + descricao
+
+let preco = 220
+
+carrinho.push({
+nome: "Urso Personalizado ("+descricao+")",
+preco: preco
+})
+
+salvarCarrinho()
+
+atualizarCarrinho()
+
+})
 
 atualizarCarrinho()
 
