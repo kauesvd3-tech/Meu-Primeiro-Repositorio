@@ -92,6 +92,16 @@ transition:0.4s;
 overflow:auto;
 }
 
+#fecharCarrinho{
+position:absolute;
+left:10px;
+top:10px;
+background:none;
+border:none;
+font-size:24px;
+cursor:pointer;
+}
+
 </style>
 </head>
 
@@ -113,7 +123,7 @@ overflow:auto;
 <p class="price">R$180,00</p>
 <p>📏 Tamanho: 120 cm</p>
 <p>🏪 Loja: Animaizinhos Encantados</p>
-<button class="btn" onclick="adicionarCarrinho('Teddy Fofo',120)">Adicionar 🛒</button>
+<button class="btn" onclick="adicionarCarrinho('Teddy Fofo',180)">Adicionar 🛒</button>
 </div>
 </div>
 
@@ -124,7 +134,7 @@ overflow:auto;
 <p class="price">R$230,00</p>
 <p>📏 Tamanho: 130 cm</p> 
 <p>🏪 Loja: Animaizinhos Encantados</p>
-<button class="btn" onclick="adicionarCarrinho('Urso Marrom',150)">Adicionar 🛒</button>
+<button class="btn" onclick="adicionarCarrinho('Urso Marrom',230)">Adicionar 🛒</button>
 </div>
 </div>
 
@@ -135,7 +145,7 @@ overflow:auto;
 <p class="price">R$280,00</p>
 <p>📏 Tamanho: 140 cm</p> 
 <p>🏪 Loja:Animaizinhos Encantados</p>
-<button class="btn" onclick="adicionarCarrinho('Ursinho Branco',180)">Adicionar 🛒</button>
+<button class="btn" onclick="adicionarCarrinho('Ursinho Branco',280)">Adicionar 🛒</button>
 </div>
 </div>
 
@@ -231,6 +241,8 @@ overflow:auto;
 
 <div id="carrinhoBox">
 
+<button id="fecharCarrinho">⬅</button>
+
 <h2>🛒 Carrinho</h2>
 
 <div id="listaCarrinho"></div>
@@ -306,6 +318,16 @@ box.style.right = "0"
 }
 
 carrinhoAberto = !carrinhoAberto
+
+}
+
+document.getElementById("fecharCarrinho").onclick = function(){
+
+let box = document.getElementById("carrinhoBox")
+
+box.style.right = "-320px"
+
+carrinhoAberto = false
 
 }
 
