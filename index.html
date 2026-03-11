@@ -1,194 +1,291 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja de Ursos de Pelúcia</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loja de Ursos de Pelúcia</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff0f5;
-            position: relative;
-        }
+<style>
 
-        /* Fundo decorado com ursinhos e estrelas */
-        body::before {
-            content: "🐻 ⭐ 🐻 ⭐ 🐻 ⭐ 🐻 ⭐ 🐻 ⭐ 🐻 ⭐ 🐻 ⭐ 🐻 ⭐ 🐻 ⭐";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            font-size: 40px;
-            opacity: 0.07;
-            display: flex;
-            flex-wrap: wrap;
-            align-content: space-around;
-            justify-content: space-around;
-            pointer-events: none;
-            z-index: 0;
-        }
+body{
+font-family:'Roboto',sans-serif;
+margin:0;
+padding:0;
+background-color:#fff0f5;
+position:relative;
+}
 
-        header {
-            background: linear-gradient(90deg, #ff6f61, #ff9472);
-            color: white;
-            text-align: center;
-            padding: 3rem 1rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            position: relative;
-            z-index: 1;
-        }
+/* fundo */
+body::before{
+content:"🐻 ⭐ 🐻 ⭐ 🐻 ⭐ 🐻 ⭐ 🐻 ⭐ 🐻 ⭐";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+font-size:40px;
+opacity:0.07;
+display:flex;
+flex-wrap:wrap;
+align-content:space-around;
+justify-content:space-around;
+pointer-events:none;
+z-index:0;
+}
 
-        header h1 {
-            font-family: 'Pacifico', cursive;
-            margin: 0;
-            font-size: 3rem;
-        }
+header{
+background:linear-gradient(90deg,#ff6f61,#ff9472);
+color:white;
+text-align:center;
+padding:3rem 1rem;
+box-shadow:0 4px 15px rgba(0,0,0,0.2);
+position:relative;
+z-index:1;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 1rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
-            position: relative;
-            z-index: 1;
-        }
+header h1{
+font-family:'Pacifico',cursive;
+margin:0;
+font-size:3rem;
+}
 
-        .card {
-            background-color: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+.container{
+max-width:1200px;
+margin:3rem auto;
+padding:0 1rem;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:2rem;
+position:relative;
+z-index:1;
+}
 
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
+.card{
+background-color:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 6px 15px rgba(0,0,0,0.1);
+transition:transform 0.3s, box-shadow 0.3s;
+}
 
-        .card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
 
-        .card-body {
-            padding: 1.2rem;
-            text-align: center;
-        }
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
 
-        .card-body h2 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.6rem;
-            color: #444;
-        }
+.card-body{
+padding:1.2rem;
+text-align:center;
+}
 
-        .card-body p {
-            margin: 0.3rem 0;
-            color: #666;
-        }
+.card-body h2{
+margin:0 0 0.5rem 0;
+font-size:1.6rem;
+color:#444;
+}
 
-        .price {
-            font-weight: bold;
-            color: #ff6f61;
-            font-size: 1.3rem;
-            margin: 0.5rem 0;
-        }
+.card-body p{
+margin:0.3rem 0;
+color:#666;
+}
 
-        .btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
-            background: linear-gradient(90deg, #ff6f61, #ff9472);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+.price{
+font-weight:bold;
+color:#ff6f61;
+font-size:1.3rem;
+margin:0.5rem 0;
+}
 
-        .btn:hover {
-            transform: scale(1.05);
-        }
+.btn{
+display:inline-block;
+margin-top:10px;
+padding:10px 20px;
+background:linear-gradient(90deg,#ff6f61,#ff9472);
+color:white;
+text-decoration:none;
+border-radius:25px;
+font-weight:bold;
+transition:0.3s;
+border:none;
+cursor:pointer;
+}
 
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            background-color: #333;
-            color: white;
-            margin-top: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-    </style>
+.btn:hover{
+transform:scale(1.05);
+}
+
+/* formulário */
+
+.form-area{
+grid-column:1/-1;
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 6px 15px rgba(0,0,0,0.1);
+}
+
+.form-area form{
+display:grid;
+gap:10px;
+max-width:500px;
+margin:auto;
+}
+
+.form-area input{
+padding:10px;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+footer{
+text-align:center;
+padding:1.5rem;
+background:#333;
+color:white;
+margin-top:3rem;
+}
+
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>🐻 Ursinhos Encantados</h1>
-    <p>Os melhores ursos de pelúcia para todas as idades!</p>
+<h1>🐻 Ursinhos Encantados</h1>
+<p>Os melhores ursos de pelúcia para todas as idades!</p>
 </header>
 
 <main class="container">
 
-    <div class="card">
-        <img src="imagensgpt/ursogrande.png" alt="Urso Teddy">
-        <div class="card-body">
-            <h2>Teddy Fofo</h2>
-            <p class="price">R$ 120,00</p>
-            <p>📏 Tamanho: 30 cm</p>
-            <p>🏪 Loja: Ursos & Cia</p>
-            <a href="#" class="btn">Comprar 🛒</a>
-        </div>
-    </div>
+<div class="card">
+<img src="imagensgpt/ursogrande.png">
+<div class="card-body">
+<h2>Teddy Fofo</h2>
+<p class="price">R$120</p>
+<p>📏 Tamanho: 30 cm</p>
+<p>🏪 Loja: Ursos & Cia</p>
+<a href="#" class="btn">Comprar 🛒</a>
+</div>
+</div>
 
-    <div class="card">
-        <img src="imagensgpt/ursomarrom.png" alt="Urso Marrom">
-        <div class="card-body">
-            <h2>Urso Marrom</h2>
-            <p class="price">R$ 150,00</p>
-            <p>📏 Tamanho: 40 cm</p>
-            <p>🏪 Loja: Pelúcias do Coração</p>
-            <a href="#" class="btn">Comprar 🛒</a>
-        </div>
-    </div>
+<div class="card">
+<img src="imagensgpt/ursomarrom.png">
+<div class="card-body">
+<h2>Urso Marrom</h2>
+<p class="price">R$150</p>
+<p>📏 Tamanho: 40 cm</p>
+<p>🏪 Loja: Pelúcias do Coração</p>
+<a href="#" class="btn">Comprar 🛒</a>
+</div>
+</div>
 
-    <div class="card">
-        <img src="imagensgpt/ursobranco.png" alt="Urso Branco">
-        <div class="card-body">
-            <h2>Ursinho Branco</h2>
-            <p class="price">R$ 180,00</p>
-            <p>📏 Tamanho: 50 cm</p>
-            <p>🏪 Loja: Mundo Pelúcia</p>
-            <a href="#" class="btn">Comprar 🛒</a>
-        </div>
-    </div>
+<div class="card">
+<img src="imagensgpt/ursobranco.png">
+<div class="card-body">
+<h2>Ursinho Branco</h2>
+<p class="price">R$180</p>
+<p>📏 Tamanho: 50 cm</p>
+<p>🏪 Loja: Mundo Pelúcia</p>
+<a href="#" class="btn">Comprar 🛒</a>
+</div>
+</div>
 
-    <div class="card">
-        <img src="imagensgpt/ursoabraço.png" alt="Urso Abraço">
-        <div class="card-body">
-            <h2>Urso Abraço</h2>
-            <p class="price">R$ 200,00</p>
-            <p>📏 Tamanho: 60 cm</p>
-            <p>🏪 Loja: Ursos & Cia</p>
-            <a href="#" class="btn">Comprar 🛒</a>
-        </div>
-    </div>
+<div class="card">
+<img src="imagensgpt/ursoabraço.png">
+<div class="card-body">
+<h2>Urso Abraço</h2>
+<p class="price">R$200</p>
+<p>📏 Tamanho: 60 cm</p>
+<p>🏪 Loja: Ursos & Cia</p>
+<a href="#" class="btn">Comprar 🛒</a>
+</div>
+</div>
+
+<!-- AREA INTERATIVA -->
+
+<section class="form-area">
+
+<h2 style="text-align:center;">➕ Adicionar Novo Ursinho</h2>
+
+<form id="ursoForm">
+
+<input type="text" id="nome" placeholder="Nome do urso" required>
+
+<input type="number" id="preco" placeholder="Preço R$" required>
+
+<input type="text" id="tamanho" placeholder="Tamanho (ex: 40 cm)" required>
+
+<input type="text" id="loja" placeholder="Nome da loja" required>
+
+<input type="text" id="imagem" placeholder="Link da imagem" required>
+
+<button class="btn">Adicionar Urso 🐻</button>
+
+</form>
+
+<p id="mensagem" style="text-align:center;margin-top:10px;"></p>
+
+</section>
 
 </main>
 
 <footer>
-    © 2026 Ursinhos Encantados 💖 | Feito com carinho!
+© 2026 Ursinhos Encantados 💖
 </footer>
+
+<script>
+
+let contador = 0
+let limite = 5
+
+document.getElementById("ursoForm").addEventListener("submit", function(e){
+
+e.preventDefault()
+
+if(contador >= limite){
+document.getElementById("mensagem").innerText="⚠️ Limite de 5 novos ursos atingido!"
+return
+}
+
+let nome = document.getElementById("nome").value
+let preco = document.getElementById("preco").value
+let tamanho = document.getElementById("tamanho").value
+let loja = document.getElementById("loja").value
+let imagem = document.getElementById("imagem").value
+
+let card = document.createElement("div")
+card.classList.add("card")
+
+card.innerHTML=`
+<img src="${imagem}">
+<div class="card-body">
+<h2>${nome}</h2>
+<p class="price">R$ ${preco}</p>
+<p>📏 Tamanho: ${tamanho}</p>
+<p>🏪 Loja: ${loja}</p>
+<a href="#" class="btn">Comprar 🛒</a>
+</div>
+`
+
+document.querySelector(".container").appendChild(card)
+
+contador++
+
+document.getElementById("ursoForm").reset()
+
+})
+
+</script>
 
 </body>
 </html>
+```
