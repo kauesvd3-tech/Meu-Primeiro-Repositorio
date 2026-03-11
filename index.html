@@ -1,4 +1,3 @@
-html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -146,6 +145,29 @@ border-radius:10px;
 border:1px solid #ccc;
 }
 
+/* CARRINHO */
+
+#abrirCarrinho{
+position:fixed;
+top:20px;
+right:20px;
+z-index:999;
+}
+
+#carrinhoBox{
+position:fixed;
+right:-320px;
+top:0;
+width:300px;
+height:100%;
+background:white;
+box-shadow:-5px 0 20px rgba(0,0,0,0.2);
+padding:20px;
+transition:0.4s;
+overflow:auto;
+z-index:998;
+}
+
 footer{
 text-align:center;
 padding:1.5rem;
@@ -164,16 +186,18 @@ margin-top:3rem;
 <p>Os melhores ursos de pelúcia para todas as idades!</p>
 </header>
 
+<button id="abrirCarrinho" class="btn">🛒 Carrinho</button>
+
 <main class="container">
 
 <div class="card">
 <img src="imagensgpt/ursogrande.png">
 <div class="card-body">
 <h2>Teddy Fofo</h2>
-<p class="price">R$120</p>
+<p class="price">120</p>
 <p>📏 Tamanho: 30 cm</p>
 <p>🏪 Loja: Ursos & Cia</p>
-<a href="#" class="btn">Comprar 🛒</a>
+<a href="#" class="btn" onclick="adicionarCarrinho('Teddy Fofo',120)">Comprar 🛒</a>
 </div>
 </div>
 
@@ -181,10 +205,10 @@ margin-top:3rem;
 <img src="imagensgpt/ursomarrom.png">
 <div class="card-body">
 <h2>Urso Marrom</h2>
-<p class="price">R$150</p>
+<p class="price">150</p>
 <p>📏 Tamanho: 40 cm</p>
 <p>🏪 Loja: Pelúcias do Coração</p>
-<a href="#" class="btn">Comprar 🛒</a>
+<a href="#" class="btn" onclick="adicionarCarrinho('Urso Marrom',150)">Comprar 🛒</a>
 </div>
 </div>
 
@@ -192,10 +216,10 @@ margin-top:3rem;
 <img src="imagensgpt/ursobranco.png">
 <div class="card-body">
 <h2>Ursinho Branco</h2>
-<p class="price">R$180</p>
+<p class="price">180</p>
 <p>📏 Tamanho: 50 cm</p>
 <p>🏪 Loja: Mundo Pelúcia</p>
-<a href="#" class="btn">Comprar 🛒</a>
+<a href="#" class="btn" onclick="adicionarCarrinho('Ursinho Branco',180)">Comprar 🛒</a>
 </div>
 </div>
 
@@ -203,62 +227,28 @@ margin-top:3rem;
 <img src="imagensgpt/ursoabraço.png">
 <div class="card-body">
 <h2>Urso Abraço</h2>
-<p class="price">R$200</p>
+<p class="price">200</p>
 <p>📏 Tamanho: 60 cm</p>
 <p>🏪 Loja: Ursos & Cia</p>
-<a href="#" class="btn">Comprar 🛒</a>
+<a href="#" class="btn" onclick="adicionarCarrinho('Urso Abraço',200)">Comprar 🛒</a>
 </div>
 </div>
-
-  <div class="card">
-<img src="imagensgpt/pinguin.png" alt="Pinguim de Pelúcia">
-
-<div class="card-body">
-<h2>Pinguim Fofo</h2>
-
-<p class="price">R$ 95,00</p>
-
-<p>📏 Tamanho: 40 cm</p>
-
-<p>🏪 Loja: Ursinhos Encantados</p>
-
-<a href="imagensgpt/pinguim-pelucia.png" target="_blank" class="btn">
-Ver Foto 🐧
-</a>
-
-<br>
-
-<a href="#" class="btn">Comprar 🛒</a>
-
-</div>
-</div>
-<!-- AREA INTERATIVA -->
-
-<section class="form-area">
-
-<h2 style="text-align:center;">➕ Adicionar Novo Ursinho</h2>
-
-<form id="ursoForm">
-
-<input type="text" id="nome" placeholder="Nome do urso" required>
-
-<input type="number" id="preco" placeholder="Preço R$" required>
-
-<input type="text" id="tamanho" placeholder="Tamanho (ex: 40 cm)" required>
-
-<input type="text" id="loja" placeholder="Nome da loja" required>
-
-<input type="text" id="imagem" placeholder="Link da imagem" required>
-
-<button class="btn">Adicionar Urso 🐻</button>
-
-</form>
-
-<p id="mensagem" style="text-align:center;margin-top:10px;"></p>
-
-</section>
 
 </main>
+
+<!-- CARRINHO -->
+
+<div id="carrinhoBox">
+
+<h2>🛒 Carrinho</h2>
+
+<div id="listaCarrinho"></div>
+
+<p style="margin-top:10px;">
+<b>Total: R$ <span id="totalCarrinho">0</span></b>
+</p>
+
+</div>
 
 <footer>
 © 2026 Ursinhos Encantados 💖
@@ -266,45 +256,77 @@ Ver Foto 🐧
 
 <script>
 
-let contador = 0
-let limite = 5
+let carrinho = JSON.parse(localStorage.getItem("carrinho")) || []
 
-document.getElementById("ursoForm").addEventListener("submit", function(e){
-
-e.preventDefault()
-
-if(contador >= limite){
-document.getElementById("mensagem").innerText="⚠️ Limite de 5 novos ursos atingido!"
-return
+function salvarCarrinho(){
+localStorage.setItem("carrinho", JSON.stringify(carrinho))
 }
 
-let nome = document.getElementById("nome").value
-let preco = document.getElementById("preco").value
-let tamanho = document.getElementById("tamanho").value
-let loja = document.getElementById("loja").value
-let imagem = document.getElementById("imagem").value
+function atualizarCarrinho(){
 
-let card = document.createElement("div")
-card.classList.add("card")
+let lista = document.getElementById("listaCarrinho")
+lista.innerHTML=""
 
-card.innerHTML=`
-<img src="${imagem}">
-<div class="card-body">
-<h2>${nome}</h2>
-<p class="price">R$ ${preco}</p>
-<p>📏 Tamanho: ${tamanho}</p>
-<p>🏪 Loja: ${loja}</p>
-<a href="#" class="btn">Comprar 🛒</a>
-</div>
+let total = 0
+
+carrinho.forEach((item,index)=>{
+
+let div = document.createElement("div")
+
+div.style.marginBottom="8px"
+
+div.innerHTML = `
+${item.nome} - R$ ${item.preco}
+<button onclick="removerItem(${index})">❌</button>
 `
 
-document.querySelector(".container").appendChild(card)
+lista.appendChild(div)
 
-contador++
-
-document.getElementById("ursoForm").reset()
+total += Number(item.preco)
 
 })
+
+document.getElementById("totalCarrinho").innerText = total
+
+}
+
+function adicionarCarrinho(nome,preco){
+
+carrinho.push({nome,preco})
+
+salvarCarrinho()
+
+atualizarCarrinho()
+
+}
+
+function removerItem(index){
+
+carrinho.splice(index,1)
+
+salvarCarrinho()
+
+atualizarCarrinho()
+
+}
+
+let carrinhoAberto = false
+
+document.getElementById("abrirCarrinho").onclick = function(){
+
+let box = document.getElementById("carrinhoBox")
+
+if(carrinhoAberto){
+box.style.right = "-320px"
+}else{
+box.style.right = "0"
+}
+
+carrinhoAberto = !carrinhoAberto
+
+}
+
+atualizarCarrinho()
 
 </script>
 
