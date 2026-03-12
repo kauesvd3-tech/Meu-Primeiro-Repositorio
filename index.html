@@ -3,356 +3,346 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Animaizinhos Encantados</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
-#fecharCarrinho {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-}
 body{
-font-family:'Roboto',sans-serif;
-margin:0;
-background:#fff0f5;
+  font-family:'Roboto',sans-serif;
+  margin:0;
+  padding:0;
+  background:#fff0f5;
 }
 
 /* HEADER */
-
 header{
-background:linear-gradient(90deg,#ff6f61,#ff9472);
-color:white;
-text-align:center;
-padding:2rem;
+  background:linear-gradient(90deg,#ff6f61,#ff9472);
+  color:white;
+  text-align:center;
+  padding:2rem;
 }
-
 header h1{
-font-family:'Pacifico';
-font-size:2.5rem;
-margin:0;
+  font-family:'Pacifico';
+  font-size:2.5rem;
+  margin:0;
 }
-
 #buscar{
-width:80%;
-max-width:400px;
-padding:10px;
-border-radius:20px;
-border:none;
-margin-top:15px;
+  width:80%;
+  max-width:400px;
+  padding:10px;
+  border-radius:20px;
+  border:none;
+  margin-top:15px;
 }
 
 /* GRID */
-
 .container{
-max-width:1200px;
-margin:auto;
-padding:20px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
 }
 
 /* CARD */
-
 .card{
-background:white;
-border-radius:16px;
-overflow:hidden;
-box-shadow:0 6px 15px rgba(0,0,0,0.1);
-transition:.3s;
-position:relative;
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 6px 15px rgba(0,0,0,0.1);
+  transition:.3s;
+  position:relative;
 }
-
 .card:hover{
-transform:translateY(-10px);
-box-shadow:0 15px 30px rgba(0,0,0,0.2);
+  transform:translateY(-10px);
+  box-shadow:0 15px 30px rgba(0,0,0,0.2);
 }
-
-.card img {
+.card img{
   width: 100%;
-  max-height: 250px;   /* limita a altura */
-  height: auto;         /* mantém proporção */
-  object-fit: contain;   /* evita corte */
-  background-color: #fff0f5; /* cor de fundo igual ao da página */
+  max-height: 220px;
+  height: auto;
+  object-fit: contain;
+  background-color: #fff0f5;
+  pointer-events:none;
 }
-
 .card-body{
-padding:15px;
-text-align:center;
+  padding:15px;
+  text-align:center;
 }
-
 .price{
-color:#ff6f61;
-font-weight:bold;
-font-size:1.2rem;
+  color:#ff6f61;
+  font-weight:bold;
+  font-size:1.2rem;
 }
-
 .stars{
-color:gold;
+  color:gold;
 }
-
 .fav{
-position:absolute;
-top:10px;
-right:10px;
-font-size:20px;
-cursor:pointer;
+  position:absolute;
+  top:10px;
+  right:10px;
+  font-size:20px;
+  cursor:pointer;
 }
 
 /* BOTÕES */
-
 .btn{
-padding:10px 20px;
-border:none;
-border-radius:25px;
-background:linear-gradient(90deg,#ff6f61,#ff9472);
-color:white;
-cursor:pointer;
-margin-top:8px;
+  padding:10px 20px;
+  border:none;
+  border-radius:25px;
+  background:linear-gradient(90deg,#ff6f61,#ff9472);
+  color:white;
+  cursor:pointer;
+  margin-top:8px;
 }
 
 /* CARRINHO */
-
 #abrirCarrinho{
-position:fixed;
-top:20px;
-right:20px;
+  position:fixed;
+  top:20px;
+  right:20px;
 }
-
 #carrinhoBox{
-position:fixed;
-right:-320px;
-top:0;
-width:300px;
-height:100%;
-background:white;
-box-shadow:-5px 0 20px rgba(0,0,0,0.2);
-padding:20px;
-transition:.4s;
-overflow:auto;
+  position:fixed;
+  right:-320px;
+  top:0;
+  width:300px;
+  height:100%;
+  background:white;
+  box-shadow:-5px 0 20px rgba(0,0,0,0.2);
+  padding:20px;
+  transition:.4s;
+  overflow:auto;
 }
-
+#fecharCarrinho{
+  position:absolute;
+  left:10px;
+  top:10px;
+  background:none;
+  border:none;
+  font-size:24px;
+  cursor:pointer;
+}
 .itemCarrinho{
-display:flex;
-gap:10px;
-margin-bottom:15px;
-align-items:center;
-border-bottom:1px solid #eee;
-padding-bottom:10px;
+  display:flex;
+  gap:10px;
+  margin-bottom:15px;
+  align-items:center;
+  border-bottom:1px solid #eee;
+  padding-bottom:10px;
 }
-
 .itemCarrinho img{
-width:60px;
-height:60px;
-border-radius:10px;
+  width:60px;
+  height:60px;
+  border-radius:10px;
+}
+.qtd-btn{
+  padding:2px 6px;
+  margin:0 5px;
+  border-radius:4px;
+  border:none;
+  background:#ff6f61;
+  color:white;
+  cursor:pointer;
 }
 
 /* FOOTER */
-
 footer{
-background:#333;
-color:white;
-text-align:center;
-padding:30px;
-margin-top:40px;
+  background:#333;
+  color:white;
+  text-align:center;
+  padding:30px;
+  margin-top:40px;
 }
 
 /* MOBILE */
-
 @media(max-width:600px){
-
-header h1{
-font-size:1.8rem;
+  header h1{
+    font-size:1.8rem;
+  }
+  .card img{
+    height:180px;
+  }
 }
-
-.card img{
-height:180px;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-
 <h1>✨ Animaizinhos Encantados ✨</h1>
 <p>Os melhores ursos de pelúcia!</p>
-
 <input type="text" id="buscar" placeholder="Buscar produto..." onkeyup="buscarProduto()">
-
 </header>
 
-<button id="abrirCarrinho" class="btn">
-🛒 Carrinho (<span id="contadorCarrinho">0</span>)
-</button>
+<button id="abrirCarrinho" class="btn">🛒 Carrinho (<span id="contadorCarrinho">0</span>)</button>
 
 <main class="container" id="produtos">
 
-<!-- TEDDY -->
+<!-- Exemplo de Card -->
+<main class="container" id="produtos">
+
+<!-- Teddy Fofo -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<img src="imagensgpt/ursogrande.png">
-<div class="card-body">
-<h2>Teddy Fofo</h2>
-<p class="stars">⭐⭐⭐⭐⭐</p>
-<p class="price">R$200,00</p>
-<p>📏 120 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Teddy Fofo',200,'120 cm','imagensgpt/ursogrande.png')">Adicionar 🛒</button>
-</div>
+  <div class="fav" onclick="favoritar(this)">🤍</div>
+  <img src="imagensgpt/ursogrande.png">
+  <div class="card-body">
+    <h2>Teddy Fofo</h2>
+    <p class="stars">⭐⭐⭐⭐⭐</p>
+    <p class="price">R$200,00</p>
+    <p>📏 120 cm</p>
+    <button class="btn" onclick="adicionarCarrinho('Teddy Fofo',200,'120 cm','imagensgpt/ursogrande.png')">Adicionar 🛒</button>
+  </div>
 </div>
 
-<!-- URSO MARROM -->
+<!-- Urso Marrom -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<img src="imagensgpt/ursomarrom.png">
-<div class="card-body">
-<h2>Urso Marrom</h2>
-<p class="stars">⭐⭐⭐⭐⭐</p>
-<p class="price">R$230,00</p>
-<p>📏 130 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Urso Marrom',230,'130 cm','imagensgpt/ursomarrom.png')">Adicionar 🛒</button>
-</div>
+  <div class="fav" onclick="favoritar(this)">🤍</div>
+  <img src="imagensgpt/ursomarrom.png">
+  <div class="card-body">
+    <h2>Urso Marrom</h2>
+    <p class="stars">⭐⭐⭐⭐⭐</p>
+    <p class="price">R$230,00</p>
+    <p>📏 130 cm</p>
+    <button class="btn" onclick="adicionarCarrinho('Urso Marrom',230,'130 cm','imagensgpt/ursomarrom.png')">Adicionar 🛒</button>
+  </div>
 </div>
 
-<!-- URSO BRANCO -->
+<!-- Ursinho Branco -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<img src="imagensgpt/ursobranco.png">
-<div class="card-body">
-<h2>Ursinho Branco</h2>
-<p class="stars">⭐⭐⭐⭐⭐</p>
-<p class="price">R$280,00</p>
-<p>📏 140 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Ursinho Branco',280,'140 cm','imagensgpt/ursobranco.png')">Adicionar 🛒</button>
-</div>
+  <div class="fav" onclick="favoritar(this)">🤍</div>
+  <img src="imagensgpt/ursobranco.png">
+  <div class="card-body">
+    <h2>Ursinho Branco</h2>
+    <p class="stars">⭐⭐⭐⭐⭐</p>
+    <p class="price">R$280,00</p>
+    <p>📏 140 cm</p>
+    <button class="btn" onclick="adicionarCarrinho('Ursinho Branco',280,'140 cm','imagensgpt/ursobranco.png')">Adicionar 🛒</button>
+  </div>
 </div>
 
-<!-- URSO ABRAÇO -->
+<!-- Urso Abraço -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<img src="imagensgpt/ursoabraço.png">
-<div class="card-body">
-<h2>Urso Abraço</h2>
-<p class="stars">⭐⭐⭐⭐⭐</p>
-<p class="price">R$400,00</p>
-<p>📏 155 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Urso Abraço',400,'155 cm','imagensgpt/ursoabraço.png')">Adicionar 🛒</button>
-</div>
+  <div class="fav" onclick="favoritar(this)">🤍</div>
+  <img src="imagensgpt/ursoabraço.png">
+  <div class="card-body">
+    <h2>Urso Abraço</h2>
+    <p class="stars">⭐⭐⭐⭐⭐</p>
+    <p class="price">R$400,00</p>
+    <p>📏 155 cm</p>
+    <button class="btn" onclick="adicionarCarrinho('Urso Abraço',400,'155 cm','imagensgpt/ursoabraço.png')">Adicionar 🛒</button>
+  </div>
 </div>
 
-<!-- PINGUIM -->
+<!-- Pinguim Fofo -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<img src="imagensgpt/pinguim.png">
-<div class="card-body">
-<h2>Pinguim Fofo</h2>
-<p class="stars">⭐⭐⭐⭐⭐</p>
-<p class="price">R$85,00</p>
-<p>📏 40 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Pinguim Fofo',85,'40 cm','imagensgpt/pinguim.png')">Adicionar 🛒</button>
-</div>
+  <div class="fav" onclick="favoritar(this)">🤍</div>
+  <img src="imagensgpt/pinguim.png">
+  <div class="card-body">
+    <h2>Pinguim Fofo</h2>
+    <p class="stars">⭐⭐⭐⭐</p>
+    <p class="price">R$85,00</p>
+    <p>📏 40 cm</p>
+    <button class="btn" onclick="adicionarCarrinho('Pinguim Fofo',85,'40 cm','imagensgpt/pinguim.png')">Adicionar 🛒</button>
+  </div>
 </div>
 
-<!-- CACHORRO -->
+<!-- Cachorrinho -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<img src="imagensgpt/dog.png">
-<div class="card-body">
-<h2>Cachorrinho</h2>
-<p class="stars">⭐⭐⭐⭐⭐</p>
-<p class="price">R$85,00</p>
-<p>📏 45 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Cachorrinho',85,'45 cm','imagensgpt/dog.png')">Adicionar 🛒</button>
-</div>
+  <div class="fav" onclick="favoritar(this)">🤍</div>
+  <img src="imagensgpt/dog.png">
+  <div class="card-body">
+    <h2>Cachorrinho</h2>
+    <p class="stars">⭐⭐⭐⭐</p>
+    <p class="price">R$85,00</p>
+    <p>📏 45 cm</p>
+    <button class="btn" onclick="adicionarCarrinho('Cachorrinho',85,'45 cm','imagensgpt/dog.png')">Adicionar 🛒</button>
+  </div>
 </div>
 
-<!-- VAQUINHA -->
+<!-- Vaquinha Lolla -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<img src="imagensgpt/Vaquinha.png">
-<div class="card-body">
-<h2>Vaquinha Lolla</h2>
-<p class="stars">⭐⭐⭐⭐⭐</p>
-<p class="price">R$100,00</p>
-<p>📏 60 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Vaquinha Lolla',100,'60 cm','imagensgpt/Vaquinha.png')">Adicionar 🛒</button>
-</div>
+  <div class="fav" onclick="favoritar(this)">🤍</div>
+  <img src="imagensgpt/Vaquinha.png">
+  <div class="card-body">
+    <h2>Vaquinha Lolla</h2>
+    <p class="stars">⭐⭐⭐⭐</p>
+    <p class="price">R$100,00</p>
+    <p>📏 60 cm</p>
+    <button class="btn" onclick="adicionarCarrinho('Vaquinha Lolla',100,'60 cm','imagensgpt/Vaquinha.png')">Adicionar 🛒</button>
+  </div>
 </div>
 
-<!-- COELHO -->
+<!-- Coelinho Arcoíris -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<img src="imagensgpt/coelho.png">
-<div class="card-body">
-<h2>Coelinho Arcoíris</h2>
-<p class="stars">⭐⭐⭐⭐⭐</p>
-<p class="price">R$75,00</p>
-<p>📏 30 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Coelinho Arcoíris',75,'30 cm','imagensgpt/coelho.png')">Adicionar 🛒</button>
-</div>
+  <div class="fav" onclick="favoritar(this)">🤍</div>
+  <img src="imagensgpt/coelho.png">
+  <div class="card-body">
+    <h2>Coelinho Arcoíris</h2>
+    <p class="stars">⭐⭐⭐⭐</p>
+    <p class="price">R$75,00</p>
+    <p>📏 30 cm</p>
+    <button class="btn" onclick="adicionarCarrinho('Coelinho Arcoíris',75,'30 cm','imagensgpt/coelho.png')">Adicionar 🛒</button>
+  </div>
 </div>
 
-<!-- MACACO -->
+<!-- Macaco George -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<img src="imagensgpt/macaco.png">
-<div class="card-body">
-<h2>Macaco George</h2>
-<p class="stars">⭐⭐⭐⭐⭐</p>
-<p class="price">R$79,00</p>
-<p>📏 35 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Macaco George',79,'35 cm','imagensgpt/macaco.png')">Adicionar 🛒</button>
-</div>
+  <div class="fav" onclick="favoritar(this)">🤍</div>
+  <img src="imagensgpt/macaco.png">
+  <div class="card-body">
+    <h2>Macaco George</h2>
+    <p class="stars">⭐⭐⭐⭐</p>
+    <p class="price">R$79,90</p>
+    <p>📏 35 cm</p>
+    <button class="btn" onclick="adicionarCarrinho('Macaco George',79,'35 cm','imagensgpt/macaco.png')">Adicionar 🛒</button>
+  </div>
 </div>
 
-<!-- PORCO -->
+<!-- Porquinha Enddy -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<img src="imagensgpt/porco.png">
-<div class="card-body">
-<h2>Porquinha Enddy</h2>
-<p class="stars">⭐⭐⭐⭐⭐</p>
-<p class="price">R$89,00</p>
-<p>📏 50 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Porquinha Enddy',89,'50 cm','imagensgpt/porco.png')">Adicionar 🛒</button>
-</div>
+  <div class="fav" onclick="favoritar(this)">🤍</div>
+  <img src="imagensgpt/porco.png">
+  <div class="card-body">
+    <h2>Porquinha Enddy</h2>
+    <p class="stars">⭐⭐⭐⭐</p>
+    <p class="price">R$89,90</p>
+    <p>📏 50 cm</p>
+    <button class="btn" onclick="adicionarCarrinho('Porquinha Enddy',89,'50 cm','imagensgpt/porco.png')">Adicionar 🛒</button>
+  </div>
 </div>
 
-<!-- GIRAFa -->
+<!-- Girafa Nina -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<img src="imagensgpt/girafa.png">
-<div class="card-body">
-<h2>Girafa Nina</h2>
-<p class="stars">⭐⭐⭐⭐⭐</p>
-<p class="price">R$109,00</p>
-<p>📏 60 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Girafa Nina',109,'60 cm','imagensgpt/girafa.png')">Adicionar 🛒</button>
-</div>
+  <div class="fav" onclick="favoritar(this)">🤍</div>
+  <img src="imagensgpt/girafa.png">
+  <div class="card-body">
+    <h2>Girafa Nina</h2>
+    <p class="stars">⭐⭐⭐⭐</p>
+    <p class="price">R$109,90</p>
+    <p>📏 60 cm</p>
+    <button class="btn" onclick="adicionarCarrinho('Girafa Nina',109,'60 cm','imagensgpt/girafa.png')">Adicionar 🛒</button>
+  </div>
 </div>
 
-<!-- SAPO -->
+<!-- Sapo Greg -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<img src="imagensgpt/sapinho.png">
-<div class="card-body">
-<h2>Sapo Greg</h2>
-<p class="stars">⭐⭐⭐⭐⭐</p>
-<p class="price">R$79,00</p>
-<p>📏 35 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Sapo Greg',79,'35 cm','imagensgpt/sapinho.png')">Adicionar 🛒</button>
+  <div class="fav" onclick="favoritar(this)">🤍</div>
+  <img src="imagensgpt/sapinho.png">
+  <div class="card-body">
+    <h2>Sapo Greg</h2>
+    <p class="stars">⭐⭐⭐⭐</p>
+    <p class="price">R$79,90</p>
+    <p>📏 35 cm</p>
+    <button class="btn" onclick="adicionarCarrinho('Sapo Greg',79,'35 cm','imagensgpt/sapinho.png')">Adicionar 🛒</button>
+  </div>
 </div>
-</div>
+
+</main>
+
+<!-- Adicione todos os outros animais aqui da mesma forma -->
 
 </main>
 
@@ -367,179 +357,116 @@ height:180px;
 <p><b>Total: R$ <span id="totalCarrinho">0</span></b></p>
 
 <button class="btn" onclick="limparCarrinho()">Limpar Carrinho</button>
-
 <button class="btn" onclick="finalizarCompra()">Finalizar Compra 🛍️</button>
 
 </div>
 
 <footer>
-
 <h3>Animaizinhos Encantados</h3>
-
 <p>🧸 Pelúcias fofinhas para todas as idades</p>
-
 <p>📱 WhatsApp: (19) 99283-1122</p>
-
 <p>© 2026 Todos os direitos reservados</p>
-
 </footer>
 
 <script>
-
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || []
+let carrinhoAberto = false;
 
-function salvarCarrinho(){
-localStorage.setItem("carrinho",JSON.stringify(carrinho))
+function salvarCarrinho() {
+  localStorage.setItem("carrinho", JSON.stringify(carrinho))
 }
 
-function adicionarCarrinho(nome,preco,tamanho,imagem){
-
-let item = carrinho.find(i => i.nome === nome)
-
-if(item){
-
-item.qtd++
-
-}else{
-
-carrinho.push({nome,preco,tamanho,imagem,qtd:1})
-
+function adicionarCarrinho(nome, preco, tamanho, imagem) {
+  let item = carrinho.find(i => i.nome === nome)
+  if(item){ item.qtd++ } 
+  else { carrinho.push({nome, preco, tamanho, imagem, qtd:1}) }
+  salvarCarrinho()
+  atualizarCarrinho()
 }
 
-salvarCarrinho()
-atualizarCarrinho()
-
-alert("Produto adicionado ao carrinho!")
-
+function atualizarCarrinho() {
+  let lista = document.getElementById("listaCarrinho")
+  lista.innerHTML = ""
+  let total = 0
+  carrinho.forEach((item,index)=>{
+    let div = document.createElement("div")
+    div.className="itemCarrinho"
+    div.innerHTML=`
+      <img src="${item.imagem}">
+      <div>
+        <b>${item.nome}</b><br>
+        Tamanho: ${item.tamanho}<br>
+        Preço unitário: R$ ${item.preco}<br>
+        Quantidade: 
+        <button class="qtd-btn" onclick="mudarQtd(${index},-1)">-</button>
+        ${item.qtd}
+        <button class="qtd-btn" onclick="mudarQtd(${index},1)">+</button>
+      </div>
+      <button onclick="remover(${index})">❌</button>
+    `
+    lista.appendChild(div)
+    total += item.preco * item.qtd
+  })
+  document.getElementById("totalCarrinho").innerText = total
+  document.getElementById("contadorCarrinho").innerText = carrinho.length
 }
 
-function atualizarCarrinho(){
-
-let lista=document.getElementById("listaCarrinho")
-
-lista.innerHTML=""
-
-let total=0
-
-carrinho.forEach((item,index)=>{
-
-let div=document.createElement("div")
-
-div.className="itemCarrinho"
-
-div.innerHTML=`
-
-<img src="${item.imagem}">
-
-<div>
-
-<b>${item.nome}</b>
-
-<p>${item.qtd}x</p>
-
-</div>
-
-<button onclick="remover(${index})">❌</button>
-
-`
-
-lista.appendChild(div)
-
-total+=item.preco*item.qtd
-
-})
-
-document.getElementById("totalCarrinho").innerText=total
-document.getElementById("contadorCarrinho").innerText=carrinho.length
-
+function mudarQtd(index, valor){
+  carrinho[index].qtd += valor
+  if(carrinho[index].qtd <= 0) carrinho.splice(index,1)
+  salvarCarrinho()
+  atualizarCarrinho()
 }
 
-function remover(i){
-
-carrinho.splice(i,1)
-
-salvarCarrinho()
-atualizarCarrinho()
-
+function remover(index){
+  carrinho.splice(index,1)
+  salvarCarrinho()
+  atualizarCarrinho()
 }
 
 function limparCarrinho(){
-
-carrinho=[]
-
-salvarCarrinho()
-atualizarCarrinho()
-
+  carrinho=[]
+  salvarCarrinho()
+  atualizarCarrinho()
 }
-
-function buscarProduto(){
-
-let filtro=document.getElementById("buscar").value.toLowerCase()
-
-let cards=document.querySelectorAll(".card")
-
-cards.forEach(card=>{
-
-if(card.innerText.toLowerCase().includes(filtro)){
-card.style.display="block"
-}else{
-card.style.display="none"
-}
-
-})
-
-}
-
-function favoritar(el){
-
-if(el.innerText==="🤍"){
-el.innerText="❤️"
-}else{
-el.innerText="🤍"
-}
-
-}
-
-let aberto=false
 
 document.getElementById("abrirCarrinho").onclick=function(){
-
-let box=document.getElementById("carrinhoBox")
-
-if(aberto){
-box.style.right="-320px"
-}else{
-box.style.right="0"
+  let box = document.getElementById("carrinhoBox")
+  if(carrinhoAberto){ box.style.right="-320px" }
+  else{ box.style.right="0" }
+  carrinhoAberto=!carrinhoAberto
 }
 
-aberto=!aberto
-
+document.getElementById("fecharCarrinho").onclick = function() {
+  document.getElementById("carrinhoBox").style.right="-320px"
+  carrinhoAberto=false
 }
 
 function finalizarCompra(){
+  if(carrinho.length===0){ alert("Carrinho vazio!"); return }
+  let mensagem="Olá! Gostaria de comprar:%0A%0A"
+  carrinho.forEach(item=>{
+    mensagem+=`${item.nome} (${item.qtd}) - ${item.tamanho} - R$ ${item.preco}%0A`
+  })
+  let total = carrinho.reduce((sum,item)=>sum+item.preco*item.qtd,0)
+  mensagem+=`%0A💰 Total: R$ ${total}`
+  let telefone="5519992831122"
+  window.open(`https://wa.me/${telefone}?text=${mensagem}`,"_blank")
+}
 
-let telefone="5519992831122"
+function buscarProduto(){
+  let filtro=document.getElementById("buscar").value.toLowerCase()
+  let cards=document.querySelectorAll(".card")
+  cards.forEach(card=>{
+    card.style.display = card.innerText.toLowerCase().includes(filtro) ? "block" : "none"
+  })
+}
 
-let mensagem="Olá! Gostaria de comprar:%0A"
-
-carrinho.forEach(item=>{
-mensagem+=`${item.nome} (${item.qtd})%0A`
-})
-
-window.open(`https://wa.me/${telefone}?text=${mensagem}`)
-
+function favoritar(el){
+  el.innerText = el.innerText==="🤍" ? "❤️" : "🤍"
 }
 
 atualizarCarrinho()
-document.getElementById("fecharCarrinho").onclick=function(){
-
-let box=document.getElementById("carrinhoBox")
-
-box.style.right="-320px"
-
-aberto=false
-
-}
 </script>
 
 </body>
