@@ -262,6 +262,8 @@ object-fit:cover;
 
 <p><b>Total: R$ <span id="totalCarrinho">0</span></b></p>
 
+<button class="btn" onclick="finalizarCompra()">Finalizar Compra 🛍️</button>
+  
 </div>
 
 <script>
@@ -357,7 +359,35 @@ carrinhoAberto = false
 }
 
 atualizarCarrinho()
+function finalizarCompra(){
 
+if(carrinho.length === 0){
+alert("Seu carrinho está vazio!")
+return
+}
+
+let mensagem = "Olá! Gostaria de comprar:%0A%0A"
+
+let total = 0
+
+carrinho.forEach(item => {
+
+mensagem += item.nome + " - R$ " + item.preco + " - " + item.tamanho + "%0A"
+
+total += Number(item.preco)
+
+})
+
+mensagem += "%0A💰 Total: R$ " + total
+
+// COLOQUE SEU WHATSAPP AQUI
+let telefone = "5511999999999"
+
+let url = "https://wa.me/" + telefone + "?text=" + mensagem
+
+window.open(url,"_blank")
+
+}
 </script>
 
 </body>
