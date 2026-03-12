@@ -102,6 +102,20 @@ font-size:24px;
 cursor:pointer;
 }
 
+.itemCarrinho{
+display:flex;
+gap:10px;
+margin-bottom:15px;
+align-items:center;
+}
+
+.itemCarrinho img{
+width:60px;
+height:60px;
+border-radius:10px;
+object-fit:cover;
+}
+
 </style>
 </head>
 
@@ -122,8 +136,7 @@ cursor:pointer;
 <h2>Teddy Fofo</h2>
 <p class="price">R$200,00</p>
 <p>📏 Tamanho: 120 cm</p>
-<p>🏪 Loja: Animaizinhos Encantados</p>
-<button class="btn" onclick="adicionarCarrinho('Teddy Fofo',200)">Adicionar 🛒</button>
+<button class="btn" onclick="adicionarCarrinho('Teddy Fofo',200,'120 cm','imagensgpt/ursogrande.png')">Adicionar 🛒</button>
 </div>
 </div>
 
@@ -132,9 +145,8 @@ cursor:pointer;
 <div class="card-body">
 <h2>Urso Marrom</h2>
 <p class="price">R$230,00</p>
-<p>📏 Tamanho: 130 cm</p> 
-<p>🏪 Loja: Animaizinhos Encantados</p>
-<button class="btn" onclick="adicionarCarrinho('Urso Marrom',230)">Adicionar 🛒</button>
+<p>📏 Tamanho: 130 cm</p>
+<button class="btn" onclick="adicionarCarrinho('Urso Marrom',230,'130 cm','imagensgpt/ursomarrom.png')">Adicionar 🛒</button>
 </div>
 </div>
 
@@ -143,9 +155,8 @@ cursor:pointer;
 <div class="card-body">
 <h2>Ursinho Branco</h2>
 <p class="price">R$280,00</p>
-<p>📏 Tamanho: 140 cm</p> 
-<p>🏪 Loja:Animaizinhos Encantados</p>
-<button class="btn" onclick="adicionarCarrinho('Ursinho Branco',280)">Adicionar 🛒</button>
+<p>📏 Tamanho: 140 cm</p>
+<button class="btn" onclick="adicionarCarrinho('Ursinho Branco',280,'140 cm','imagensgpt/ursobranco.png')">Adicionar 🛒</button>
 </div>
 </div>
 
@@ -155,8 +166,7 @@ cursor:pointer;
 <h2>Urso Abraço</h2>
 <p class="price">R$400,00</p>
 <p>📏 Tamanho: 155 cm</p>
-<p>🏪 Loja:Animaizinhos Encantados</p>
-<button class="btn" onclick="adicionarCarrinho('Urso Abraço',200)">Adicionar 🛒</button>
+<button class="btn" onclick="adicionarCarrinho('Urso Abraço',400,'155 cm','imagensgpt/ursoabraço.png')">Adicionar 🛒</button>
 </div>
 </div>
 
@@ -165,9 +175,8 @@ cursor:pointer;
 <div class="card-body">
 <h2>Pinguim Fofo</h2>
 <p class="price">R$85,00</p>
-<p>📏 Tamanho: 40 cm</p> 
-<p>🏪 Loja: Animaizinhos Encantados</p>
-<button class="btn" onclick="adicionarCarrinho('Pinguim Fofo',85)">Adicionar 🛒</button>
+<p>📏 Tamanho: 40 cm</p>
+<button class="btn" onclick="adicionarCarrinho('Pinguim Fofo',85,'40 cm','imagensgpt/pinguim.png')">Adicionar 🛒</button>
 </div>
 </div>
 
@@ -176,20 +185,18 @@ cursor:pointer;
 <div class="card-body">
 <h2>Cachorrinho</h2>
 <p class="price">R$85,00</p>
-<p>📏 Tamanho: 45 cm</p> 
-<p>🏪 Loja:Animaizinhos Encantados </p>
-<button class="btn" onclick="adicionarCarrinho('Cachorrinho',85)">Adicionar 🛒</button>
+<p>📏 Tamanho: 45 cm</p>
+<button class="btn" onclick="adicionarCarrinho('Cachorrinho',85,'45 cm','imagensgpt/dog.png')">Adicionar 🛒</button>
 </div>
 </div>
 
 <div class="card">
 <img src="imagensgpt/Vaquinha.png">
 <div class="card-body">
-<h2>Vaquinha Lolla </h2>
+<h2>Vaquinha Lolla</h2>
 <p class="price">R$100,00</p>
-<p>📏 Tamanho: 60 cm</p> 
-<p>🏪 Loja:Animaizinhos Encantados </p>
-<button class="btn" onclick="adicionarCarrinho('Vaquinha Lolla ',100)">Adicionar 🛒</button>
+<p>📏 Tamanho: 60 cm</p>
+<button class="btn" onclick="adicionarCarrinho('Vaquinha Lolla',100,'60 cm','imagensgpt/Vaquinha.png')">Adicionar 🛒</button>
 </div>
 </div>
 
@@ -198,56 +205,51 @@ cursor:pointer;
 <div class="card-body">
 <h2>Coelinho Arcoirís</h2>
 <p class="price">R$75,00</p>
-<p>📏 Tamanho: 30 cm</p> 
-<p>🏪 Loja:Animaizinhos Encantados </p>
-<button class="btn" onclick="adicionarCarrinho('Coelhinho Arcoirís',75)">Adicionar 🛒</button>
+<p>📏 Tamanho: 30 cm</p>
+<button class="btn" onclick="adicionarCarrinho('Coelinho Arcoirís',75,'30 cm','imagensgpt/coelho.png')">Adicionar 🛒</button>
 </div>
 </div>
 
 <div class="card">
 <img src="imagensgpt/macaco.png">
 <div class="card-body">
-<h2>Macaco George </h2>
+<h2>Macaco George</h2>
 <p class="price">R$79,00</p>
-<p>📏 Tamanho: 35 cm</p> 
-<p>🏪 Loja:Animaizinhos Encantados </p>
-<button class="btn" onclick="adicionarCarrinho('Macaco George',79)">Adicionar 🛒</button>
+<p>📏 Tamanho: 35 cm</p>
+<button class="btn" onclick="adicionarCarrinho('Macaco George',79,'35 cm','imagensgpt/macaco.png')">Adicionar 🛒</button>
 </div>
 </div>
 
 <div class="card">
 <img src="imagensgpt/porco.png">
 <div class="card-body">
-<h2>Porquinha Enddy </h2>
+<h2>Porquinha Enddy</h2>
 <p class="price">R$89,00</p>
-<p>📏 Tamanho: 50 cm</p> 
-<p>🏪 Loja:Animaizinhos Encantados </p>
-<button class="btn" onclick="adicionarCarrinho('Porquinha Enddy',89)">Adicionar 🛒</button>
+<p>📏 Tamanho: 50 cm</p>
+<button class="btn" onclick="adicionarCarrinho('Porquinha Enddy',89,'50 cm','imagensgpt/porco.png')">Adicionar 🛒</button>
 </div>
 </div>
 
 <div class="card">
 <img src="imagensgpt/girafa.png">
 <div class="card-body">
-<h2>Girafa nina </h2>
+<h2>Girafa Nina</h2>
 <p class="price">R$109,00</p>
-<p>📏 Tamanho: 60 cm</p> 
-<p>🏪 Loja:Animaizinhos Encantados </p>
-<button class="btn" onclick="adicionarCarrinho('Girafa Nina ',89)">Adicionar 🛒</button>
+<p>📏 Tamanho: 60 cm</p>
+<button class="btn" onclick="adicionarCarrinho('Girafa Nina',109,'60 cm','imagensgpt/girafa.png')">Adicionar 🛒</button>
 </div>
 </div>
 
 <div class="card">
 <img src="imagensgpt/sapinho.png">
 <div class="card-body">
-<h2>Sapo Greg </h2>
+<h2>Sapo Greg</h2>
 <p class="price">R$79,00</p>
-<p>📏 Tamanho: 35 cm</p> 
-<p>🏪 Loja:Animaizinhos Encantados </p>
-<button class="btn" onclick="adicionarCarrinho('Sapo Greg ',79)">Adicionar 🛒</button>
+<p>📏 Tamanho: 35 cm</p>
+<button class="btn" onclick="adicionarCarrinho('Sapo Greg',79,'35 cm','imagensgpt/sapinho.png')">Adicionar 🛒</button>
 </div>
 </div>
-  
+
 </main>
 
 <div id="carrinhoBox">
@@ -281,8 +283,15 @@ carrinho.forEach((item,index)=>{
 
 let div = document.createElement("div")
 
+div.className = "itemCarrinho"
+
 div.innerHTML = `
-${item.nome} - R$ ${item.preco}
+<img src="${item.imagem}">
+<div>
+<b>${item.nome}</b><br>
+📏 ${item.tamanho}<br>
+💰 R$ ${item.preco}
+</div>
 <button onclick="removerItem(${index})">❌</button>
 `
 
@@ -296,9 +305,14 @@ document.getElementById("totalCarrinho").innerText = total
 
 }
 
-function adicionarCarrinho(nome,preco){
+function adicionarCarrinho(nome,preco,tamanho,imagem){
 
-carrinho.push({nome:nome, preco:preco})
+carrinho.push({
+nome:nome,
+preco:preco,
+tamanho:tamanho,
+imagem:imagem
+})
 
 salvarCarrinho()
 
