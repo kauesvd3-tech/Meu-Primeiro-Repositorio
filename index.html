@@ -9,7 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
-
+#fecharCarrinho {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
 body{
 font-family:'Roboto',sans-serif;
 margin:0;
@@ -349,6 +357,8 @@ height:180px;
 
 <div id="carrinhoBox">
 
+<button id="fecharCarrinho">⬅</button>
+
 <h2>🛒 Carrinho</h2>
 
 <div id="listaCarrinho"></div>
@@ -357,7 +367,7 @@ height:180px;
 
 <button class="btn" onclick="limparCarrinho()">Limpar Carrinho</button>
 
-<button class="btn" onclick="finalizarCompra()">Finalizar Compra</button>
+<button class="btn" onclick="finalizarCompra()">Finalizar Compra 🛍️</button>
 
 </div>
 
@@ -520,7 +530,15 @@ window.open(`https://wa.me/${telefone}?text=${mensagem}`)
 }
 
 atualizarCarrinho()
+document.getElementById("fecharCarrinho").onclick=function(){
 
+let box=document.getElementById("carrinhoBox")
+
+box.style.right="-320px"
+
+aberto=false
+
+}
 </script>
 
 </body>
