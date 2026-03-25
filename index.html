@@ -147,8 +147,60 @@ header h1{
   color:white;
   cursor:pointer;
 }
+<button id="abrirFavoritos" class="btn" style="top:70px; right:20px; position:fixed;">
+❤️ Favoritos (<span id="contadorFavoritos">0</span>)
+</button>
+  
+#favoritosBox{
+  position:fixed;
+  left:-320px;
+  top:0;
+  width:300px;
+  height:100%;
+  background:white;
+  box-shadow:5px 0 20px rgba(0,0,0,0.2);
+  padding:20px;
+  transition:.4s;
+  overflow:auto;
+}
 
-/* FOOTER */
+#fecharFavoritos{
+  position:absolute;
+  right:10px;
+  top:10px;
+  background:none;
+  border:none;
+  font-size:24px;
+  cursor:pointer;
+}
+
+.itemFavorito{
+  display:flex;
+  gap:10px;
+  margin-bottom:15px;
+  align-items:center;
+  border-bottom:1px solid #eee;
+  padding-bottom:10px;
+}
+
+.itemFavorito img{
+  width:60px;
+  height:60px;
+  border-radius:10px;
+}
+<div id="favoritosBox">
+
+<button id="fecharFavoritos">➡</button>
+
+<h2>❤️ Favoritos</h2>
+
+<div id="listaFavoritos"></div>
+
+<button class="btn" onclick="limparFavoritos()">Limpar Favoritos</button>
+
+</div> 
+  
+  /* FOOTER */
 footer{
   background:#333;
   color:white;
@@ -462,11 +514,79 @@ function buscarProduto(){
   })
 }
 
-function favoritar(el){
-  el.innerText = el.innerText==="🤍" ? "❤️" : "🤍"
+let favoritos = JSON.parse(localStorage.getItem("favoritos")) || []
+let favoritosAberto = false;
+
+function salvarFavoritos(){
+  localStorage.setItem("favoritos", JSON.stringify(favoritos))
 }
 
+function favoritar(el){
+  let card = el.closest(".card")
+  let nome = card.querySelector("h2").innerText
+  let preco = card.querySelector(".price").innerText
+  let imagem = card.querySelector("img").src
+
+  let index = favoritos.findIndex(i => i.nome === nome)
+
+  if(index > -1){
+    favoritos.splice(index,1)
+    el.innerText = "🤍"
+  } else {
+    favoritos.push({nome, preco, imagem})
+    el.innerText = "❤️"
+  }
+
+  salvarFavoritos()
+  atualizarFavoritos()
+}
+function atualizarFavoritos(){
+  let lista = document.getElementById("listaFavoritos")
+  lista.innerHTML = ""
+
+  favoritos.forEach((item,index)=>{
+    let div = document.createElement("div")
+    div.className="itemFavorito"
+
+    div.innerHTML = `
+      <img src="${item.imagem}">
+      <div>
+        <b>${item.nome}</b><br>
+        ${item.preco}
+      </div>
+      <button onclick="removerFavorito(${index})">❌</button>
+    `
+
+    lista.appendChild(div)
+  })
+
+  document.getElementById("contadorFavoritos").innerText = favoritos.length
+}
+
+function removerFavorito(index){
+  favoritos.splice(index,1)
+  salvarFavoritos()
+  atualizarFavoritos()
+}
+
+function limparFavoritos(){
+  favoritos = []
+  salvarFavoritos()
+  atualizarFavoritos()
+}
+  document.getElementById("abrirFavoritos").onclick = function(){
+  let box = document.getElementById("favoritosBox")
+  if(favoritosAberto){ box.style.left="-320px" }
+  else{ box.style.left="0" }
+  favoritosAberto = !favoritosAberto
+}
+
+document.getElementById("fecharFavoritos").onclick = function(){
+  document.getElementById("favoritosBox").style.left="-320px"
+  favoritosAberto=false
+}
 atualizarCarrinho()
+atualizarFavoritos()
 </script>
 
 </body>
