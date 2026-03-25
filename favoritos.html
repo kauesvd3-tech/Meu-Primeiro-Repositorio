@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Favoritos - Animaizinhos Encantados</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+body{
+  font-family:'Roboto',sans-serif;
+  margin:0;
+  background:#fff0f5;
+}
+
+/* HEADER */
+header{
+  background:linear-gradient(90deg,#ff6f61,#ff9472);
+  color:white;
+  text-align:center;
+  padding:2rem;
+}
+
+header h1{
+  font-family:'Pacifico';
+}
+
+/* BOTÃO VOLTAR */
+.voltar{
+  margin-top:10px;
+  display:inline-block;
+  padding:8px 15px;
+  border-radius:20px;
+  background:white;
+  color:#ff6f61;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* GRID */
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+/* CARD */
+.card{
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 6px 15px rgba(0,0,0,0.1);
+  text-align:center;
+}
+
+.card img{
+  width:100%;
+  height:200px;
+  object-fit:contain;
+  background:#fff0f5;
+}
+
+.card-body{
+  padding:15px;
+}
+
+.btn{
+  padding:10px;
+  border:none;
+  border-radius:20px;
+  background:#ff6f61;
+  color:white;
+  cursor:pointer;
+}
+
+/* VAZIO */
+.vazio{
+  text-align:center;
+  margin-top:50px;
+  font-size:1.2rem;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>❤️ Meus Favoritos</h1>
+  <a href="index.html" class="voltar">⬅ Voltar para loja</a>
+</header>
+
+<main class="container" id="listaFavoritos"></main>
+
+<div class="vazio" id="mensagemVazia" style="display:none;">
+  😢 Você ainda não favoritou nenhum produto
+</div>
+
+<script>
+let favoritos = JSON.parse(localStorage.getItem("favoritos")) || []
+
+function carregarFavoritos(){
+  let lista = document.getElementById("listaFavoritos")
+  let vazio = document.getElementById("mensagemVazia")
+
+  lista.innerHTML = ""
+
+  if(favoritos.length === 0){
+    vazio.style.display = "block"
+    return
+  }
+
+  vazio.style.display = "none"
+
+  favoritos.forEach((item,index)=>{
+    let div = document.createElement("div")
+    div.className = "card"
+
+    div.innerHTML = `
+      <img src="${item.imagem}">
+      <div class="card-body">
+        <h2>${item.nome}</h2>
+        <p>${item.preco}</p>
+        <button class="btn" onclick="remover(${index})">Remover ❌</button>
+      </div>
+    `
+
+    lista.appendChild(div)
+  })
+}
+
+function remover(index){
+  favoritos.splice(index,1)
+  localStorage.setItem("favoritos", JSON.stringify(favoritos))
+  carregarFavoritos()
+}
+
+carregarFavoritos()
+</script>
+
+</body>
+</html>
