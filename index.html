@@ -228,6 +228,9 @@ footer{
 
 <button id="abrirCarrinho" class="btn">🛒 Carrinho (<span id="contadorCarrinho">0</span>)</button>
 
+  <button onclick="logout()" class="btn" style="position:fixed; top:120px; right:20px;">
+🚪 Sair
+</button>
   <button id="abrirFavoritos" class="btn" style="top:70px; right:20px; position:fixed;">
 ❤️ Favoritos (<span id="contadorFavoritos">0</span>)
 </button>
@@ -593,6 +596,13 @@ document.getElementById("fecharFavoritos").onclick = function(){
 }
 atualizarCarrinho()
 atualizarFavoritos()
+if(localStorage.getItem("logado") !== "true"){
+  window.location.href = "login.html"
+}
+  function logout(){
+  localStorage.removeItem("logado")
+  window.location.href = "login.html"
+}
 </script>
 
 </body>
