@@ -82,19 +82,34 @@ button{
 </div>
 
 
-  <script type="module">
+<script type="module">
 
-import { auth, db } from './firebase-config.js'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
 from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"
 
-import { doc, setDoc } 
+import { getFirestore, doc, setDoc } 
 from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"
+
+
+// CONFIG DO FIREBASE
+const firebaseConfig = {
+  apiKey: "SUA_API_KEY",
+  authDomain: "SEU_PROJETO.firebaseapp.com",
+  projectId: "SEU_PROJECT_ID",
+  storageBucket: "SEU_PROJETO.appspot.com",
+  messagingSenderId: "XXXX",
+  appId: "XXXX"
+}
+
+// INICIALIZA FIREBASE
+const app = initializeApp(firebaseConfig)
+const auth = getAuth(app)
+const db = getFirestore(app)
 
 let modoLogin = true
 
 window.trocarModo = function(){
-
   modoLogin = !modoLogin
 
   document.getElementById("titulo").innerText =
@@ -119,14 +134,14 @@ window.acao = async function(){
 
     if(modoLogin){
 
-      await signInWithEmailAndPassword(auth, email, senha)
+      await signInWithEmailAndPassword(auth,email,senha)
 
       window.location.href = "index.html"
 
     }else{
 
       const userCredential =
-      await createUserWithEmailAndPassword(auth, email, senha)
+      await createUserWithEmailAndPassword(auth,email,senha)
 
       const user = userCredential.user
 
