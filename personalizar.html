@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Personalizar Urso</title>
+<title>Personalizar Pelúcia</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
 
@@ -27,7 +27,7 @@ font-family:'Pacifico';
 }
 
 .container{
-max-width:800px;
+max-width:900px;
 margin:auto;
 padding:20px;
 }
@@ -38,6 +38,10 @@ margin:20px 0;
 
 .preview img{
 width:250px;
+background:white;
+padding:10px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
 .opcoes{
@@ -50,6 +54,7 @@ select,input{
 padding:10px;
 border-radius:10px;
 border:1px solid #ccc;
+font-size:15px;
 }
 
 .btn{
@@ -60,6 +65,16 @@ background:linear-gradient(90deg,#ff6f61,#ff9472);
 color:white;
 cursor:pointer;
 margin-top:15px;
+font-size:16px;
+}
+
+.btn:hover{
+opacity:0.9;
+}
+
+.voltar{
+margin-top:20px;
+display:inline-block;
 }
 
 </style>
@@ -68,55 +83,79 @@ margin-top:15px;
 <body>
 
 <header>
-<h1>🧸 Personalize seu Urso</h1>
+<h1>🧸 Personalize sua Pelúcia</h1>
+<p>Escolha o animal e personalize seu presente</p>
 </header>
 
 <div class="container">
 
 <div class="preview">
-<img src="imagensgpt/ursobranco.png" id="ursoPreview">
+<img src="imagensgpt/ursogrande.png" id="animalPreview">
 </div>
 
 <div class="opcoes">
 
-<label>Cor do Urso</label>
-<select onchange="mudarCor(this.value)">
-<option value="ursobranco.png">Branco</option>
-<option value="ursomarrom.png">Marrom</option>
+<label>Escolha o animal</label>
+<select id="animalSelect" onchange="mudarAnimal(this.value)">
+<option value="ursogrande.png">Teddy Fofo</option>
+<option value="ursomarrom.png">Urso Marrom</option>
+<option value="ursobranco.png">Ursinho Branco</option>
+<option value="ursoabraço.png">Urso Abraço</option>
+<option value="pinguim.png">Pinguim Fofo</option>
+<option value="dog.png">Cachorrinho</option>
+<option value="Vaquinha.png">Vaquinha Lolla</option>
+<option value="coelho.png">Coelinho Arcoíris</option>
+<option value="macaco.png">Macaco George</option>
+<option value="porco.png">Porquinha Enddy</option>
+<option value="girafa.png">Girafa Nina</option>
+<option value="sapinho.png">Sapo Greg</option>
 </select>
 
-<label>Nome Bordado</label>
-<input type="text" id="nomeUrso" placeholder="Digite o nome">
+<label>Nome bordado no animal</label>
+<input type="text" id="nome" placeholder="Digite o nome">
 
-<label>Mensagem</label>
-<input type="text" id="mensagemUrso" placeholder="Mensagem opcional">
+<label>Mensagem no presente</label>
+<input type="text" id="mensagem" placeholder="Ex: Eu te amo ❤️">
+
+<label>Cor do laço</label>
+<select id="laco">
+<option>Vermelho</option>
+<option>Rosa</option>
+<option>Azul</option>
+<option>Amarelo</option>
+<option>Sem laço</option>
+</select>
 
 </div>
 
 <button class="btn" onclick="enviarPedido()">Finalizar Personalização</button>
 
-<br><br>
-
+<div class="voltar">
 <a href="index.html">
 <button class="btn">⬅ Voltar para loja</button>
 </a>
+</div>
 
 </div>
 
 <script>
 
-function mudarCor(imagem){
-document.getElementById("ursoPreview").src = "imagensgpt/" + imagem
+function mudarAnimal(imagem){
+document.getElementById("animalPreview").src = "imagensgpt/" + imagem
 }
 
 function enviarPedido(){
 
-let nome = document.getElementById("nomeUrso").value
-let mensagem = document.getElementById("mensagemUrso").value
+let animal = document.getElementById("animalSelect").options[document.getElementById("animalSelect").selectedIndex].text
+let nome = document.getElementById("nome").value
+let mensagem = document.getElementById("mensagem").value
+let laco = document.getElementById("laco").value
 
-let texto = "Olá! Quero personalizar um urso:%0A"
+let texto = "Olá! Quero personalizar uma pelúcia:%0A%0A"
+texto += "Animal: " + animal + "%0A"
 texto += "Nome bordado: " + nome + "%0A"
-texto += "Mensagem: " + mensagem
+texto += "Mensagem: " + mensagem + "%0A"
+texto += "Cor do laço: " + laco
 
 window.open("https://wa.me/5519992831122?text=" + texto)
 
