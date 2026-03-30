@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personalizar Urso</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:'Roboto',sans-serif;
+margin:0;
+background:#fff0f5;
+text-align:center;
+}
+
+header{
+background:linear-gradient(90deg,#ff6f61,#ff9472);
+color:white;
+padding:30px;
+}
+
+header h1{
+font-family:'Pacifico';
+}
+
+.container{
+max-width:800px;
+margin:auto;
+padding:20px;
+}
+
+.preview{
+margin:20px 0;
+}
+
+.preview img{
+width:250px;
+}
+
+.opcoes{
+display:grid;
+gap:15px;
+margin-top:20px;
+}
+
+select,input{
+padding:10px;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+.btn{
+padding:12px 20px;
+border:none;
+border-radius:25px;
+background:linear-gradient(90deg,#ff6f61,#ff9472);
+color:white;
+cursor:pointer;
+margin-top:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🧸 Personalize seu Urso</h1>
+</header>
+
+<div class="container">
+
+<div class="preview">
+<img src="imagensgpt/ursobranco.png" id="ursoPreview">
+</div>
+
+<div class="opcoes">
+
+<label>Cor do Urso</label>
+<select onchange="mudarCor(this.value)">
+<option value="ursobranco.png">Branco</option>
+<option value="ursomarrom.png">Marrom</option>
+</select>
+
+<label>Nome Bordado</label>
+<input type="text" id="nomeUrso" placeholder="Digite o nome">
+
+<label>Mensagem</label>
+<input type="text" id="mensagemUrso" placeholder="Mensagem opcional">
+
+</div>
+
+<button class="btn" onclick="enviarPedido()">Finalizar Personalização</button>
+
+<br><br>
+
+<a href="index.html">
+<button class="btn">⬅ Voltar para loja</button>
+</a>
+
+</div>
+
+<script>
+
+function mudarCor(imagem){
+document.getElementById("ursoPreview").src = "imagensgpt/" + imagem
+}
+
+function enviarPedido(){
+
+let nome = document.getElementById("nomeUrso").value
+let mensagem = document.getElementById("mensagemUrso").value
+
+let texto = "Olá! Quero personalizar um urso:%0A"
+texto += "Nome bordado: " + nome + "%0A"
+texto += "Mensagem: " + mensagem
+
+window.open("https://wa.me/5519992831122?text=" + texto)
+
+}
+
+</script>
+
+</body>
+</html>
