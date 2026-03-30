@@ -70,8 +70,7 @@ button{
 
   <h1 id="titulo">🧸 Login</h1>
 
- <input type="text" id="nome" placeholder="Nome">
-<input type="email" id="email" placeholder="Email">
+  <input type="text" id="usuario" placeholder="Usuário">
   <input type="password" id="senha" placeholder="Senha">
 
   <button onclick="acao()">Entrar</button>
@@ -81,87 +80,87 @@ button{
 
 </div>
 
-
-<script type="module">
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
-from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"
-
-import { getFirestore, doc, setDoc } 
-from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"
-
-
-// CONFIG DO FIREBASE
-const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
-  authDomain: "SEU_PROJETO.firebaseapp.com",
-  projectId: "SEU_PROJECT_ID",
-  storageBucket: "SEU_PROJETO.appspot.com",
-  messagingSenderId: "XXXX",
-  appId: "XXXX"
-}
-
-// INICIALIZA FIREBASE
-const app = initializeApp(firebaseConfig)
-const auth = getAuth(app)
-const db = getFirestore(app)
+<script>
 
 let modoLogin = true
 
-window.trocarModo = function(){
+function trocarModo(){
+
   modoLogin = !modoLogin
 
   document.getElementById("titulo").innerText =
-    modoLogin ? "🧸 Login" : "✨ Criar Conta"
+  modoLogin ? "🧸 Login" : "✨ Criar Conta"
 
   document.querySelector("button").innerText =
-    modoLogin ? "Entrar" : "Cadastrar"
+  modoLogin ? "Entrar" : "Cadastrar"
 
   document.querySelector(".toggle").innerText =
-    modoLogin
-    ? "Não tem conta? Criar conta"
-    : "Já tem conta? Fazer login"
+  modoLogin
+  ? "Não tem conta? Criar conta"
+  : "Já tem conta? Fazer login"
+
+  document.getElementById("erro").innerText = ""
 }
 
-window.acao = async function(){
+function acao(){
 
-  const nome = document.getElementById("nome").value
-  const email = document.getElementById("email").value
-  const senha = document.getElementById("senha").value
+  let user = document.getElementById("usuario").value
+  let pass = document.getElementById("senha").value
 
-  try{
+  let usuarios = JSON.parse(localStorage.getItem("usuarios")) || []
 
-    if(modoLogin){
+  if(modoLogin){
 
-      await signInWithEmailAndPassword(auth,email,senha)
+    // LOGIN
+    let existe = usuarios.find(u => u.user === user && u.pass === pass)
+
+    if(existe){
+
+      localStorage.setItem("logado","true")
+      localStorage.setItem("usuarioLogado", user)
 
       window.location.href = "index.html"
 
     }else{
 
-      const userCredential =
-      await createUserWithEmailAndPassword(auth,email,senha)
-
-      const user = userCredential.user
-
-      await setDoc(doc(db,"usuarios",user.uid),{
-        nome:nome,
-        email:email,
-        criadoEm:new Date()
-      })
-
-      await setDoc(doc(db,"favoritos",user.uid),{itens:[]})
-      await setDoc(doc(db,"carrinho",user.uid),{itens:[]})
-
-      window.location.href = "index.html"
+      document.getElementById("erro").innerText =
+      "Usuário ou senha inválidos"
 
     }
 
-  }catch(error){
+  }else{
+
+    // CRIAR CONTA
+    let jaExiste = usuarios.find(u => u.user === user)
+
+    if(jaExiste){
+
+      document.getElementById("erro").innerText =
+      "Usuário já existe!"
+      return
+
+    }
+
+    if(user === "" || pass === ""){
+
+      document.getElementById("erro").innerText =
+      "Preencha todos os campos"
+      return
+
+    }
+
+    usuarios.push({user, pass})
+
+    localStorage.setItem("usuarios", JSON.stringify(usuarios))
+
+    // cria carrinho e favoritos do usuário
+    localStorage.setItem("carrinho_"+user, JSON.stringify([]))
+    localStorage.setItem("favoritos_"+user, JSON.stringify([]))
 
     document.getElementById("erro").innerText =
-    "Erro: " + error.message
+    "Conta criada com sucesso! 🎉"
+
+    trocarModo()
 
   }
 
