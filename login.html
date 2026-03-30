@@ -1,3 +1,5 @@
+Página de Login
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -115,7 +117,7 @@ function acao(){
 
   } else {
     // CADASTRO
-  let jaExiste = usuarios.find(u => u.user === user)
+    let jaExiste = usuarios.find(u => u.user === user)
 
     if(jaExiste){
       document.getElementById("erro").innerText = "Usuário já existe!"
@@ -130,38 +132,15 @@ function acao(){
     usuarios.push({user, pass})
     localStorage.setItem("usuarios", JSON.stringify(usuarios))
 
-    document.getElementById("erro").innerText = "Conta criada com sucesso! 🎉
-    
-    import { auth, db, doc, setDoc } from './firebase-config.js';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-
-// Função para Criar Conta
-async function criarConta(email, senha, nome) {
-  try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
-    const user = userCredential.user;
-
-    // Cria o perfil do usuário no Banco de Dados
-    await setDoc(doc(db, "usuarios", user.uid), {
-      nome: nome,
-      email: email,
-      criadoEm: new Date()
-    });
-
-    // Inicializa Favoritos e Carrinho vazios
-    await setDoc(doc(db, "favoritos", user.uid), { itens: [] });
-    await setDoc(doc(db, "carrinho", user.uid), { itens: [] });
-
-    window.location.href = "index.html";
-  } catch (error) {
-    alert("Erro ao cadastrar: " + error.message);
-  }
-}
+    document.getElementById("erro").innerText = "Conta criada com sucesso! 🎉"
     
     trocarModo()
   }
 }
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
