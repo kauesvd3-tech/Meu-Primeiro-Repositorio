@@ -115,22 +115,31 @@ function acao(){
 
   } else {
     // CADASTRO
-    let jaExiste = usuarios.find(u => u.user === user)
+    import { auth, db, doc, setDoc } from './firebase-config.js';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-    if(jaExiste){
-      document.getElementById("erro").innerText = "Usuário já existe!"
-      return
-    }
+// Função para Criar Conta
+async function criarConta(email, senha, nome) {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+    const user = userCredential.user;
 
-    if(user === "" || pass === ""){
-      document.getElementById("erro").innerText = "Preencha todos os campos"
-      return
-    }
+    // Cria o perfil do usuário no Banco de Dados
+    await setDoc(doc(db, "usuarios", user.uid), {
+      nome: nome,
+      email: email,
+      criadoEm: new Date()
+    });
 
-    usuarios.push({user, pass})
-    localStorage.setItem("usuarios", JSON.stringify(usuarios))
+    // Inicializa Favoritos e Carrinho vazios
+    await setDoc(doc(db, "favoritos", user.uid), { itens: [] });
+    await setDoc(doc(db, "carrinho", user.uid), { itens: [] });
 
-    document.getElementById("erro").innerText = "Conta criada com sucesso! 🎉"
+    window.location.href = "index.html";
+  } catch (error) {
+    alert("Erro ao cadastrar: " + error.message);
+  }
+}
     
     trocarModo()
   }
