@@ -115,6 +115,23 @@ function acao(){
 
   } else {
     // CADASTRO
+  let jaExiste = usuarios.find(u => u.user === user)
+
+    if(jaExiste){
+      document.getElementById("erro").innerText = "Usuário já existe!"
+      return
+    }
+
+    if(user === "" || pass === ""){
+      document.getElementById("erro").innerText = "Preencha todos os campos"
+      return
+    }
+
+    usuarios.push({user, pass})
+    localStorage.setItem("usuarios", JSON.stringify(usuarios))
+
+    document.getElementById("erro").innerText = "Conta criada com sucesso! 🎉
+    
     import { auth, db, doc, setDoc } from './firebase-config.js';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
