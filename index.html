@@ -14,7 +14,69 @@ body{
   padding:0;
   background:#fff0f5;
 }
+/* BOTÃO FIXO */
+#btnSuporte {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff69b4;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+}
 
+/* CAIXA DE CHAT */
+#caixaSuporte {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  height: 400px;
+  background: #fff0f5;
+  border-radius: 10px;
+  display: none;
+  flex-direction: column;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* TOPO */
+.topo {
+  background: #ff69b4;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px 10px 0 0;
+}
+
+/* MENSAGENS */
+.mensagens {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+/* ENTRADA */
+.entrada {
+  display: flex;
+}
+
+.entrada input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+}
+
+.entrada button {
+  background: #ff69b4;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
 /* HEADER */
 header{
   background:linear-gradient(90deg,#ff6f61,#ff9472);
@@ -422,6 +484,24 @@ footer{
 
 </div>
 
+  <!-- BOTÃO DE SUPORTE -->
+<button id="btnSuporte">💬 Suporte</button>
+
+<!-- CAIXA DE SUPORTE -->
+<div id="caixaSuporte">
+  <div class="topo">
+    <span>Suporte</span>
+    <button onclick="fecharSuporte()">✖</button>
+  </div>
+
+  <div class="mensagens" id="mensagens"></div>
+
+  <div class="entrada">
+    <input type="text" id="inputMensagem" placeholder="Digite sua dúvida...">
+    <button onclick="enviarMensagem()">Enviar</button>
+  </div>
+  
+</div>
 <footer>
 <h3>Animaizinhos Encantados</h3>
 <p>🧸 Pelúcias fofinhas para todas as idades</p>
@@ -604,6 +684,35 @@ if(localStorage.getItem("logado") !== "true"){
   window.location.href = "login.html"
 }
 </script>
+<script>
+const btn = document.getElementById("btnSuporte");
+const caixa = document.getElementById("caixaSuporte");
 
+btn.onclick = () => {
+  caixa.style.display = "flex";
+};
+
+function fecharSuporte() {
+  caixa.style.display = "none";
+}
+
+function enviarMensagem() {
+  const input = document.getElementById("inputMensagem");
+  const mensagens = document.getElementById("mensagens");
+
+  if (input.value.trim() === "") return;
+
+  // mensagem do usuário
+  mensagens.innerHTML += `<p><strong>Você:</strong> ${input.value}</p>`;
+
+  // resposta automática simples
+  setTimeout(() => {
+    mensagens.innerHTML += `<p><strong>Suporte:</strong> Em breve responderemos 😊</p>`;
+    mensagens.scrollTop = mensagens.scrollHeight;
+  }, 500);
+
+  input.value = "";
+}
+</script>
 </body>
 </html>
