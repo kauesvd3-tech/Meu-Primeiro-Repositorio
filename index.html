@@ -513,11 +513,17 @@ footer{
 </footer>
 
 <script>
-let carrinho = JSON.parse(localStorage.getItem("carrinho")) || []
+let usuario = localStorage.getItem("usuarioLogado")
+
+if(!usuario){
+  window.location.href = "login.html"
+}
+  
+let carrinho = JSON.parse(localStorage.getItem("carrinho_"+usuario)) || []
 let carrinhoAberto = false;
 
 function salvarCarrinho() {
-  localStorage.setItem("carrinho", JSON.stringify(carrinho))
+  localStorage.setItem("carrinho_"+usuario, JSON.stringify(carrinho))
 }
 
 function adicionarCarrinho(nome, preco, tamanho, imagem) {
@@ -606,11 +612,11 @@ function buscarProduto(){
   })
 }
 
-let favoritos = JSON.parse(localStorage.getItem("favoritos")) || []
+let favoritos = JSON.parse(localStorage.getItem("favoritos_"+usuario)) || []
 let favoritosAberto = false;
 
 function salvarFavoritos(){
-  localStorage.setItem("favoritos", JSON.stringify(favoritos))
+ localStorage.setItem("favoritos_"+usuario, JSON.stringify(favoritos))
 }
 
 function favoritar(el){
