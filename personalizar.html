@@ -27,7 +27,7 @@ font-family:'Pacifico';
 }
 
 .container{
-max-width:1000px;
+max-width:1100px;
 margin:auto;
 padding:20px;
 }
@@ -42,11 +42,7 @@ align-items:flex-start;
 flex-wrap:wrap;
 }
 
-/* PREVIEW DO ANIMAL */
-
-.preview{
-margin:20px 0;
-}
+/* PREVIEW */
 
 .preview img{
 width:250px;
@@ -56,7 +52,7 @@ border-radius:15px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* CARD ACESSORIOS */
+/* CARD IMAGENS */
 
 .card-acessorios{
 background:white;
@@ -64,10 +60,6 @@ padding:20px;
 border-radius:15px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
 width:260px;
-}
-
-.card-acessorios h3{
-margin-top:0;
 }
 
 .acessorios-grid{
@@ -81,6 +73,23 @@ width:100%;
 border-radius:10px;
 background:#fff0f5;
 padding:5px;
+}
+
+/* CARD SELEÇÃO */
+
+.card-selecao{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+width:260px;
+}
+
+.card-selecao select{
+width:100%;
+padding:10px;
+border-radius:10px;
+border:1px solid #ccc;
 }
 
 /* OPÇÕES */
@@ -136,20 +145,34 @@ display:inline-block;
 <img src="imagensgpt/ursogrande.png" id="animalPreview">
 </div>
 
+<!-- CARD IMAGENS -->
 <div class="card-acessorios">
-
 <h3>🎀 Acessórios disponíveis</h3>
 
 <div class="acessorios-grid">
-
 <img src="imagensgpt/chapeu.png">
 <img src="imagensgpt/oculos.png">
 <img src="imagensgpt/gravata.png">
 <img src="imagensgpt/coracao.png">
 <img src="imagensgpt/laco.png">
 <img src="imagensgpt/cachecol.png">
+</div>
 
 </div>
+
+<!-- CARD SELEÇÃO -->
+<div class="card-selecao">
+<h3>✨ Escolher acessório</h3>
+
+<select id="acessorio">
+<option value="Nenhum">Nenhum</option>
+<option value="Chapéu fofo">Chapéu fofo</option>
+<option value="Óculos estilosos">Óculos estilosos</option>
+<option value="Gravata">Gravata</option>
+<option value="Coração de pelúcia">Coração</option>
+<option value="Laço extra">Laço extra</option>
+<option value="Cachecol">Cachecol</option>
+</select>
 
 </div>
 
@@ -212,12 +235,14 @@ let animal = document.getElementById("animalSelect").options[document.getElement
 let nome = document.getElementById("nome").value
 let mensagem = document.getElementById("mensagem").value
 let laco = document.getElementById("laco").value
+let acessorio = document.getElementById("acessorio").value
 
 let texto = "Olá! Quero personalizar uma pelúcia:%0A%0A"
 texto += "Animal: " + animal + "%0A"
 texto += "Nome bordado: " + nome + "%0A"
 texto += "Mensagem: " + mensagem + "%0A"
-texto += "Cor do laço: " + laco
+texto += "Cor do laço: " + laco + "%0A"
+texto += "Acessório: " + acessorio
 
 window.open("https://wa.me/5519992831122?text=" + texto)
 
