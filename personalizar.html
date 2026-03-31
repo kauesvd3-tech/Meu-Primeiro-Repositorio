@@ -33,6 +33,7 @@ padding:20px;
 }
 
 /* AREA SUPERIOR */
+
 .topo{
 display:flex;
 gap:30px;
@@ -42,6 +43,7 @@ flex-wrap:wrap;
 }
 
 /* PREVIEW DO ANIMAL */
+
 .preview{
 margin:20px 0;
 }
@@ -54,25 +56,31 @@ border-radius:15px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* CARD DE ACESSORIOS */
+/* CARD ACESSORIOS */
 
 .card-acessorios{
 background:white;
 padding:20px;
 border-radius:15px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
-width:220px;
-text-align:left;
+width:260px;
 }
 
 .card-acessorios h3{
 margin-top:0;
-text-align:center;
 }
 
-.card-acessorios label{
-display:block;
-margin:8px 0;
+.acessorios-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+}
+
+.acessorios-grid img{
+width:100%;
+border-radius:10px;
+background:#fff0f5;
+padding:5px;
 }
 
 /* OPÇÕES */
@@ -130,27 +138,18 @@ display:inline-block;
 
 <div class="card-acessorios">
 
-<h3>🎀 Acessórios</h3>
+<h3>🎀 Acessórios disponíveis</h3>
 
-<label>
-<input type="checkbox" value="Chapéu fofo"> Chapéu fofo
-</label>
+<div class="acessorios-grid">
 
-<label>
-<input type="checkbox" value="Óculos estilosos"> Óculos estilosos
-</label>
+<img src="imagensgpt/chapeu.png">
+<img src="imagensgpt/oculos.png">
+<img src="imagensgpt/gravata.png">
+<img src="imagensgpt/coracao.png">
+<img src="imagensgpt/laco.png">
+<img src="imagensgpt/cachecol.png">
 
-<label>
-<input type="checkbox" value="Gravata"> Gravata
-</label>
-
-<label>
-<input type="checkbox" value="Coração de pelúcia"> Coração de pelúcia
-</label>
-
-<label>
-<input type="checkbox" value="Laço extra"> Laço extra
-</label>
+</div>
 
 </div>
 
@@ -214,19 +213,11 @@ let nome = document.getElementById("nome").value
 let mensagem = document.getElementById("mensagem").value
 let laco = document.getElementById("laco").value
 
-let acessoriosSelecionados = []
-document.querySelectorAll(".card-acessorios input:checked").forEach(el=>{
-acessoriosSelecionados.push(el.value)
-})
-
-let acessorios = acessoriosSelecionados.join(", ")
-
 let texto = "Olá! Quero personalizar uma pelúcia:%0A%0A"
 texto += "Animal: " + animal + "%0A"
 texto += "Nome bordado: " + nome + "%0A"
 texto += "Mensagem: " + mensagem + "%0A"
-texto += "Cor do laço: " + laco + "%0A"
-texto += "Acessórios: " + acessorios
+texto += "Cor do laço: " + laco
 
 window.open("https://wa.me/5519992831122?text=" + texto)
 
