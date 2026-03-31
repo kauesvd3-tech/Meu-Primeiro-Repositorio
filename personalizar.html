@@ -27,11 +27,21 @@ font-family:'Pacifico';
 }
 
 .container{
-max-width:900px;
+max-width:1000px;
 margin:auto;
 padding:20px;
 }
 
+/* AREA SUPERIOR */
+.topo{
+display:flex;
+gap:30px;
+justify-content:center;
+align-items:flex-start;
+flex-wrap:wrap;
+}
+
+/* PREVIEW DO ANIMAL */
 .preview{
 margin:20px 0;
 }
@@ -43,6 +53,29 @@ padding:10px;
 border-radius:15px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
+
+/* CARD DE ACESSORIOS */
+
+.card-acessorios{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+width:220px;
+text-align:left;
+}
+
+.card-acessorios h3{
+margin-top:0;
+text-align:center;
+}
+
+.card-acessorios label{
+display:block;
+margin:8px 0;
+}
+
+/* OPÇÕES */
 
 .opcoes{
 display:grid;
@@ -89,8 +122,38 @@ display:inline-block;
 
 <div class="container">
 
+<div class="topo">
+
 <div class="preview">
 <img src="imagensgpt/ursogrande.png" id="animalPreview">
+</div>
+
+<div class="card-acessorios">
+
+<h3>🎀 Acessórios</h3>
+
+<label>
+<input type="checkbox" value="Chapéu fofo"> Chapéu fofo
+</label>
+
+<label>
+<input type="checkbox" value="Óculos estilosos"> Óculos estilosos
+</label>
+
+<label>
+<input type="checkbox" value="Gravata"> Gravata
+</label>
+
+<label>
+<input type="checkbox" value="Coração de pelúcia"> Coração de pelúcia
+</label>
+
+<label>
+<input type="checkbox" value="Laço extra"> Laço extra
+</label>
+
+</div>
+
 </div>
 
 <div class="opcoes">
@@ -151,11 +214,19 @@ let nome = document.getElementById("nome").value
 let mensagem = document.getElementById("mensagem").value
 let laco = document.getElementById("laco").value
 
+let acessoriosSelecionados = []
+document.querySelectorAll(".card-acessorios input:checked").forEach(el=>{
+acessoriosSelecionados.push(el.value)
+})
+
+let acessorios = acessoriosSelecionados.join(", ")
+
 let texto = "Olá! Quero personalizar uma pelúcia:%0A%0A"
 texto += "Animal: " + animal + "%0A"
 texto += "Nome bordado: " + nome + "%0A"
 texto += "Mensagem: " + mensagem + "%0A"
-texto += "Cor do laço: " + laco
+texto += "Cor do laço: " + laco + "%0A"
+texto += "Acessórios: " + acessorios
 
 window.open("https://wa.me/5519992831122?text=" + texto)
 
