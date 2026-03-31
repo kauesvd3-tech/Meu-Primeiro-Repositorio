@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -63,6 +64,7 @@ margin-top:10px;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -76,54 +78,47 @@ margin-top:10px;
 
 <div class="grid">
 
-<a href="chapeus.html">
-<div class="card">
+<div class="card" onclick="irPagina('chapeus.html')">
 <img src="imagensgpt/chapeu.png">
 <p>Chapéus</p>
 </div>
-</a>
 
-<a href="oculos.html">
-<div class="card">
+<div class="card" onclick="irPagina('oculos.html')">
 <img src="imagensgpt/oculos.png">
 <p>Óculos</p>
 </div>
-</a>
 
-<a href="gravatas.html">
-<div class="card">
+<div class="card" onclick="irPagina('gravatas.html')">
 <img src="imagensgpt/gravata.png">
 <p>Gravatas</p>
 </div>
-</a>
 
-<a href="coracoes.html">
-<div class="card">
+<div class="card" onclick="irPagina('coracoes.html')">
 <img src="imagensgpt/coracao.png">
 <p>Corações</p>
 </div>
-</a>
 
-<a href="lacos.html">
-<div class="card">
+<div class="card" onclick="irPagina('lacos.html')">
 <img src="imagensgpt/laco.png">
 <p>Laços</p>
 </div>
-</a>
 
-<a href="cachecois.html">
-<div class="card">
+<div class="card" onclick="irPagina('cachecois.html')">
 <img src="imagensgpt/cachecol.png">
 <p>Cachecóis</p>
 </div>
-</a>
 
 </div>
 
 </div>
 
-</body>
-</html>
+<script>
+
+function irPagina(pagina){
+window.location.href = pagina
+}
+
+</script>
 
 </body>
 </html>
