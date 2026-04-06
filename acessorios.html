@@ -131,10 +131,8 @@ margin-top:10px;
 
 <script>
 
-  let usuario = localStorage.getItem("usuarioLogado")
-
-if(!usuario){
-window.location.href="login.html"
+function voltarPagina(){
+history.back()
 }
   
 function irPagina(pagina){
