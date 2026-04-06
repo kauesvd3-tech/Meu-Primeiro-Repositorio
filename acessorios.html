@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Acessórios</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
@@ -29,8 +30,8 @@ padding:2rem;
 
 header h1{
 font-family:'Pacifico';
-font-size:2.4rem;
 margin:0;
+font-size:2.5rem;
 }
 
 /* ===== BARRA DE BOTÕES ===== */
@@ -38,8 +39,6 @@ margin:0;
 .barra-botoes{
 display:flex;
 justify-content:center;
-gap:10px;
-flex-wrap:wrap;
 padding:15px;
 background:#fff0f5;
 }
@@ -54,75 +53,50 @@ background:linear-gradient(90deg,#ff6f61,#ff9472);
 color:white;
 cursor:pointer;
 font-size:14px;
-font-family:'Roboto',sans-serif;
-transition:0.3s;
 }
 
-.btn:hover{
-transform:scale(1.05);
-opacity:0.9;
-}
-
-/* ===== GRID DE ACESSÓRIOS ===== */
+/* ===== GRID ===== */
 
 .container{
 max-width:1200px;
 margin:auto;
 padding:20px;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 }
 
-/* ===== CARD DE ACESSÓRIO ===== */
+/* ===== CARD ===== */
 
 .card{
 background:white;
 border-radius:15px;
 overflow:hidden;
 box-shadow:0 6px 15px rgba(0,0,0,0.1);
-transition:0.3s;
+transition:.3s;
 text-align:center;
-padding-bottom:15px;
+padding:15px;
+cursor:pointer;
 }
 
 .card:hover{
-transform:translateY(-8px);
-box-shadow:0 15px 30px rgba(0,0,0,0.2);
+transform:translateY(-10px);
 }
 
-/* ===== IMAGEM DO ACESSÓRIO ===== */
+/* ===== IMAGEM DO CARD ===== */
 
 .card img{
 width:100%;
-height:200px;
+height:220px;
 object-fit:contain;
-background:white;
-padding:10px;
 }
 
-/* ===== TEXTO DO CARD ===== */
-
-.card h3{
-margin:10px 0;
-font-size:18px;
-}
+/* ===== TEXTO ===== */
 
 .card p{
-color:#ff6f61;
+font-size:18px;
 font-weight:bold;
-}
-
-/* ===== BOTÃO DO CARD ===== */
-
-.card .btn{
 margin-top:10px;
-}
-
-/* ===== BOTÃO VOLTAR ===== */
-
-.btn-voltar{
-margin:20px;
 }
 
 /* ===== FOOTER ===== */
@@ -135,44 +109,44 @@ padding:30px;
 margin-top:40px;
 }
 
-/* ===== RESPONSIVO ===== */
+/* ===== MOBILE ===== */
 
 @media(max-width:700px){
 
 .container{
 grid-template-columns:1fr;
-padding:15px;
 }
 
 .card img{
-height:240px;
+height:260px;
 }
 
 .btn{
 width:100%;
-font-size:16px;
-padding:14px;
-}
-
-.barra-botoes{
-flex-direction:column;
-align-items:center;
-}
-
-header h1{
-font-size:1.8rem;
 }
 
 }
-  
+
+</style>
+
+</head>
+
+<body>
+
+<!-- BOTÃO VOLTAR -->
+
+<div class="barra-botoes">
+<button class="btn" onclick="voltarPagina()">⬅ Voltar</button>
+</div>
+
 <header>
 <h1>🎀 Acessórios</h1>
 <p>Escolha uma categoria</p>
 </header>
 
-<div class="container">
+<!-- GRID DE CATEGORIAS -->
 
-<div class="grid">
+<div class="container">
 
 <div class="card" onclick="irPagina('chapeus.html')">
 <img src="imagensgpt/chapeup.png">
@@ -196,7 +170,7 @@ font-size:1.8rem;
 
 <div class="card" onclick="irPagina('sapatos.html')">
 <img src="imagensgpt/laco.png">
-<p>Sapatoss</p>
+<p>Sapatos</p>
 </div>
 
 <div class="card" onclick="irPagina('cachecois.html')">
@@ -206,19 +180,27 @@ font-size:1.8rem;
 
 </div>
 
-</div>
+<footer>
+
+<h3>Animaizinhos Encantados</h3>
+<p>🧸 Personalize seu ursinho com acessórios!</p>
+
+</footer>
 
 <script>
 
 function voltarPagina(){
 history.back()
 }
-  
+
 function irPagina(pagina){
 window.location.href = pagina
 }
 
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
