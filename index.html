@@ -79,7 +79,6 @@ background:white;
 border-radius:15px;
 overflow:hidden;
 box-shadow:0 6px 15px rgba(0,0,0,0.1);
-position:relative;
 transition:.3s;
 }
 
@@ -106,14 +105,6 @@ font-size:1.2rem;
 
 .stars{
 color:gold;
-}
-
-.fav{
-position:absolute;
-top:10px;
-right:10px;
-cursor:pointer;
-font-size:20px;
 }
 
 /* CARRINHO */
@@ -149,43 +140,6 @@ align-items:center;
 }
 
 .itemCarrinho img{
-width:60px;
-border-radius:10px;
-}
-
-/* FAVORITOS */
-
-#favoritosBox{
-position:fixed;
-left:-320px;
-top:0;
-width:300px;
-height:100%;
-background:white;
-box-shadow:5px 0 20px rgba(0,0,0,0.2);
-padding:20px;
-transition:.4s;
-overflow:auto;
-}
-
-#fecharFavoritos{
-position:absolute;
-right:10px;
-top:10px;
-background:none;
-border:none;
-font-size:24px;
-cursor:pointer;
-}
-
-.itemFavorito{
-display:flex;
-gap:10px;
-margin-bottom:15px;
-align-items:center;
-}
-
-.itemFavorito img{
 width:60px;
 border-radius:10px;
 }
@@ -238,13 +192,17 @@ width:100%;
 🛒 Carrinho (<span id="contadorCarrinho">0</span>)
 </button>
 
-<button id="abrirFavoritos" class="btn">
-❤️ Favoritos (<span id="contadorFavoritos">0</span>)
-</button>
+<a href="favoritos.html">
+<button class="btn">❤️ Ver Favoritos</button>
+</a>
 
-<a href="favoritos.html"><button class="btn">❤️ Ver Favoritos</button></a>
-<a href="verperfil.html"><button class="btn">👤 Meu Perfil</button></a>
-<a href="personalizar.html"><button class="btn">🧸 Personalizar Urso</button></a>
+<a href="verperfil.html">
+<button class="btn">👤 Meu Perfil</button>
+</a>
+
+<a href="personalizar.html">
+<button class="btn">🧸 Personalizar Urso</button>
+</a>
 
 <button onclick="logout()" class="btn">🚪 Sair</button>
 
@@ -254,7 +212,6 @@ width:100%;
 
 <!-- Teddy Fofo -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/ursogrande.png">
 <div class="card-body">
 <h2>Teddy Fofo</h2>
@@ -267,7 +224,6 @@ width:100%;
 
 <!-- Urso Marrom -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/ursomarrom.png">
 <div class="card-body">
 <h2>Urso Marrom</h2>
@@ -280,7 +236,6 @@ width:100%;
 
 <!-- Ursinho Branco -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/ursobranco.png">
 <div class="card-body">
 <h2>Ursinho Branco</h2>
@@ -293,7 +248,6 @@ width:100%;
 
 <!-- Urso Abraço -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/ursoabraço.png">
 <div class="card-body">
 <h2>Urso Abraço</h2>
@@ -306,7 +260,6 @@ width:100%;
 
 <!-- Pinguim Fofo -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/pinguim.png">
 <div class="card-body">
 <h2>Pinguim Fofo</h2>
@@ -319,7 +272,6 @@ width:100%;
 
 <!-- Cachorrinho -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/Cachorrinho.jpeg">
 <div class="card-body">
 <h2>Cachorrinho</h2>
@@ -330,9 +282,8 @@ width:100%;
 </div>
 </div>
 
-<!-- Vaquinha -->
+<!-- Vaquinha Lolla -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/Vaquinha.png">
 <div class="card-body">
 <h2>Vaquinha Lolla</h2>
@@ -343,9 +294,8 @@ width:100%;
 </div>
 </div>
 
-<!-- Coelho -->
+<!-- Coelinho Arcoíris -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/coelho.png">
 <div class="card-body">
 <h2>Coelinho Arcoíris</h2>
@@ -356,9 +306,8 @@ width:100%;
 </div>
 </div>
 
-<!-- Macaco -->
+<!-- Macaco George -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/macaco.png">
 <div class="card-body">
 <h2>Macaco George</h2>
@@ -369,9 +318,8 @@ width:100%;
 </div>
 </div>
 
-<!-- Porco -->
+<!-- Porquinha Enddy -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/porco.png">
 <div class="card-body">
 <h2>Porquinha Enddy</h2>
@@ -382,9 +330,8 @@ width:100%;
 </div>
 </div>
 
-<!-- Girafa -->
+<!-- Girafa Nina -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/girafa.png">
 <div class="card-body">
 <h2>Girafa Nina</h2>
@@ -395,9 +342,8 @@ width:100%;
 </div>
 </div>
 
-<!-- Sapo -->
+<!-- Sapo Greg -->
 <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/sapinho.png">
 <div class="card-body">
 <h2>Sapo Greg</h2>
@@ -407,8 +353,6 @@ width:100%;
 <button class="btn" onclick="adicionarCarrinho('Sapo Greg',79.99,'35 cm','imagensgpt/sapinho.png')">Adicionar 🛒</button>
 </div>
 </div>
-
-</main>
 
 </main>
 
@@ -425,20 +369,6 @@ width:100%;
 <p><b>Total: R$ <span id="totalCarrinho">0.00</span></b></p>
 
 <button class="btn" onclick="limparCarrinho()">Limpar Carrinho</button>
-
-</div>
-
-<!-- FAVORITOS -->
-
-<div id="favoritosBox">
-
-<button id="fecharFavoritos">➡</button>
-
-<h2>❤️ Favoritos</h2>
-
-<div id="listaFavoritos"></div>
-
-<button class="btn" onclick="limparFavoritos()">Limpar Favoritos</button>
 
 </div>
 
@@ -546,104 +476,6 @@ document.getElementById("carrinhoBox").style.right="-320px"
 carrinhoAberto=false
 }
 
-/* FAVORITOS */
-
-let favoritos = JSON.parse(localStorage.getItem("favoritos_"+usuario)) || []
-let favoritosAberto=false
-
-function salvarFavoritos(){
-localStorage.setItem("favoritos_"+usuario,JSON.stringify(favoritos))
-}
-
-function favoritar(el){
-
-let card=el.closest(".card")
-
-let nome=card.querySelector("h2").innerText
-let preco=card.querySelector(".price").innerText
-let imagem=card.querySelector("img").src
-
-let index=favoritos.findIndex(i=>i.nome===nome)
-
-if(index>-1){
-
-favoritos.splice(index,1)
-el.innerText="🤍"
-
-}else{
-
-favoritos.push({nome,preco,imagem})
-el.innerText="❤️"
-
-}
-
-salvarFavoritos()
-atualizarFavoritos()
-
-}
-
-function atualizarFavoritos(){
-
-let lista=document.getElementById("listaFavoritos")
-lista.innerHTML=""
-
-favoritos.forEach((item,index)=>{
-
-let div=document.createElement("div")
-div.className="itemFavorito"
-
-div.innerHTML=`
-<img src="${item.imagem}">
-<div>
-<b>${item.nome}</b><br>
-${item.preco}
-</div>
-<button onclick="removerFavorito(${index})">❌</button>
-`
-
-lista.appendChild(div)
-
-})
-
-document.getElementById("contadorFavoritos").innerText=favoritos.length
-
-}
-
-function removerFavorito(index){
-
-favoritos.splice(index,1)
-salvarFavoritos()
-atualizarFavoritos()
-
-}
-
-function limparFavoritos(){
-
-favoritos=[]
-salvarFavoritos()
-atualizarFavoritos()
-
-}
-
-document.getElementById("abrirFavoritos").onclick=function(){
-
-let box=document.getElementById("favoritosBox")
-
-if(favoritosAberto){
-box.style.left="-320px"
-}else{
-box.style.left="0"
-}
-
-favoritosAberto=!favoritosAberto
-
-}
-
-document.getElementById("fecharFavoritos").onclick=function(){
-document.getElementById("favoritosBox").style.left="-320px"
-favoritosAberto=false
-}
-
 /* BUSCA */
 
 function buscarProduto(){
@@ -670,7 +502,6 @@ window.location.href="login.html"
 }
 
 atualizarCarrinho()
-atualizarFavoritos()
 
 </script>
 
