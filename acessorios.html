@@ -9,13 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
+
+/* ===== CONFIGURAÇÃO GERAL ===== */
+
 body{
 font-family:'Roboto',sans-serif;
 margin:0;
 background:#fff0f5;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 
 header{
 background:linear-gradient(90deg,#ff6f61,#ff9472);
@@ -26,22 +29,22 @@ padding:2rem;
 
 header h1{
 font-family:'Pacifico';
+font-size:2.4rem;
 margin:0;
-font-size:2.5rem;
 }
 
-/* BARRA DE BOTÕES */
+/* ===== BARRA DE BOTÕES ===== */
 
 .barra-botoes{
 display:flex;
-flex-wrap:wrap;
 justify-content:center;
 gap:10px;
+flex-wrap:wrap;
 padding:15px;
 background:#fff0f5;
 }
 
-/* BOTÕES */
+/* ===== BOTÕES ===== */
 
 .btn{
 padding:10px 20px;
@@ -51,42 +54,78 @@ background:linear-gradient(90deg,#ff6f61,#ff9472);
 color:white;
 cursor:pointer;
 font-size:14px;
+font-family:'Roboto',sans-serif;
+transition:0.3s;
 }
 
-/* GRID */
+.btn:hover{
+transform:scale(1.05);
+opacity:0.9;
+}
+
+/* ===== GRID DE ACESSÓRIOS ===== */
 
 .container{
 max-width:1200px;
 margin:auto;
 padding:20px;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 }
 
-/* CARD */
+/* ===== CARD DE ACESSÓRIO ===== */
 
 .card{
 background:white;
 border-radius:15px;
 overflow:hidden;
 box-shadow:0 6px 15px rgba(0,0,0,0.1);
-transition:.3s;
+transition:0.3s;
 text-align:center;
-padding:15px;
+padding-bottom:15px;
 }
 
 .card:hover{
-transform:translateY(-10px);
+transform:translateY(-8px);
+box-shadow:0 15px 30px rgba(0,0,0,0.2);
 }
+
+/* ===== IMAGEM DO ACESSÓRIO ===== */
 
 .card img{
 width:100%;
-height:220px;
+height:200px;
 object-fit:contain;
+background:white;
+padding:10px;
 }
 
-/* FOOTER */
+/* ===== TEXTO DO CARD ===== */
+
+.card h3{
+margin:10px 0;
+font-size:18px;
+}
+
+.card p{
+color:#ff6f61;
+font-weight:bold;
+}
+
+/* ===== BOTÃO DO CARD ===== */
+
+.card .btn{
+margin-top:10px;
+}
+
+/* ===== BOTÃO VOLTAR ===== */
+
+.btn-voltar{
+margin:20px;
+}
+
+/* ===== FOOTER ===== */
 
 footer{
 background:#333;
@@ -96,26 +135,35 @@ padding:30px;
 margin-top:40px;
 }
 
-/* MOBILE */
+/* ===== RESPONSIVO ===== */
 
 @media(max-width:700px){
 
 .container{
 grid-template-columns:1fr;
+padding:15px;
 }
 
 .card img{
-height:260px;
+height:240px;
 }
 
 .btn{
 width:100%;
+font-size:16px;
+padding:14px;
+}
+
+.barra-botoes{
+flex-direction:column;
+align-items:center;
+}
+
+header h1{
+font-size:1.8rem;
 }
 
 }
-<a href="personalizar.html">
-<button class="btn">Voltar</button>
-</a>
   
 <header>
 <h1>🎀 Acessórios</h1>
