@@ -39,6 +39,18 @@ border:none;
 margin-top:15px;
 }
 
+.fav{
+position:absolute;
+top:10px;
+right:10px;
+font-size:22px;
+cursor:pointer;
+background:white;
+border-radius:50%;
+padding:5px;
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
 /* BARRA DE BOTÕES */
 
 .barra-botoes{
@@ -212,6 +224,7 @@ width:100%;
 
 <!-- Teddy Fofo -->
 <div class="card">
+<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/ursogrande.png">
 <div class="card-body">
 <h2>Teddy Fofo</h2>
@@ -224,6 +237,7 @@ width:100%;
 
 <!-- Urso Marrom -->
 <div class="card">
+<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/ursomarrom.png">
 <div class="card-body">
 <h2>Urso Marrom</h2>
@@ -236,6 +250,7 @@ width:100%;
 
 <!-- Ursinho Branco -->
 <div class="card">
+<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/ursobranco.png">
 <div class="card-body">
 <h2>Ursinho Branco</h2>
@@ -248,6 +263,7 @@ width:100%;
 
 <!-- Urso Abraço -->
 <div class="card">
+<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/ursoabraço.png">
 <div class="card-body">
 <h2>Urso Abraço</h2>
@@ -260,6 +276,7 @@ width:100%;
 
 <!-- Pinguim Fofo -->
 <div class="card">
+<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/pinguim.png">
 <div class="card-body">
 <h2>Pinguim Fofo</h2>
@@ -272,6 +289,7 @@ width:100%;
 
 <!-- Cachorrinho -->
 <div class="card">
+<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/Cachorrinho.jpeg">
 <div class="card-body">
 <h2>Cachorrinho</h2>
@@ -284,6 +302,7 @@ width:100%;
 
 <!-- Vaquinha Lolla -->
 <div class="card">
+<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/Vaquinha.png">
 <div class="card-body">
 <h2>Vaquinha Lolla</h2>
@@ -296,6 +315,7 @@ width:100%;
 
 <!-- Coelinho Arcoíris -->
 <div class="card">
+<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/coelho.png">
 <div class="card-body">
 <h2>Coelinho Arcoíris</h2>
@@ -308,6 +328,7 @@ width:100%;
 
 <!-- Macaco George -->
 <div class="card">
+<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/macaco.png">
 <div class="card-body">
 <h2>Macaco George</h2>
@@ -320,6 +341,7 @@ width:100%;
 
 <!-- Porquinha Enddy -->
 <div class="card">
+<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/porco.png">
 <div class="card-body">
 <h2>Porquinha Enddy</h2>
@@ -332,6 +354,7 @@ width:100%;
 
 <!-- Girafa Nina -->
 <div class="card">
+<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/girafa.png">
 <div class="card-body">
 <h2>Girafa Nina</h2>
@@ -344,6 +367,7 @@ width:100%;
 
 <!-- Sapo Greg -->
 <div class="card">
+<div class="fav" onclick="favoritar(this)">🤍</div>
 <img src="imagensgpt/sapinho.png">
 <div class="card-body">
 <h2>Sapo Greg</h2>
@@ -503,6 +527,40 @@ window.location.href="login.html"
 
 atualizarCarrinho()
 
+/* FAVORITOS */
+
+let favoritos = JSON.parse(localStorage.getItem("favoritos")) || []
+
+function salvarFavoritos(){
+localStorage.setItem("favoritos",JSON.stringify(favoritos))
+}
+
+function favoritar(el){
+
+let card = el.closest(".card")
+
+let nome = card.querySelector("h2").innerText
+let preco = card.querySelector(".price").innerText
+let imagem = card.querySelector("img").src
+
+let index = favoritos.findIndex(i => i.nome === nome)
+
+if(index > -1){
+
+favoritos.splice(index,1)
+el.innerText = "🤍"
+
+}else{
+
+favoritos.push({nome,preco,imagem})
+el.innerText = "❤️"
+
+}
+
+salvarFavoritos()
+
+}
+  
 </script>
 
 </body>
