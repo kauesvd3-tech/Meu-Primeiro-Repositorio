@@ -16,9 +16,6 @@ body{
 }
 /* BOTÃO FIXO */
 #btnSuporte {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
   background: #ff69b4;
   color: white;
   border: none;
@@ -30,11 +27,6 @@ body{
 
 /* CAIXA DE CHAT */
 #caixaSuporte {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 300px;
-  height: 400px;
   background: #fff0f5;
   border-radius: 10px;
   display: none;
@@ -147,6 +139,21 @@ header h1{
   cursor:pointer;
 }
 
+/* BARRA DE BOTÕES SUPERIOR */
+
+.barra-botoes{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+padding:15px;
+background:white;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+position:sticky;
+top:0;
+z-index:10;
+}
+  
 /* BOTÕES */
 .btn{
   padding:10px 20px;
@@ -352,6 +359,41 @@ footer{
 <body>
 
 <header>
+
+  <div class="barra-botoes">
+
+<button id="abrirCarrinho" class="btn">
+🛒 Carrinho (<span id="contadorCarrinho">0</span>)
+</button>
+
+<button id="abrirFavoritos" class="btn">
+❤️ Favoritos (<span id="contadorFavoritos">0</span>)
+</button>
+
+<a href="favoritos.html">
+<button class="btn">
+❤️ Ver Favoritos
+</button>
+</a>
+
+<a href="perfil.html">
+<button class="btn">
+👤 Perfil
+</button>
+</a>
+
+<a href="personalizar.html">
+<button class="btn">
+🧸 Personalizar Urso
+</button>
+</a>
+
+<button onclick="logout()" class="btn">
+🚪 Sair
+</button>
+
+</div>
+  
 <h1>✨ Animaizinhos Encantados ✨</h1>
 <p>Os melhores ursos de pelúcia!</p>
 <input type="text" id="buscar" placeholder="Buscar produto..." onkeyup="buscarProduto()">
