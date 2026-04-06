@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -158,60 +158,73 @@ header h1{
   margin-top:8px;
 }
 
-/* MENU MOBILE */
-.menu-mobile{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-background:white;
-display:none;
-justify-content:space-around;
-padding:10px 0;
-box-shadow:0 -5px 15px rgba(0,0,0,0.1);
-z-index:1000;
-}
+/* ========================= */
+/* MELHOR VISUALIZAÇÃO MOBILE */
+/* ========================= */
 
-.menu-mobile a{
-text-decoration:none;
-color:#444;
-font-size:14px;
-display:flex;
-flex-direction:column;
-align-items:center;
-}
-
-.menu-mobile a span{
-font-size:12px;
-}
-
-/* MOBILE */
 @media(max-width:700px){
 
-.menu-mobile{
-display:flex;
-}
-
+/* container com 1 produto por linha */
 .container{
-grid-template-columns:repeat(2,1fr);
-padding-bottom:80px;
+  grid-template-columns:1fr;
+  gap:30px;
+  padding:20px;
 }
 
+/* card maior */
+.card{
+  width:100%;
+  border-radius:20px;
+}
+
+/* imagem maior */
 .card img{
-height:150px;
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  border-radius:15px;
 }
 
+/* texto do produto */
+.card-body h2{
+  font-size:22px;
+}
+
+/* preço */
+.price{
+  font-size:20px;
+}
+
+/* botões maiores */
 .btn{
-padding:12px;
-font-size:14px;
+  width:100%;
+  padding:15px;
+  font-size:16px;
+  border-radius:30px;
 }
 
-header h1{
-font-size:1.6rem;
-}
-
+/* busca melhor */
 #buscar{
-width:90%;
+  width:90%;
+  font-size:16px;
+}
+
+/* diminuir título */
+header h1{
+  font-size:1.8rem;
+}
+
+/* ajustar carrinho no celular */
+#abrirCarrinho{
+  top:15px;
+  right:15px;
+  padding:10px 15px;
+}
+
+/* ajustar favoritos */
+#abrirFavoritos{
+  top:70px;
+  right:15px;
 }
 
 }
@@ -336,18 +349,6 @@ footer{
 </style>
 </head>
 
-<div class="menu-mobile">
-
-<a href="index.html">🏠<span>Loja</span></a>
-
-<a href="favoritos.html">❤️<span>Favoritos</span></a>
-
-<a href="perfil.html">👤<span>Perfil</span></a>
-
-<a href="#" onclick="abrirCarrinhoMobile()">🛒<span>Carrinho</span></a>
-
-</div>
-  
 <body>
 
 <header>
@@ -797,10 +798,6 @@ function enviarMensagem() {
   }, 500);
 
   input.value = "";
-}
-  function abrirCarrinhoMobile(){
-document.getElementById("carrinhoBox").style.right="0"
-carrinhoAberto=true
 }
 </script>
 </body>
