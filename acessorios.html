@@ -10,6 +10,19 @@
 
 <style>
 
+.btn-sair{
+position:absolute;
+top:20px;
+right:20px;
+padding:10px 20px;
+border:none;
+border-radius:25px;
+background:linear-gradient(90deg,#ff6f61,#ff9472);
+color:white;
+cursor:pointer;
+font-size:16px;
+}
+  
 body{
 font-family:'Roboto',sans-serif;
 margin:0;
@@ -69,6 +82,10 @@ margin-top:10px;
 
 <body>
 
+<button onclick="logout()" class="btn-sair">
+🚪 Sair
+</button>
+  
 <header>
 <h1>🎀 Acessórios</h1>
 <p>Escolha uma categoria</p>
@@ -114,6 +131,12 @@ margin-top:10px;
 
 <script>
 
+  let usuario = localStorage.getItem("usuarioLogado")
+
+if(!usuario){
+window.location.href="login.html"
+}
+  
 function irPagina(pagina){
 window.location.href = pagina
 }
