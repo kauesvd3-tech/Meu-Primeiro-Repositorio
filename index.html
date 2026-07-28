@@ -642,37 +642,63 @@ banner.addEventListener("click", () => {
     window.location.href = "promocoes.html";
 });
 
-{
-    nome: "Urso Gigante",
-    preco: 299.90,
-    📏 : 120
-}
 
 const select = document.getElementById("ordenar");
+const container = document.getElementById("produtos");
 
-select.addEventListener("change", () => {
+select.addEventListener("change", ordenarProdutos);
 
-    switch(select.value){
+function ordenarProdutos() {
 
-        case "preco-desc":
-            produtos.sort((a,b) => b.preco - a.preco);
-            break;
+    const cards = Array.from(container.querySelectorAll(".card"));
 
-        case "preco-asc":
-            produtos.sort((a,b) => a.preco - b.preco);
-            break;
+    cards.sort((a, b) => {
 
-        case "cm-desc":
-            produtos.sort((a,b) => b.tamanho - a.tamanho);
-            break;
+        const precoA = parseFloat(
+            a.querySelector(".price").textContent
+                .replace("R$", "")
+                .replace(".", "")
+                .replace(",", ".")
+        );
 
-        case "cm-asc":
-            produtos.sort((a,b) => a.tamanho - b.tamanho);
-            break;
-    }
+        const precoB = parseFloat(
+            b.querySelector(".price").textContent
+                .replace("R$", "")
+                .replace(".", "")
+                .replace(",", ".")
+        );
 
-    mostrarProdutos(produtos);
-});
+        const tamanhoA = parseInt(
+            a.querySelector(".card-body p:nth-of-type(2)")
+                .textContent.replace(/[^\d]/g, "")
+        );
+
+        const tamanhoB = parseInt(
+            b.querySelector(".card-body p:nth-of-type(2)")
+                .textContent.replace(/[^\d]/g, "")
+        );
+
+        switch (select.value) {
+
+            case "preco-desc":
+                return precoB - precoA;
+
+            case "preco-asc":
+                return precoA - precoB;
+
+            case "cm-desc":
+                return tamanhoB - tamanhoA;
+
+            case "cm-asc":
+                return tamanhoA - tamanhoB;
+
+            default:
+                return 0;
+        }
+    });
+
+    cards.forEach(card => container.appendChild(card));
+}
   
 </script>
 
