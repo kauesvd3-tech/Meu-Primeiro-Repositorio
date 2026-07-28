@@ -469,6 +469,9 @@ width:100%;
 
 <button class="btn" onclick="limparCarrinho()">Limpar Carrinho</button>
 
+  <button class="btn" onclick="finalizarCompra()">
+    ✅ Finalizar Compra
+</button>
 </div>
 
 <footer>
@@ -698,6 +701,36 @@ function ordenarProdutos() {
     });
 
     cards.forEach(card => container.appendChild(card));
+}
+
+function finalizarCompra(){
+
+    if(carrinho.length === 0){
+        alert("Seu carrinho está vazio!");
+        return;
+    }
+
+    let mensagem = "🧸 *Novo Pedido - Animaizinhos Encantados*%0A%0A";
+
+    let total = 0;
+
+    carrinho.forEach(item => {
+
+        mensagem += `• ${item.nome}%0A`;
+        mensagem += `Tamanho: ${item.tamanho}%0A`;
+        mensagem += `Quantidade: ${item.qtd}%0A`;
+        mensagem += `Valor: R$ ${item.preco.toFixed(2)}%0A%0A`;
+
+        total += item.preco * item.qtd;
+    });
+
+    mensagem += `💰 *Total: R$ ${total.toFixed(2)}*`;
+
+    window.open(
+        `https://wa.me/5519992831122?text=${mensagem}`,
+        "_blank"
+    );
+
 }
   
 </script>
