@@ -8,6 +8,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
+
+/* Filtros */
+
+  .filtro{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:20px 0;
+}
+
+.filtro label{
+    font-size:16px;
+    font-weight:600;
+}
+
+.filtro select{
+    padding:10px 15px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:15px;
+    cursor:pointer;
+    outline:none;
+    transition:.3s;
+}
+
+.filtro select:hover{
+    border-color:#ff69b4;
+}
+
+.filtro select:focus{
+    border-color:#ff69b4;
+    box-shadow:0 0 5px rgba(255,105,180,.3);
+}
+
+/* Banner Central */
   
 .banner-card {
     width: 100%;
@@ -243,6 +278,18 @@ width:100%;
 <a href="personalizar.html">
 <button class="btn">🧸 Personalizar Urso</button>
 </a>
+
+  <div class="filtro">
+    <label for="ordenar">Ordenar por:</label>
+
+    <select id="ordenar">
+        <option value="">Selecione</option>
+        <option value="preco-desc">Maior ao menor preço</option>
+        <option value="preco-asc">Menor ao maior preço</option>
+        <option value="cm-desc">Maior ao menor (cm)</option>
+        <option value="cm-asc">Menor ao maior (cm)</option>
+    </select>
+</div>
 
 <button onclick="logout()" class="btn">🚪 Sair</button>
 
@@ -593,6 +640,38 @@ const banner = document.querySelector(".banner-card");
 
 banner.addEventListener("click", () => {
     window.location.href = "promocoes.html";
+});
+
+{
+    nome: "Urso Gigante",
+    preco: 299.90,
+    📏 : 120
+}
+
+const select = document.getElementById("ordenar");
+
+select.addEventListener("change", () => {
+
+    switch(select.value){
+
+        case "preco-desc":
+            produtos.sort((a,b) => b.preco - a.preco);
+            break;
+
+        case "preco-asc":
+            produtos.sort((a,b) => a.preco - b.preco);
+            break;
+
+        case "cm-desc":
+            produtos.sort((a,b) => b.tamanho - a.tamanho);
+            break;
+
+        case "cm-asc":
+            produtos.sort((a,b) => a.tamanho - b.tamanho);
+            break;
+    }
+
+    mostrarProdutos(produtos);
 });
   
 </script>
