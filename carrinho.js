@@ -1,28 +1,15 @@
-let usuario = localStorage.getItem("usuarioLogado");
+document.getElementById("abrirCarrinho").onclick = function () {
+    let box = document.getElementById("carrinhoBox");
 
-let carrinho = JSON.parse(localStorage.getItem("carrinho_" + usuario)) || [];
-
-function salvarCarrinho(){
-    localStorage.setItem("carrinho_" + usuario, JSON.stringify(carrinho));
-}
-
-function adicionarCarrinho(nome, preco, tamanho, imagem){
-
-    let item = carrinho.find(i => i.nome === nome);
-
-    if(item){
-        item.qtd++;
-    }else{
-        carrinho.push({
-            nome,
-            preco,
-            tamanho,
-            imagem,
-            qtd:1
-        });
+    if (carrinhoAberto) {
+        box.style.right = "-320px";
+    } else {
+        box.style.right = "0";
     }
 
-    salvarCarrinho();
+    carrinhoAberto = !carrinhoAberto;
+};
 
-    alert(nome + " adicionado ao carrinho!");
-}
+document.getElementById("fecharCarrinho").onclick = function () {
+    document.getElementById("carrinhoBox").style.right = "-320px";
+    carrinhoAberto = false;
