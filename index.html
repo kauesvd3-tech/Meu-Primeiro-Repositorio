@@ -245,8 +245,6 @@ width:100%;
 
 </style>
 </head>
-
-<script src="carrinho.js"></script>
   
 <body>
 
@@ -502,90 +500,7 @@ window.location.href="login.html"
 
 /* CARRINHO */
 
-let carrinho = JSON.parse(localStorage.getItem("carrinho_"+usuario)) || []
-let carrinhoAberto=false
 
-function salvarCarrinho(){
-localStorage.setItem("carrinho_"+usuario,JSON.stringify(carrinho))
-}
-
-function adicionarCarrinho(nome,preco,tamanho,imagem){
-
-let item=carrinho.find(i=>i.nome===nome)
-
-if(item){
-item.qtd++
-}else{
-carrinho.push({nome,preco,tamanho,imagem,qtd:1})
-}
-
-salvarCarrinho()
-atualizarCarrinho()
-
-}
-
-function atualizarCarrinho(){
-
-let lista=document.getElementById("listaCarrinho")
-lista.innerHTML=""
-
-let total=0
-
-carrinho.forEach((item,index)=>{
-
-let div=document.createElement("div")
-div.className="itemCarrinho"
-
-div.innerHTML=`
-<img src="${item.imagem}">
-<div>
-<b>${item.nome}</b><br>
-${item.tamanho}<br>
-Qtd: ${item.qtd}
-</div>
-<button onclick="remover(${index})">❌</button>
-`
-
-lista.appendChild(div)
-
-total+=item.preco*item.qtd
-
-})
-
-document.getElementById("contadorCarrinho").innerText=carrinho.length
-document.getElementById("totalCarrinho").innerText=total.toFixed(2)
-
-}
-
-function remover(index){
-carrinho.splice(index,1)
-salvarCarrinho()
-atualizarCarrinho()
-}
-
-function limparCarrinho(){
-carrinho=[]
-salvarCarrinho()
-atualizarCarrinho()
-}
-
-document.getElementById("abrirCarrinho").onclick=function(){
-
-let box=document.getElementById("carrinhoBox")
-
-if(carrinhoAberto){
-box.style.right="-320px"
-}else{
-box.style.right="0"
-}
-
-carrinhoAberto=!carrinhoAberto
-
-}
-
-document.getElementById("fecharCarrinho").onclick=function(){
-document.getElementById("carrinhoBox").style.right="-320px"
-carrinhoAberto=false
 }
 
 /* BUSCA */
@@ -745,5 +660,8 @@ function finalizarCompra(){
   
 </script>
 
+  <script src="carrinho.js"></script>
+  <script src="main.js"></script>
+  
 </body>
 </html>
