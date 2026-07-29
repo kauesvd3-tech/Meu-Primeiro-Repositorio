@@ -121,15 +121,29 @@ background:#fff0f5;
 
 /* BOTÕES */
 
-.btn{
-padding:10px 20px;
-border:none;
-border-radius:25px;
-background:linear-gradient(90deg,#ff6f61,#ff9472);
-color:white;
-cursor:pointer;
+  .btn{
+    min-width: 180px;      /* Todos terão a mesma largura */
+    height: 45px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(90deg,#ff6f61,#ff9472);
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+.barra-botoes a{
+    text-decoration: none;
 }
 
+.barra-botoes a .btn{
+    width: 180px;
+}
 /* GRID */
 
 .container{
