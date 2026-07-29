@@ -84,7 +84,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const box = document.getElementById("carrinhoBox");
 
     if (abrir) {
-        abrir.onclick = function () {
+       abrir.onclick = function () {
+
+    console.log("Clique detectado!");
+
+    if (carrinhoAberto) {
+        box.style.right = "-320px";
+    } else {
+        box.style.right = "0";
+    }
+
+    carrinhoAberto = !carrinhoAberto;
+};
             if (carrinhoAberto) {
                 box.style.right = "-320px";
             } else {
