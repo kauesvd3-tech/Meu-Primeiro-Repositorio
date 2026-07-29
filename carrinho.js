@@ -83,29 +83,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const fechar = document.getElementById("fecharCarrinho");
     const box = document.getElementById("carrinhoBox");
 
-    if (abrir) {
-       abrir.onclick = function () {
+  if (abrir) {
+    abrir.addEventListener("click", function () {
 
-    console.log("Clique detectado!");
+        console.log("Clique detectado!");
 
-    if (carrinhoAberto) {
-        box.style.right = "-320px";
-    } else {
-        box.style.right = "0";
-    }
+        box.style.right = carrinhoAberto ? "-320px" : "0";
+        carrinhoAberto = !carrinhoAberto;
 
-    carrinhoAberto = !carrinhoAberto;
-};
-            if (carrinhoAberto) {
-                box.style.right = "-320px";
-            } else {
-                box.style.right = "0";
-            }
-
-            carrinhoAberto = !carrinhoAberto;
-        };
-    }
-
+    });
+}
     if (fechar) {
         fechar.onclick = function () {
             box.style.right = "-320px";
