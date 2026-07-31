@@ -9,56 +9,91 @@
 
 <style>
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
-font-family:'Roboto',sans-serif;
-margin:0;
-background:#fff0f5;
-text-align:center;
+    font-family:'Roboto',sans-serif;
+    background:#fff0f5;
+    text-align:center;
 }
 
 header{
-background:linear-gradient(90deg,#ff6f61,#ff9472);
-color:white;
-padding:30px;
+    background:linear-gradient(90deg,#ff6f61,#ff9472);
+    color:white;
+    padding:30px;
 }
 
 header h1{
-font-family:'Pacifico';
+    font-family:'Pacifico',cursive;
+    font-size:42px;
+}
+
+header p{
+    margin-top:10px;
+    font-size:18px;
 }
 
 .container{
-max-width:1000px;
-margin:auto;
-padding:20px;
+    max-width:1200px;
+    margin:auto;
+    padding:30px 20px;
 }
 
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
 }
 
 .card{
-background:white;
-padding:15px;
-border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    background:white;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.12);
+    overflow:hidden;
+    transition:.3s;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
 }
 
 .card img{
-width:100%;
-border-radius:10px;
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card p{
+    font-size:20px;
+    margin:18px 10px;
 }
 
 .btn{
-margin-top:30px;
-padding:12px 20px;
-border:none;
-border-radius:25px;
-background:linear-gradient(90deg,#ff6f61,#ff9472);
-color:white;
-cursor:pointer;
+    margin:0 20px 20px;
+    padding:12px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(90deg,#ff6f61,#ff9472);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+.voltar{
+    margin-top:40px;
 }
 
 </style>
@@ -67,8 +102,8 @@ cursor:pointer;
 <body>
 
 <header>
-<h1>🎩 Chapéus</h1>
-<p>Acessórios dessa categoria</p>
+    <h1>🎩 Chapéus</h1>
+    <p>Acessórios dessa categoria</p>
 </header>
 
 <div class="container">
@@ -76,94 +111,104 @@ cursor:pointer;
 <div class="grid">
 
 <div class="card">
-<img src="imagensgpt/cartolaroxa.jpeg">
+<img src="imagensgpt/cartolaroxa.jpeg" alt="Cartola Roxa">
 <p>Cartola Roxa</p>
 <button class="btn" onclick="adicionarCarrinho('Cartola Roxa','imagensgpt/cartolaroxa.jpeg')">Adicionar 🛒</button>
-</div>  
-
-<div class="card">
-<img src="imagensgpt/cartolahallowen.jpeg">
-<p>Cartola Hallowen</p>
-<button class="btn" onclick="adicionarCarrinho('Cartola Hallowen','imagensgpt/cartolahallowen.jpeg')">Adicionar 🛒</button>
 </div>
 
 <div class="card">
-<img src="imagensgpt/cartoladino.jpeg">
+<img src="imagensgpt/cartolahallowen.jpeg" alt="Cartola Halloween">
+<p>Cartola Halloween</p>
+<button class="btn" onclick="adicionarCarrinho('Cartola Halloween','imagensgpt/cartolahallowen.jpeg')">Adicionar 🛒</button>
+</div>
+
+<div class="card">
+<img src="imagensgpt/cartoladino.jpeg" alt="Cartola Dino">
 <p>Cartola Dino</p>
 <button class="btn" onclick="adicionarCarrinho('Cartola Dino','imagensgpt/cartoladino.jpeg')">Adicionar 🛒</button>
 </div>
 
 <div class="card">
-<img src="imagensgpt/cartoladourada.jpeg">
+<img src="imagensgpt/cartoladourada.jpeg" alt="Cartola Dourada">
 <p>Cartola Dourada</p>
 <button class="btn" onclick="adicionarCarrinho('Cartola Dourada','imagensgpt/cartoladourada.jpeg')">Adicionar 🛒</button>
 </div>
 
 <div class="card">
-<img src="imagensgpt/cartolanatal.jpeg">
+<img src="imagensgpt/cartolanatal.jpeg" alt="Cartola de Natal">
 <p>Cartola de Natal</p>
-</div>
 <button class="btn" onclick="adicionarCarrinho('Cartola de Natal','imagensgpt/cartolanatal.jpeg')">Adicionar 🛒</button>
 </div>
-  
-  <div class="card">
-<img src="imagensgpt/cartolabola.jpeg">
-<p>Cartola Bolinha </p>
+
+<div class="card">
+<img src="imagensgpt/cartolabola.jpeg" alt="Cartola Bolinha">
+<p>Cartola Bolinha</p>
 <button class="btn" onclick="adicionarCarrinho('Cartola Bolinha','imagensgpt/cartolabola.jpeg')">Adicionar 🛒</button>
 </div>
 
-  <div class="card">
-<img src="imagensgpt/chapeu3.png">
+<div class="card">
+<img src="imagensgpt/chapeu3.png" alt="Chapéu Festa">
 <p>Chapéu Festa</p>
+<button class="btn">Adicionar 🛒</button>
 </div>
 
-  <div class="card">
-<img src="imagensgpt/chapeu3.png">
+<div class="card">
+<img src="imagensgpt/chapeu3.png" alt="Chapéu Festa">
 <p>Chapéu Festa</p>
+<button class="btn">Adicionar 🛒</button>
 </div>
 
-   <div class="card">
-<img src="imagensgpt/chapeu3.png">
+<div class="card">
+<img src="imagensgpt/chapeu3.png" alt="Chapéu Festa">
 <p>Chapéu Festa</p>
+<button class="btn">Adicionar 🛒</button>
 </div>
 
- <div class="card">
-<img src="imagensgpt/chapeu3.png">
+<div class="card">
+<img src="imagensgpt/chapeu3.png" alt="Chapéu Festa">
 <p>Chapéu Festa</p>
+<button class="btn">Adicionar 🛒</button>
 </div>
 
- <div class="card">
-<img src="imagensgpt/chapeu3.png">
+<div class="card">
+<img src="imagensgpt/chapeu3.png" alt="Chapéu Festa">
 <p>Chapéu Festa</p>
+<button class="btn">Adicionar 🛒</button>
 </div>
 
- <div class="card">
-<img src="imagensgpt/chapeu3.png">
+<div class="card">
+<img src="imagensgpt/chapeu3.png" alt="Chapéu Festa">
 <p>Chapéu Festa</p>
+<button class="btn">Adicionar 🛒</button>
 </div>
 
- <div class="card">
-<img src="imagensgpt/chapeu3.png">
+<div class="card">
+<img src="imagensgpt/chapeu3.png" alt="Chapéu Festa">
 <p>Chapéu Festa</p>
+<button class="btn">Adicionar 🛒</button>
 </div>
 
- <div class="card">
-<img src="imagensgpt/chapeu3.png">
+<div class="card">
+<img src="imagensgpt/chapeu3.png" alt="Chapéu Festa">
 <p>Chapéu Festa</p>
+<button class="btn">Adicionar 🛒</button>
 </div>
 
-   <div class="card">
-<img src="imagensgpt/chapeu3.png">
-<p>Chapéu Festa</p>
-</div>
-  
 </div>
 
+<div class="voltar">
 <a href="acessorios.html">
-<button class="btn"> Voltar</button>
+<button class="btn">⬅ Voltar</button>
 </a>
+</div>
 
 </div>
+
+<script>
+function adicionarCarrinho(produto, imagem){
+    alert(produto + " adicionado ao carrinho!");
+}
+</script>
 
 </body>
 </html>
