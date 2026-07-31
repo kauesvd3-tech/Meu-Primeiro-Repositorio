@@ -97,6 +97,30 @@ header p{
     margin-top:40px;
 }
 
+
+.topo{
+    width:100%;
+    display:flex;
+    justify-content:flex-start;
+    padding:20px;
+}
+
+.btn-sair{
+    padding:12px 20px;
+    border:none;
+    border-radius:30px;
+    background:#ff6f61;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn-sair:hover{
+    background:#e85b4e;
+    transform:scale(1.05);
+}
+    
 </style>
 </head>
 
@@ -242,7 +266,18 @@ header p{
 
 </div>
 
+<div class="topo">
+    <button class="btn-sair" onclick="voltar()">⬅ Voltar para Acessórios</button>
+</div>
+    
 <script src="carrinho.js"></script>
+
+<script>
+function voltar(){
+    window.location.href = "acessorios.html";
+}
+    
+</script>
     
 </body>
 </html>
