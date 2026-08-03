@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promoções - Loja de Ursos</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body{
+            margin:0;
+            font-family:Roboto, sans-serif;
+            background:#fff0f5;
+        }
+
+        header{
+            background:#ff7aa2;
+            color:#fff;
+            text-align:center;
+            padding:25px;
+        }
+
+        .container{
+            max-width:1200px;
+            margin:40px auto;
+            padding:20px;
+        }
+
+        .produtos{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:25px;
+        }
+
+        .produto{
+            background:#fff;
+            border-radius:15px;
+            box-shadow:0 5px 15px rgba(0,0,0,.1);
+            overflow:hidden;
+            transition:.3s;
+            text-align:center;
+        }
+
+        .produto:hover{
+            transform:translateY(-5px);
+        }
+
+        .produto img{
+            width:100%;
+            height:260px;
+            object-fit:cover;
+        }
+
+        .produto h3{
+            color:#d63384;
+        }
+
+        .preco-antigo{
+            color:#999;
+            text-decoration:line-through;
+        }
+
+        .preco{
+            color:#e6005c;
+            font-size:24px;
+            font-weight:bold;
+        }
+
+        button{
+            background:#ff4d88;
+            color:white;
+            border:none;
+            padding:12px 25px;
+            border-radius:8px;
+            cursor:pointer;
+            margin-bottom:20px;
+        }
+
+        button:hover{
+            background:#e6005c;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🎉 Promoções Especiais 🎉</h1>
+    <p>Aproveite nossos descontos!</p>
+</header>
+
+<div class="container">
+
+    <div class="produtos">
+
+        <div class="produto">
+            <img src="imagensgpt/urso1.png" alt="Urso">
+            <h3>Urso Caramelo</h3>
+            <p class="preco-antigo">R$ 149,90</p>
+            <p class="preco">R$ 99,90</p>
+            <button>Comprar</button>
+        </div>
+
+        <div class="produto">
+            <img src="imagensgpt/urso2.png" alt="Urso">
+            <h3>Urso Rosa</h3>
+            <p class="preco-antigo">R$ 169,90</p>
+            <p class="preco">R$ 119,90</p>
+            <button>Comprar</button>
+        </div>
+
+        <div class="produto">
+            <img src="imagensgpt/urso3.png" alt="Urso">
+            <h3>Urso Branco</h3>
+            <p class="preco-antigo">R$ 199,90</p>
+            <p class="preco">R$ 139,90</p>
+            <button>Comprar</button>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
