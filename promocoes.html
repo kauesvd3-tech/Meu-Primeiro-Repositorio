@@ -51,6 +51,51 @@ header p{
     box-shadow:0 4px 10px rgba(0,0,0,.15);
 }
 
+/* ================= CARD ================= */
+
+card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 6px 15px rgba(0,0,0,0.1);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:contain;
+background:white;
+padding:10px;
+}
+
+.card-body{
+padding:15px;
+text-align:center;
+}
+
+.card-body .btn{
+    display:block;
+    margin:10px auto 0;
+    width:170px;
+}
+  
+.price{
+color:#ff6f61;
+font-weight:bold;
+font-size:1.2rem;
+}
+
+.stars{
+color:gold;
+}
+
+
+        
 /* ================= BANNER ================= */
 
 .banner-card{
@@ -295,15 +340,16 @@ header h1{
 
 <div class="container">
 
-    <div class="produtos">
-
-        <div class="produto">
-            <img src="imagensgpt/ursomarrom.png" alt="Urso">
-            <h3>Teddy Fofo</h3>
-            <p class="preco-antigo">R$ 230,00</p>
-            <p class="preco">R$ 199,99 </p>
-            <button>Comprar</button>
-        </div>
+ <div class="card">
+<div class="fav" onclick="favoritar(this)">🤍</div>
+<img src="imagensgpt/ursomarrom.png">
+<div class="card-body">
+<img src="imagensgpt/ursomarrom.png" alt="Urso">
+<h3>Teddy Fofo</h3>
+<p class="preco-antigo">R$ 230,00</p>
+<p class="preco">R$ 199,99 </p>
+<button>Comprar</button>
+</div>
 
         <div class="produto">
             <img src="imagensgpt/macaco.png" alt="Urso">
