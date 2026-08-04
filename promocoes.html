@@ -5,272 +5,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Promoções - Loja de Ursos</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
 
     <style>
        *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
 
-body{
-    font-family:'Roboto',sans-serif;
-    background:#fff4f7;
-}
+    body{
+        font-family:'Roboto',sans-serif;
+        background:#fff4f7;
+    }
 
-/* ================= HEADER ================= */
+    /* ================= HEADER ================= */
+    header{
+        background:linear-gradient(90deg,#ff6f61,#ff9472);
+        color:white;
+        text-align:center;
+        padding:35px 20px;
+        box-shadow:0 4px 15px rgba(0,0,0,.15);
+    }
 
-header{
-    background:linear-gradient(90deg,#ff6f61,#ff9472);
-    color:white;
-    text-align:center;
-    padding:35px 20px;
-    box-shadow:0 4px 15px rgba(0,0,0,.15);
-}
+    header h1{
+        font-family:'Pacifico',cursive;
+        font-size:45px;
+        margin-bottom:10px;
+    }
 
-header h1{
-    font-family:'Pacifico',cursive;
-    font-size:45px;
-    margin-bottom:10px;
-}
+    /* ================= CONTAINER GRID ================= */
+    .container{
+        max-width:1200px;
+        margin:auto;
+        padding:20px;
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+        gap:20px;
+    }
 
-header p{
-    font-size:18px;
-    margin-bottom:20px;
-}
+    /* ================= CARD ================= */
+    .card{ /* <-- Tinha "card" sem ponto */
+        position:relative; /* pra fav funcionar */
+        background:white;
+        border-radius:15px;
+        overflow:hidden;
+        box-shadow:0 6px 15px rgba(0,0,0,0.1);
+        transition:.3s;
+    }
 
-#buscar{
-    width:420px;
-    max-width:90%;
-    padding:12px 20px;
-    border:none;
-    border-radius:30px;
-    outline:none;
-    font-size:16px;
-    box-shadow:0 4px 10px rgba(0,0,0,.15);
-}
+    .card:hover{
+        transform:translateY(-10px);
+    }
 
-/* ================= CARD ================= */
+    .card img{
+        width:100%;
+        height:250px;
+        object-fit:contain;
+        background:white;
+        padding:10px;
+    }
 
-card{
-background:white;
-border-radius:15px;
-overflow:hidden;
-box-shadow:0 6px 15px rgba(0,0,0,0.1);
-transition:.3s;
-}
+    .card-body{
+        padding:15px;
+        text-align:center;
+    }
 
-.card:hover{
-transform:translateY(-10px);
-}
+    .card-body .btn{
+        display:block;
+        margin:10px auto 0;
+        width:170px;
+        min-width: 180px;
+        height: 45px;
+        border: none;
+        border-radius: 25px;
+        background: linear-gradient(90deg,#ff6f61,#ff9472);
+        color: white;
+        cursor: pointer;
+        font-size: 15px;
+    }
+      
+    .price{
+        color:#ff6f61;
+        font-weight:bold;
+        font-size:1.2rem;
+    }
 
-.card img{
-width:100%;
-height:250px;
-object-fit:contain;
-background:white;
-padding:10px;
-}
+    .preco-antigo{
+        text-decoration: line-through;
+        color:#999;
+        font-size:0.9rem;
+    }
 
-.card-body{
-padding:15px;
-text-align:center;
-}
+    .stars{
+        color:gold;
+    }
 
-.card-body .btn{
-    display:block;
-    margin:10px auto 0;
-    width:170px;
-}
-  
-.price{
-color:#ff6f61;
-font-weight:bold;
-font-size:1.2rem;
-}
+    /* ================= FAVORITOS ================= */
+    .fav{
+        position:absolute;
+        top:12px;
+        right:12px;
+        width:40px;
+        height:40px;
+        background:white;
+        border-radius:50%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-size:22px;
+        cursor:pointer;
+        box-shadow:0 4px 10px rgba(0,0,0,.2);
+        z-index:2;
+    }
 
-.stars{
-color:gold;
-}
-
-
-        
-/* ================= BANNER ================= */
-
-.banner-card{
-    width:100%;
-    max-width:1100px;
-    margin:35px auto;
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:0 10px 25px rgba(0,0,0,.2);
-    cursor:pointer;
-}
-
-.banner-card img{
-    width:100%;
-    display:block;
-}
-
-/* ================= BOTÕES ================= */
-
-.barra-botoes{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:15px;
-    margin:30px auto;
-}
-
-.barra-botoes a{
-    text-decoration:none;
-}
-
-.btn{
-    min-width:180px;
-    height:45px;
-    border:none;
-    border-radius:30px;
-    background:linear-gradient(90deg,#ff6f61,#ff9472);
-    color:white;
-    cursor:pointer;
-    font-size:15px;
-    transition:.3s;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:8px;
-    box-shadow:0 5px 12px rgba(255,111,97,.35);
-}
-
-.btn:hover{
-    transform:translateY(-4px);
-    box-shadow:0 10px 20px rgba(255,111,97,.45);
-}
-
-/* ================= FILTRO ================= */
-
-.filtro{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.filtro label{
-    font-weight:bold;
-}
-
-.filtro select{
-    padding:10px 15px;
-    border-radius:10px;
-    border:1px solid #ddd;
-    background:white;
-    cursor:pointer;
-    outline:none;
-}
-
-/
-/* ================= FAVORITOS ================= */
-
-.fav{
-    position:absolute;
-    top:12px;
-    right:12px;
-    width:40px;
-    height:40px;
-    background:white;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:22px;
-    cursor:pointer;
-    box-shadow:0 4px 10px rgba(0,0,0,.2);
-}
-
-/* ================= CARRINHO ================= */
-
-#carrinhoBox{
-    position:fixed;
-    right:-320px;
-    top:0;
-    width:300px;
-    height:100%;
-    background:white;
-    box-shadow:-5px 0 20px rgba(0,0,0,.2);
-    padding:20px;
-    transition:.4s;
-    overflow:auto;
-    z-index:999;
-}
-
-#fecharCarrinho{
-    position:absolute;
-    top:10px;
-    left:10px;
-    border:none;
-    background:none;
-    font-size:25px;
-    cursor:pointer;
-}
-
-.itemCarrinho{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom:15px;
-}
-
-.itemCarrinho img{
-    width:60px;
-    border-radius:10px;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-    background:#333;
-    color:white;
-    text-align:center;
-    padding:35px;
-    margin-top:50px;
-}
-
-/* ================= RESPONSIVO ================= */
-
-@media(max-width:768px){
-
-header h1{
-    font-size:32px;
-}
-
-#buscar{
-    width:90%;
-}
-
-.barra-botoes{
-    flex-direction:column;
-}
-
-.btn{
-    width:90%;
-}
-
-.container{
-    grid-template-columns:1fr;
-}
-
-.banner-card{
-    margin:20px;
-}
-
-.card img{
-    height:240px;
-}
-
-}
+    /* ================= RESPONSIVO ================= */
+    @media(max-width:768px){
+        .container{
+            grid-template-columns:1fr;
+        }
+    }
     </style>
 </head>
 <body>
@@ -282,38 +136,40 @@ header h1{
 
 <div class="container">
 
- <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<div class="card-body">
-<img src="imagensgpt/ursomarrom.png" alt="Urso">
-<h3>Teddy Fofo</h3>
-<p class="preco-antigo">R$ 230,00</p>
-<p class="preco">R$ 199,99 </p>
-<button>Comprar</button>
-</div>
-
-      <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<img src="imagensgpt/ursomarrom.png">
-<div class="card-body">
-            <img src="imagensgpt/macaco.png" alt="Urso">
-            <h3>Macaco Greg</h3>
-            <p class="preco-antigo">R$ 75,00</p>
-            <p class="preco">R$ 69,00</p>
-            <button>Comprar</button>
+    <div class="card">
+        <div class="fav" onclick="favoritar(this)">🤍</div>
+        <img src="imagensgpt/ursomarrom.png" alt="Teddy Fofo">
+        <div class="card-body">
+            <h2>Teddy Fofo</h2>
+            <p class="stars">⭐⭐⭐</p>
+            <p class="preco-antigo">R$ 230,00</p>
+            <p class="price">R$ 199,99</p>
+            <button class="btn">Comprar</button>
         </div>
+    </div>
 
     <div class="card">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<img src="imagensgpt/ursomarrom.png">
-<div class="card-body">
-            <img src="imagensgpt/giraffa.png" alt="Urso">
-            <h3>Girafa Nina</h3>
-            <p class="preco-antigo">R$ 105,00</p>
-            <p class="preco">R$ 95,00</p>
-            <button>Comprar</button>
+        <div class="fav" onclick="favoritar(this)">🤍</div>
+        <img src="imagensgpt/macaco.png" alt="Macaco Greg">
+        <div class="card-body">
+            <h2>Macaco Greg</h2>
+            <p class="stars">⭐</p>
+            <p class="preco-antigo">R$ 75,00</p>
+            <p class="price">R$ 69,00</p>
+            <button class="btn">Comprar</button>
         </div>
+    </div>
 
+    <div class="card">
+        <div class="fav" onclick="favoritar(this)">🤍</div>
+        <img src="imagensgpt/giraffa.png" alt="Girafa Nina">
+        <div class="card-body">
+            <h2>Girafa Nina</h2>
+            <p class="stars">⭐⭐⭐⭐</p>
+            <p class="preco-antigo">R$ 105,00</p>
+            <p class="price">R$ 95,00</p>
+            <button class="btn">Comprar</button>
+        </div>
     </div>
 
 </div>
