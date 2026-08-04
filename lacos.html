@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laços e Acessórios - Animaizinhos Encantados</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Roboto',sans-serif;
+    background:#fff0f5;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(90deg,#ff6f61,#ff9472);
+    color:white;
+    text-align:center;
+    padding:2rem;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+
+header h1{
+    font-family:'Pacifico';
+    font-size:2.5rem;
+    margin-bottom:10px;
+}
+
+header a{
+    color:white;
+    text-decoration:none;
+    background:rgba(255,255,255,0.2);
+    padding:8px 20px;
+    border-radius:20px;
+    display:inline-block;
+    margin-top:10px;
+    transition:.3s;
+}
+header a:hover{
+    background:rgba(255,255,255,0.4);
+}
+
+/* GRID */
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:30px 20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+/* CARD */
+.card{
+    position:relative;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 6px 15px rgba(0,0,0,0.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    height:250px;
+    object-fit:contain;
+    background:white;
+    padding:10px;
+}
+
+.card-body{
+    padding:15px;
+    text-align:center;
+}
+
+.price{
+    color:#ff6f61;
+    font-weight:bold;
+    font-size:1.2rem;
+    margin:8px 0;
+}
+
+.btn{
+    min-width: 170px;
+    height: 45px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(90deg,#ff6f61,#ff9472);
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    display: block;
+    margin: 10px auto 0;
+}
+
+.fav{
+    position:absolute;
+    top:10px;
+    right:10px;
+    font-size:22px;
+    cursor:pointer;
+    background:white;
+    border-radius:50%;
+    padding:8px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.2);
+    z-index:2;
+}
+
+/* FOOTER */
+footer{
+    background:#333;
+    color:white;
+    text-align:center;
+    padding:30px;
+    margin-top:40px;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>🎀 Laços 🎀</h1>
+    <p>Deixe seu ursinho ainda mais fofo!</p>
+    <a href="acessorios.html">⬅ Voltar para Acessórios</a>
+</header>
+
+<main class="container">
+
+    <!-- Laço Rosa -->
+    <div class="card">
+        <div class="fav" onclick="this.innerText = this.innerText==='🤍' ? '❤️' : '🤍'">🤍</div>
+        <img src="imagensgpt/lacoroxo.jpeg" alt="Laço Roxo">
+        <div class="card-body">
+            <h2>Laço Roxo</h2>
+            <p class="price">R$ 15,00</p>
+            <button class="btn" onclick="adicionarCarrinho('Laço Roxo',15.00,'Único','imagensgpt/lacoroxo.jpeg')">Adicionar 🛒</button>
+        </div>
+    </div>
+
+    <!-- Laço Colorido -->
+    <div class="card">
+        <div class="fav" onclick="this.innerText = this.innerText==='🤍' ? '❤️' : '🤍'">🤍</div>
+        <img src="imagensgpt/lacocolorido.jpeg" alt="Laço Colorido">
+        <div class="card-body">
+            <h2>Laço Colorido</h2>
+            <p class="price">R$ 15,00</p>
+            <button class="btn" onclick="adicionarCarrinho('Laço Colorido',15.00,'Único','imagensgpt/lacocolorido.jpeg')">Adicionar 🛒</button>
+        </div>
+    </div>
+
+    <!-- Laço Amarelo Listrado -->
+    <div class="card">
+        <div class="fav" onclick="this.innerText = this.innerText==='🤍' ? '❤️' : '🤍'">🤍</div>
+        <img src="imagensgpt/tiara-flor.png" alt="Laço Amarelo Listrado">
+        <div class="card-body">
+            <h2>Laço Amarelo Listrado</h2>
+            <p class="price">R$ 15,00</p>
+            <button class="btn" onclick="adicionarCarrinho('Laço Amarelo Listrado',15.00,'Único','imagensgpt/lacoamarelolistrado.jpeg')">Adicionar 🛒</button>
+        </div>
+    </div>
+
+    <!--  Laço Laranja Xadres -->
+    <div class="card">
+        <div class="fav" onclick="this.innerText = this.innerText==='🤍' ? '❤️' : '🤍'">🤍</div>
+        <img src="imagensgpt/lacolaranjaxadres.jpeg" alt=" Laço Laranja Xadres">
+        <div class="card-body">
+            <h2> Laço Laranja Xadres</h2>
+            <p class="price">R$ 15,00</p>
+            <button class="btn" onclick="adicionarCarrinho('Óculos Divertido',9.90,'Único','imagensgpt/lacolaranjaxadres.jpeg')">Adicionar 🛒</button>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    <h3>Animaizinhos Encantados</h3>
+    <p>🧸 Pelúcias fofinhas para todas as idades</p>
+</footer>
+
+<script src="carrinho.js"></script>
+</body>
+</html>
