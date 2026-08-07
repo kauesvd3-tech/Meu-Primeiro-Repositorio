@@ -118,7 +118,27 @@ header a:hover{
     box-shadow:0 2px 6px rgba(0,0,0,0.2);
     z-index:2;
 }
+/* Faixa divisoria */
+    
+.faixa-divisoria{
+    background: linear-gradient(90deg,#ff6f61,#ff9472);
+    color: white;
+    text-align: center;
+    padding: 2.5rem 1rem;
+    margin: 40px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,.15);
+}
 
+.faixa-divisoria h2{
+    font-family: 'Pacifico';
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+.faixa-divisoria p{
+    font-size: 1rem;
+    opacity: 0.9;
+}
+    
 /* FOOTER */
 footer{
     background:#333;
@@ -363,11 +383,15 @@ footer{
         </div>
     </div>
 
+<!-- FIM DOS VESTIDOS -->
 
-<header>
-    <h1> Seção Feminina </h1>
-    <p>Deixe seu ursinho ainda mais fofo!</p>
-<header>
+<section class="faixa-divisoria">
+    <h2>👚 Conjuntos 👚</h2>
+    <p>Looks completos pra seu ursinho arrasar!</p>
+</section>
+
+<!-- INICIO DOS CONJUNTOS -->
+    
 <!-- Conjunto Ho  -->
     <div class="card">
         <div class="fav" onclick="this.innerText = this.innerText==='🤍' ? '❤️' : '🤍'">🤍</div>
