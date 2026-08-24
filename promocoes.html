@@ -120,6 +120,51 @@
         z-index:2;
     }
 
+/* ================= BOTÃO VOLTAR ================= */
+.btn-voltar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: white;
+    color: #ff6f61;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 10;
+}
+
+.btn-voltar:hover {
+    background: #fff0f5;
+    transform: scale(1.05);
+}
+
+/* Ajuste necessário na tag header para posicionamento correto */
+header {
+    position: relative;
+}
+
+/* Ajuste para telas de celular */
+@media(max-width:768px){
+    header {
+        padding-top: 70px; /* Dá espaço para o botão não cobrir o texto */
+    }
+    .btn-voltar {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 15px;
+    }
+    .btn-voltar:hover {
+        transform: translateX(-50%) scale(1.05);
+    }
+}
+        
     /* ================= RESPONSIVO ================= */
     @media(max-width:1024px){
         .container{
@@ -229,6 +274,8 @@
 
 </div>
 
+<a href="index.html" class="btn-voltar">⬅ Voltar para a Loja</a>
+    
 <script>
 function favoritar(elemento) {
     if (elemento.innerText === "🤍") {
@@ -237,6 +284,11 @@ function favoritar(elemento) {
         elemento.innerText = "🤍";
     }
 }
+
+function voltar() {
+    window.location.href = "index.html";
+}
+    
 </script>
 
 </body>
