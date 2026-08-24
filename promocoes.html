@@ -40,13 +40,14 @@
         margin:auto;
         padding:20px;
         display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+        /* Define 4 colunas fixas em telas grandes, reduzindo dinamicamente em telas menores */
+        grid-template-columns: repeat(4, 1fr);
         gap:20px;
     }
 
     /* ================= CARD ================= */
-    .card{ /* <-- Tinha "card" sem ponto */
-        position:relative; /* pra fav funcionar */
+    .card{ 
+        position:relative; 
         background:white;
         border-radius:15px;
         overflow:hidden;
@@ -74,8 +75,8 @@
     .card-body .btn{
         display:block;
         margin:10px auto 0;
-        width:170px;
-        min-width: 180px;
+        width:100%;
+        max-width: 180px;
         height: 45px;
         border: none;
         border-radius: 25px;
@@ -120,9 +121,15 @@
     }
 
     /* ================= RESPONSIVO ================= */
-    @media(max-width:768px){
+    @media(max-width:1024px){
         .container{
-            grid-template-columns:1fr;
+            grid-template-columns: repeat(2, 1fr); /* 2 por fileira em tablets */
+        }
+    }
+
+    @media(max-width:600px){
+        .container{
+            grid-template-columns:1fr; /* 1 por fileira em celulares */
         }
     }
     </style>
@@ -136,53 +143,58 @@
 
 <div class="container">
 
+    <!-- Guaxinim -->
     <div class="card">
         <div class="fav" onclick="favoritar(this)">🤍</div>
-        <img src="imagensgpt/" alt="Guaxinim">
+        <img src="imagensgpt/guaxinim.png" alt="Guaxinim">
         <div class="card-body">
             <h2>Guaxinim</h2>
             <p class="preco-antigo">R$ 00,00</p>
-            <p class="price">R$ 00,00</p>
+            <p class="price">R$ 00,90</p>
             <button class="btn">Comprar</button>
         </div>
     </div>
 
+    <!-- Elefante -->
     <div class="card">
         <div class="fav" onclick="favoritar(this)">🤍</div>
-        <img src="imagensgpt/" alt="Elefante">
+        <img src="imagensgpt/elefante.png" alt="Elefante">
         <div class="card-body">
             <h2>Elefante</h2>
             <p class="preco-antigo">R$ 00,00</p>
-            <p class="price">R$ 00,00</p>
+            <p class="price">R$ 00,90</p>
             <button class="btn">Comprar</button>
         </div>
     </div>
 
+    <!-- Boto Cor de Rosa -->
     <div class="card">
         <div class="fav" onclick="favoritar(this)">🤍</div>
-        <img src="imagensgpt/" alt="Boto Cor de Rosa">
+        <img src="imagensgpt/boto.png" alt="Boto Cor de Rosa">
         <div class="card-body">
-            <h2>Boto Cor De Rosa<div class="card">
+            <h2>Boto Cor De Rosa</h2>
             <p class="preco-antigo">R$ 00,00</p>
             <p class="price">R$ 00,00</p>
             <button class="btn">Comprar</button>
         </div>
     </div>
 
-<div class="card">
+    <!-- Dinossauro -->
+    <div class="card">
         <div class="fav" onclick="favoritar(this)">🤍</div>
-        <img src="imagensgpt/" alt="Dinossauro">
+        <img src="imagensgpt/dinossauro.png" alt="Dinossauro">
         <div class="card-body">
-            <h2>Dinosaurro</h2>
-            <p class="preco-antigo">R$ 00,00</p>
-            <p class="price">R$ 00,00</p>
+            <h2>Dinossauro</h2>
+            <p class="preco-antigo">R$ 130,00</p>
+            <p class="price">R$ 95,00</p>
             <button class="btn">Comprar</button>
         </div>
     </div>
 
+    <!-- Coruja -->
     <div class="card">
         <div class="fav" onclick="favoritar(this)">🤍</div>
-        <img src="imagensgpt/" alt="Coruja">
+        <img src="imagensgpt/coruja.png" alt="Coruja">
         <div class="card-body">
             <h2>Coruja</h2>
             <p class="preco-antigo">R$ 00,00</p>
@@ -191,20 +203,22 @@
         </div>
     </div>
 
+    <!-- Gorila -->
     <div class="card">
         <div class="fav" onclick="favoritar(this)">🤍</div>
-        <img src="imagensgpt/" alt="Gorila">
+        <img src="imagensgpt/gorila.png" alt="Gorila">
         <div class="card-body">
             <h2>Gorila</h2>
             <p class="preco-antigo">R$ 00,00</p>
-            <p class="price">R$ 00,00</p>
+            <p class="price">R$ 00,000</p>
             <button class="btn">Comprar</button>
         </div>
     </div>
 
+    <!-- Pato -->
     <div class="card">
         <div class="fav" onclick="favoritar(this)">🤍</div>
-        <img src="imagensgpt/" alt="Pato">
+        <img src="imagensgpt/pato.png" alt="Pato">
         <div class="card-body">
             <h2>Pato</h2>
             <p class="preco-antigo">R$ 00,00</p>
@@ -214,6 +228,16 @@
     </div>
 
 </div>
+
+<script>
+function favoritar(elemento) {
+    if (elemento.innerText === "🤍") {
+        elemento.innerText = "❤️";
+    } else {
+        elemento.innerText = "🤍";
+    }
+}
+</script>
 
 </body>
 </html>
