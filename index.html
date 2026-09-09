@@ -1,17 +1,22 @@
- <!DOCTYPE html>
+```html
+<!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Animaizinhos Encantados</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
 
-/* Filtros */
+/* =========================
+   FILTROS
+========================= */
 
-  .filtro{
+.filtro{
     display:flex;
     align-items:center;
     gap:10px;
@@ -42,26 +47,29 @@
     box-shadow:0 0 5px rgba(255,105,180,.3);
 }
 
-/* Banner Central */
-  
+
+/* =========================
+   BANNER CENTRAL
+========================= */
+
 .banner-card {
-    width: 100%;
-    max-width: 1350px;
-    aspect-ratio: 1350 / 280;
+    width:100%;
+    max-width:1350px;
+    aspect-ratio:1350 / 280;
 
-    border-radius: 20px;
-    overflow: hidden;
+    border-radius:20px;
+    overflow:hidden;
 
-    margin: 30px auto;
+    margin:30px auto;
 
-    box-shadow: 0 8px 20px rgba(0,0,0,.15);
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
 
-    transition: 0.3s;
+    transition:.3s;
 }
 
 .banner-card:hover{
-  trasnform: scale(1.02);
-  box-shadow: 0 12px 25px rgba(0,0,0,.25)
+    transform:scale(1.02);
+    box-shadow:0 12px 25px rgba(0,0,0,.25);
 }
 
 .banner-card img{
@@ -70,628 +78,2013 @@
     object-fit:cover;
     display:block;
 }
-  
+
+
+/* =========================
+   BODY
+========================= */
+
 body{
-font-family:'Roboto',sans-serif;
-margin:0;
-background:#fff0f5;
+    font-family:'Roboto',sans-serif;
+    margin:0;
+    background:#fff0f5;
 }
 
-/* HEADER */
+
+/* =========================
+   HEADER
+========================= */
 
 header{
-background:linear-gradient(90deg,#ff6f61,#ff9472);
-color:white;
-text-align:center;
-padding:2rem;
+    background:linear-gradient(90deg,#ff6f61,#ff9472);
+    color:white;
+    text-align:center;
+    padding:2rem;
 }
 
 header h1{
-font-family:'Pacifico';
-margin:0;
-font-size:2.5rem;
+    font-family:'Pacifico';
+    margin:0;
+    font-size:2.5rem;
 }
 
 #buscar{
-width:80%;
-max-width:400px;
-padding:10px;
-border-radius:20px;
-border:none;
-margin-top:15px;
+    width:80%;
+    max-width:400px;
+    padding:10px;
+    border-radius:20px;
+    border:none;
+    margin-top:15px;
 }
+
+
+/* =========================
+   FAVORITO
+========================= */
 
 .fav{
-position:absolute;
-top:10px;
-right:10px;
-font-size:22px;
-cursor:pointer;
-background:white;
-border-radius:50%;
-padding:5px;
-box-shadow:0 2px 6px rgba(0,0,0,0.2);
+    position:absolute;
+    top:10px;
+    right:10px;
+
+    font-size:22px;
+    cursor:pointer;
+
+    background:white;
+    border-radius:50%;
+
+    padding:5px;
+
+    box-shadow:0 2px 6px rgba(0,0,0,0.2);
+
+    z-index:5;
 }
 
-/* BARRA DE BOTÕES */
+
+/* =========================
+   BARRA DE BOTÕES
+========================= */
 
 .barra-botoes{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:10px;
-padding:15px;
-background:#fff0f5;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+
+    gap:10px;
+
+    padding:15px;
+
+    background:#fff0f5;
 }
 
-/* BOTÕES */
 
-  .btn{
-    min-width: 180px;      /* Todos terão a mesma largura */
-    height: 45px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    background: linear-gradient(90deg,#ff6f61,#ff9472);
-    color: white;
-    cursor: pointer;
-    font-size: 15px;
+/* =========================
+   BOTÕES
+========================= */
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+.btn{
+    min-width:180px;
+    height:45px;
+
+    padding:10px 20px;
+
+    border:none;
+    border-radius:25px;
+
+    background:linear-gradient(90deg,#ff6f61,#ff9472);
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:6px;
+
+    transition:.3s;
 }
+
+.btn:hover{
+    transform:scale(1.03);
+    box-shadow:0 5px 10px rgba(0,0,0,.15);
+}
+
 .barra-botoes a{
-    text-decoration: none;
+    text-decoration:none;
 }
 
 .barra-botoes a .btn{
-    width: 180px;
+    width:180px;
 }
-/* GRID */
+
+
+/* =========================
+   GRID DOS PRODUTOS
+========================= */
 
 .container{
-max-width:1200px;
-margin:auto;
-padding:20px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:20px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:20px;
 }
 
-/* CARD */
+
+/* =========================
+   CARD
+========================= */
 
 .card{
-background:white;
-border-radius:15px;
-overflow:hidden;
-box-shadow:0 6px 15px rgba(0,0,0,0.1);
-transition:.3s;
+    position:relative;
+
+    background:white;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 6px 15px rgba(0,0,0,0.1);
+
+    transition:.3s;
 }
 
 .card:hover{
-transform:translateY(-10px);
+    transform:translateY(-10px);
 }
 
 .card img{
-width:100%;
-height:250px;
-object-fit:contain;
-background:white;
-padding:10px;
+    width:100%;
+    height:250px;
+
+    object-fit:contain;
+
+    background:white;
+
+    padding:10px;
+
+    box-sizing:border-box;
 }
 
 .card-body{
-padding:15px;
-text-align:center;
+    padding:15px;
+    text-align:center;
 }
 
 .card-body .btn{
     display:block;
+
     margin:10px auto 0;
+
     width:170px;
 }
-  
+
+
+/* =========================
+   PREÇO
+========================= */
+
 .price{
-color:#ff6f61;
-font-weight:bold;
-font-size:1.2rem;
+    color:#ff6f61;
+
+    font-weight:bold;
+
+    font-size:1.2rem;
 }
 
-.stars{
-color:gold;
+
+/* =========================
+   SISTEMA DE AVALIAÇÃO
+========================= */
+
+.avaliacao{
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:3px;
+
+    margin:10px 0 5px;
 }
 
-/* CARRINHO */
+.avaliacao span{
+    font-size:30px;
+
+    color:#ccc;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    transition:
+    transform .2s,
+    color .2s;
+}
+
+.avaliacao span:hover{
+    transform:scale(1.2);
+}
+
+.avaliacao span.ativa{
+    color:gold;
+}
+
+
+/* Texto da avaliação */
+
+.nota{
+    font-size:13px;
+
+    color:#666;
+
+    margin:5px 0;
+}
+
+
+/* Botão para retirar avaliação */
+
+.zerar-avaliacao{
+    border:none;
+
+    background:none;
+
+    color:#999;
+
+    cursor:pointer;
+
+    font-size:12px;
+
+    padding:3px 8px;
+
+    transition:.2s;
+}
+
+.zerar-avaliacao:hover{
+    color:#ff6f61;
+}
+
+
+/* =========================
+   CARRINHO
+========================= */
 
 #carrinhoBox{
-position:fixed;
-right:-320px;
-top:0;
-width:300px;
-height:100%;
-background:white;
-box-shadow:-5px 0 20px rgba(0,0,0,0.2);
-padding:20px;
-transition:.4s;
-overflow:auto;
+    position:fixed;
+
+    right:-320px;
+
+    top:0;
+
+    width:300px;
+
+    height:100%;
+
+    background:white;
+
+    box-shadow:
+    -5px 0 20px rgba(0,0,0,0.2);
+
+    padding:20px;
+
+    transition:.4s;
+
+    overflow:auto;
+
+    z-index:100;
 }
 
 #fecharCarrinho{
-position:absolute;
-left:10px;
-top:10px;
-background:none;
-border:none;
-font-size:24px;
-cursor:pointer;
+    position:absolute;
+
+    left:10px;
+
+    top:10px;
+
+    background:none;
+
+    border:none;
+
+    font-size:24px;
+
+    cursor:pointer;
 }
 
 .itemCarrinho{
-display:flex;
-gap:10px;
-margin-bottom:15px;
-align-items:center;
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:15px;
+
+    align-items:center;
 }
 
 .itemCarrinho img{
-width:60px;
-border-radius:10px;
+    width:60px;
+
+    border-radius:10px;
 }
 
-/* FOOTER */
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
-background:#333;
-color:white;
-text-align:center;
-padding:30px;
-margin-top:40px;
-}
-  footer{
     width:100%;
+
     clear:both;
+
     display:block;
+
     background:#333;
+
     color:white;
+
     text-align:center;
+
     padding:30px;
+
     margin-top:40px;
+
+    box-sizing:border-box;
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px){
 
-.container{
-grid-template-columns:1fr;
-}
+    .container{
+        grid-template-columns:1fr;
+    }
 
-.card img{
-height:260px;
-}
+    .card img{
+        height:260px;
+    }
 
-.btn{
-width:100%;
-}
+    .btn{
+        width:100%;
+    }
+
+    .barra-botoes{
+        flex-direction:column;
+    }
+
+    .filtro{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .filtro select{
+        width:90%;
+    }
 
 }
 
 </style>
 </head>
-  
+
+
 <body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
 <h1>✨ Animaizinhos Encantados ✨</h1>
+
 <p>Os melhores ursos de pelúcia!</p>
 
-<input type="text" id="buscar" placeholder="Buscar produto..." onkeyup="buscarProduto()">
+<input
+    type="text"
+    id="buscar"
+    placeholder="Buscar produto..."
+    onkeyup="buscarProduto()"
+>
 
 </header>
 
 
-<a href="promocoes.html"
-class="banner-link">
-  <div class="banner-card">
-    <img src="imagensgpt/banneror.png" alt="Banner da Loja">
-</div>
+<!-- =========================
+     BANNER
+========================= -->
+
+<a href="promocoes.html" class="banner-link">
+
+    <div class="banner-card">
+
+        <img
+            src="imagensgpt/banneror.png"
+            alt="Banner da Loja"
+        >
+
+    </div>
+
 </a>
+
+
+<!-- =========================
+     BARRA DE BOTÕES
+========================= -->
 
 <div class="barra-botoes">
 
+
 <button id="abrirCarrinho" class="btn">
-🛒 Carrinho (<span id="contadorCarrinho">0</span>)
+
+🛒 Carrinho
+(<span id="contadorCarrinho">0</span>)
+
 </button>
 
+
 <a href="favoritos.html">
-<button class="btn">❤️ Ver Favoritos</button>
+
+<button class="btn">
+
+❤️ Ver Favoritos
+
+</button>
+
 </a>
+
 
 <a href="verperfil.html">
-<button class="btn">👤 Meu Perfil</button>
+
+<button class="btn">
+
+👤 Meu Perfil
+
+</button>
+
 </a>
+
 
 <a href="personalizar.html">
-<button class="btn">🧸 Personalizar Urso</button>
+
+<button class="btn">
+
+🧸 Personalizar Urso
+
+</button>
+
 </a>
 
-  <div class="filtro">
-    <label for="ordenar">Ordenar por:</label>
 
-    <select id="ordenar">
-        <option value="">Selecione</option>
-        <option value="preco-desc">Maior ao menor preço</option>
-        <option value="preco-asc">Menor ao maior preço</option>
-        <option value="cm-desc">Maior ao menor (cm)</option>
-        <option value="cm-asc">Menor ao maior (cm)</option>
-    </select>
+<!-- FILTRO -->
+
+<div class="filtro">
+
+<label for="ordenar">
+    Ordenar por:
+</label>
+
+<select id="ordenar">
+
+<option value="">
+    Selecione
+</option>
+
+<option value="preco-desc">
+    Maior ao menor preço
+</option>
+
+<option value="preco-asc">
+    Menor ao maior preço
+</option>
+
+<option value="cm-desc">
+    Maior ao menor (cm)
+</option>
+
+<option value="cm-asc">
+    Menor ao maior (cm)
+</option>
+
+</select>
+
 </div>
+
 </div>
+
+
+
+<!-- =========================
+     PRODUTOS
+========================= -->
+
 <main class="container" id="produtos">
 
-<!-- Teddy Fofo -->
-<div class="card" data-nome="teddy fofo" data-preco="200" data-tamanho="120">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<a href="produto.html?nome=Teddy%20Fofo&preco=200&tamanho=120%20cm&img=imagensgpt/ursogrande.png" style="text-decoration: none; color: inherit;">
-  <img src="imagensgpt/ursogrande.png">
-  <div class="card-body">
-  <h2>Teddy Fofo</h2>
+
+<!-- TEDDY FOFO -->
+
+<div
+class="card"
+data-nome="teddy fofo"
+data-preco="200"
+data-tamanho="120"
+>
+
+<div class="fav" onclick="favoritar(this)">
+🤍
+</div>
+
+<a
+href="produto.html?nome=Teddy%20Fofo&preco=200&tamanho=120%20cm&img=imagensgpt/ursogrande.png"
+style="text-decoration:none;color:inherit;"
+>
+
+<img
+src="imagensgpt/ursogrande.png"
+alt="Teddy Fofo"
+>
+
+<div class="card-body">
+
+<h2>Teddy Fofo</h2>
+
 </a>
-<p class="stars">⭐⭐⭐⭐⭐</p>
-<p class="price">R$200,00</p>
+
+
+<!-- AVALIAÇÃO -->
+
+<div
+class="avaliacao"
+data-produto="Teddy Fofo"
+>
+
+<span onclick="avaliar(this,1)">★</span>
+<span onclick="avaliar(this,2)">★</span>
+<span onclick="avaliar(this,3)">★</span>
+<span onclick="avaliar(this,4)">★</span>
+<span onclick="avaliar(this,5)">★</span>
+
+</div>
+
+<button
+class="zerar-avaliacao"
+onclick="avaliarZero(this)"
+>
+Limpar avaliação
+</button>
+
+
+<p class="price">
+R$200,00
+</p>
+
 <p>📏 120 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Teddy Fofo', 200, '120 cm', 'imagensgpt/ursogrande.png')">Adicionar 🛒</button>
-</div>
+
+
+<button
+class="btn"
+onclick="adicionarCarrinho(
+'Teddy Fofo',
+200,
+'120 cm',
+'imagensgpt/ursogrande.png'
+)"
+>
+Adicionar 🛒
+</button>
+
 </div>
 
-<!-- Urso Marrom -->
-<div class="card" data-nome="urso marrom" data-preco="230" data-tamanho="130">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<a href="produto.html?nome=Urso%20Marrom&preco=230&tamanho=130%20cm&img=imagensgpt/ursomarrom.png" style="text-decoration: none; color: inherit;">
-  <img src="imagensgpt/ursomarrom.png">
-  <div class="card-body">
-  <h2>Urso Marrom</h2>
+</div>
+
+
+
+<!-- URSO MARROM -->
+
+<div
+class="card"
+data-nome="urso marrom"
+data-preco="230"
+data-tamanho="130"
+>
+
+<div class="fav" onclick="favoritar(this)">
+🤍
+</div>
+
+<a
+href="produto.html?nome=Urso%20Marrom&preco=230&tamanho=130%20cm&img=imagensgpt/ursomarrom.png"
+style="text-decoration:none;color:inherit;"
+>
+
+<img
+src="imagensgpt/ursomarrom.png"
+alt="Urso Marrom"
+>
+
+<div class="card-body">
+
+<h2>Urso Marrom</h2>
+
 </a>
-<p class="stars">⭐⭐⭐⭐⭐</p>
-<p class="price">R$230,00</p>
+
+
+<div
+class="avaliacao"
+data-produto="Urso Marrom"
+>
+
+<span onclick="avaliar(this,1)">★</span>
+<span onclick="avaliar(this,2)">★</span>
+<span onclick="avaliar(this,3)">★</span>
+<span onclick="avaliar(this,4)">★</span>
+<span onclick="avaliar(this,5)">★</span>
+
+</div>
+
+<button
+class="zerar-avaliacao"
+onclick="avaliarZero(this)"
+>
+Limpar avaliação
+</button>
+
+
+<p class="price">
+R$230,00
+</p>
+
 <p>📏 130 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Urso Marrom',230,'130 cm','imagensgpt/ursomarrom.png')">Adicionar 🛒</button>
-</div>
+
+<button
+class="btn"
+onclick="adicionarCarrinho(
+'Urso Marrom',
+230,
+'130 cm',
+'imagensgpt/ursomarrom.png'
+)"
+>
+Adicionar 🛒
+</button>
+
 </div>
 
-<!-- Ursinho Branco -->
-<div class="card" data-nome="ursinho branco" data-preco="260" data-tamanho="140">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<a href="produto.html?nome=Ursinho%20Branco&preco=260&tamanho=140%20cm&img=imagensgpt/ursobranco.png" style="text-decoration: none; color: inherit;">
-  <img src="imagensgpt/ursobranco.png">
-  <div class="card-body">
-  <h2>Ursinho Branco</h2>
+</div>
+
+
+
+<!-- URSINHO BRANCO -->
+
+<div
+class="card"
+data-nome="ursinho branco"
+data-preco="260"
+data-tamanho="140"
+>
+
+<div class="fav" onclick="favoritar(this)">
+🤍
+</div>
+
+<a
+href="produto.html?nome=Ursinho%20Branco&preco=260&tamanho=140%20cm&img=imagensgpt/ursobranco.png"
+style="text-decoration:none;color:inherit;"
+>
+
+<img
+src="imagensgpt/ursobranco.png"
+alt="Ursinho Branco"
+>
+
+<div class="card-body">
+
+<h2>Ursinho Branco</h2>
+
 </a>
-<p class="stars">⭐⭐⭐⭐⭐</p>
-<p class="price">R$260,00</p>
+
+
+<div
+class="avaliacao"
+data-produto="Ursinho Branco"
+>
+
+<span onclick="avaliar(this,1)">★</span>
+<span onclick="avaliar(this,2)">★</span>
+<span onclick="avaliar(this,3)">★</span>
+<span onclick="avaliar(this,4)">★</span>
+<span onclick="avaliar(this,5)">★</span>
+
+</div>
+
+<button
+class="zerar-avaliacao"
+onclick="avaliarZero(this)"
+>
+Limpar avaliação
+</button>
+
+
+<p class="price">
+R$260,00
+</p>
+
 <p>📏 140 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Ursinho Branco',260,'140 cm','imagensgpt/ursobranco.png')">Adicionar 🛒</button>
-</div>
+
+<button
+class="btn"
+onclick="adicionarCarrinho(
+'Ursinho Branco',
+260,
+'140 cm',
+'imagensgpt/ursobranco.png'
+)"
+>
+Adicionar 🛒
+</button>
+
 </div>
 
-<!-- Urso Abraço -->
-<div class="card" data-nome="urso abraço" data-preco="290" data-tamanho="150">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<a href="produto.html?nome=Urso%20Abraço&preco=290&tamanho=150%20cm&img=imagensgpt/ursoabraço.png" style="text-decoration: none; color: inherit;">
-  <img src="imagensgpt/ursoabraço.png">
-  <div class="card-body">
-  <h2>Urso Abraço</h2>
+</div>
+
+
+
+<!-- URSO ABRAÇO -->
+
+<div
+class="card"
+data-nome="urso abraço"
+data-preco="290"
+data-tamanho="150"
+>
+
+<div class="fav" onclick="favoritar(this)">
+🤍
+</div>
+
+<a
+href="produto.html?nome=Urso%20Abraço&preco=290&tamanho=150%20cm&img=imagensgpt/ursoabraço.png"
+style="text-decoration:none;color:inherit;"
+>
+
+<img
+src="imagensgpt/ursoabraço.png"
+alt="Urso Abraço"
+>
+
+<div class="card-body">
+
+<h2>Urso Abraço</h2>
+
 </a>
-<p class="stars">⭐⭐⭐⭐⭐</p>
-<p class="price">R$290,00</p>
+
+
+<div
+class="avaliacao"
+data-produto="Urso Abraço"
+>
+
+<span onclick="avaliar(this,1)">★</span>
+<span onclick="avaliar(this,2)">★</span>
+<span onclick="avaliar(this,3)">★</span>
+<span onclick="avaliar(this,4)">★</span>
+<span onclick="avaliar(this,5)">★</span>
+
+</div>
+
+<button
+class="zerar-avaliacao"
+onclick="avaliarZero(this)"
+>
+Limpar avaliação
+</button>
+
+
+<p class="price">
+R$290,00
+</p>
+
 <p>📏 150 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Urso Abraço',290,'150 cm','imagensgpt/ursoabraço.png')">Adicionar 🛒</button>
-</div>
+
+<button
+class="btn"
+onclick="adicionarCarrinho(
+'Urso Abraço',
+290,
+'150 cm',
+'imagensgpt/ursoabraço.png'
+)"
+>
+Adicionar 🛒
+</button>
+
 </div>
 
-<!-- Pinguim Fofo -->
-<div class="card" data-nome="pinguim fofo" data-preco="80" data-tamanho="40">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<a href="produto.html?nome=Pinguim%20Fofo&preco=80&tamanho=40%20cm&img=imagensgpt/pinguim.png" style="text-decoration: none; color: inherit;">
-  <img src="imagensgpt/pinguim.png">
-  <div class="card-body">
-  <h2>Pinguim Fofo</h2>
+</div>
+
+
+
+<!-- PINGUIM FOFO -->
+
+<div
+class="card"
+data-nome="pinguim fofo"
+data-preco="80"
+data-tamanho="40"
+>
+
+<div class="fav" onclick="favoritar(this)">
+🤍
+</div>
+
+<a
+href="produto.html?nome=Pinguim%20Fofo&preco=80&tamanho=40%20cm&img=imagensgpt/pinguim.png"
+style="text-decoration:none;color:inherit;"
+>
+
+<img
+src="imagensgpt/pinguim.png"
+alt="Pinguim Fofo"
+>
+
+<div class="card-body">
+
+<h2>Pinguim Fofo</h2>
+
 </a>
-<p class="stars">⭐⭐⭐⭐</p>
-<p class="price">R$80,00</p>
+
+
+<div
+class="avaliacao"
+data-produto="Pinguim Fofo"
+>
+
+<span onclick="avaliar(this,1)">★</span>
+<span onclick="avaliar(this,2)">★</span>
+<span onclick="avaliar(this,3)">★</span>
+<span onclick="avaliar(this,4)">★</span>
+<span onclick="avaliar(this,5)">★</span>
+
+</div>
+
+<button
+class="zerar-avaliacao"
+onclick="avaliarZero(this)"
+>
+Limpar avaliação
+</button>
+
+
+<p class="price">
+R$80,00
+</p>
+
 <p>📏 40 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Pinguim Fofo',80,'40 cm','imagensgpt/pinguim.png')">Adicionar 🛒</button>
-</div>
+
+<button
+class="btn"
+onclick="adicionarCarrinho(
+'Pinguim Fofo',
+80,
+'40 cm',
+'imagensgpt/pinguim.png'
+)"
+>
+Adicionar 🛒
+</button>
+
 </div>
 
-<!-- Cachorrinho -->
-<div class="card" data-nome="cachorrinho" data-preco="85" data-tamanho="45">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<a href="produto.html?nome=Cachorrinho&preco=85&tamanho=45%20cm&img=imagensgpt/cachorrinho_card.png" style="text-decoration: none; color: inherit;">
-  <img src="imagensgpt/cachorrinho_card.png">
-  <div class="card-body">
-  <h2>Cachorrinho</h2>
+</div>
+
+
+
+<!-- CACHORRINHO -->
+
+<div
+class="card"
+data-nome="cachorrinho"
+data-preco="85"
+data-tamanho="45"
+>
+
+<div class="fav" onclick="favoritar(this)">
+🤍
+</div>
+
+<a
+href="produto.html?nome=Cachorrinho&preco=85&tamanho=45%20cm&img=imagensgpt/cachorrinho_card.png"
+style="text-decoration:none;color:inherit;"
+>
+
+<img
+src="imagensgpt/cachorrinho_card.png"
+alt="Cachorrinho"
+>
+
+<div class="card-body">
+
+<h2>Cachorrinho</h2>
+
 </a>
-<p class="stars">⭐⭐⭐⭐</p>
-<p class="price">R$85,00</p>
+
+
+<div
+class="avaliacao"
+data-produto="Cachorrinho"
+>
+
+<span onclick="avaliar(this,1)">★</span>
+<span onclick="avaliar(this,2)">★</span>
+<span onclick="avaliar(this,3)">★</span>
+<span onclick="avaliar(this,4)">★</span>
+<span onclick="avaliar(this,5)">★</span>
+
+</div>
+
+<button
+class="zerar-avaliacao"
+onclick="avaliarZero(this)"
+>
+Limpar avaliação
+</button>
+
+
+<p class="price">
+R$85,00
+</p>
+
 <p>📏 45 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Cachorrinho',85,'45 cm','imagensgpt/Cachorrinho.jpeg')">Adicionar 🛒</button>
-</div>
+
+<button
+class="btn"
+onclick="adicionarCarrinho(
+'Cachorrinho',
+85,
+'45 cm',
+'imagensgpt/cachorrinho_card.png'
+)"
+>
+Adicionar 🛒
+</button>
+
 </div>
 
-<!-- Vaquinha Lolla -->
-<div class="card" data-nome="vaquinha lolla" data-preco="100" data-tamanho="60">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<a href="produto.html?nome=Vaquinha%20Lolla&preco=100&tamanho=60%20cm&img=imagensgpt/Vaquinha.png" style="text-decoration: none; color: inherit;">
-  <img src="imagensgpt/Vaquinha.png">
-  <div class="card-body">
-  <h2>Vaquinha Lolla</h2>
+</div>
+
+
+
+<!-- VAQUINHA LOLLA -->
+
+<div
+class="card"
+data-nome="vaquinha lolla"
+data-preco="100"
+data-tamanho="60"
+>
+
+<div class="fav" onclick="favoritar(this)">
+🤍
+</div>
+
+<a
+href="produto.html?nome=Vaquinha%20Lolla&preco=100&tamanho=60%20cm&img=imagensgpt/Vaquinha.png"
+style="text-decoration:none;color:inherit;"
+>
+
+<img
+src="imagensgpt/Vaquinha.png"
+alt="Vaquinha Lolla"
+>
+
+<div class="card-body">
+
+<h2>Vaquinha Lolla</h2>
+
 </a>
-<p class="stars">⭐⭐⭐⭐</p>
-<p class="price">R$100,00</p>
+
+
+<div
+class="avaliacao"
+data-produto="Vaquinha Lolla"
+>
+
+<span onclick="avaliar(this,1)">★</span>
+<span onclick="avaliar(this,2)">★</span>
+<span onclick="avaliar(this,3)">★</span>
+<span onclick="avaliar(this,4)">★</span>
+<span onclick="avaliar(this,5)">★</span>
+
+</div>
+
+<button
+class="zerar-avaliacao"
+onclick="avaliarZero(this)"
+>
+Limpar avaliação
+</button>
+
+
+<p class="price">
+R$100,00
+</p>
+
 <p>📏 60 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Vaquinha Lolla',100,'60 cm','imagensgpt/Vaquinha.png')">Adicionar 🛒</button>
-</div>
+
+<button
+class="btn"
+onclick="adicionarCarrinho(
+'Vaquinha Lolla',
+100,
+'60 cm',
+'imagensgpt/Vaquinha.png'
+)"
+>
+Adicionar 🛒
+</button>
+
 </div>
 
-<!-- Coelinho Arcoíris -->
-<div class="card" data-nome="coelinho arcoíris" data-preco="70" data-tamanho="30">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<a href="produto.html?nome=Coelinho%20Arcoíris&preco=70&tamanho=30%20cm&img=imagensgpt/coelho.png" style="text-decoration: none; color: inherit;">
-  <img src="imagensgpt/coelho.png">
-  <div class="card-body">
-  <h2>Coelinho Arcoíris</h2>
+</div>
+
+
+
+<!-- COELINHO ARCOÍRIS -->
+
+<div
+class="card"
+data-nome="coelinho arcoíris"
+data-preco="70"
+data-tamanho="30"
+>
+
+<div class="fav" onclick="favoritar(this)">
+🤍
+</div>
+
+<a
+href="produto.html?nome=Coelinho%20Arcoíris&preco=70&tamanho=30%20cm&img=imagensgpt/coelho.png"
+style="text-decoration:none;color:inherit;"
+>
+
+<img
+src="imagensgpt/coelho.png"
+alt="Coelinho Arcoíris"
+>
+
+<div class="card-body">
+
+<h2>Coelinho Arcoíris</h2>
+
 </a>
-<p class="stars">⭐⭐⭐⭐</p>
-<p class="price">R$70,00</p>
+
+
+<div
+class="avaliacao"
+data-produto="Coelinho Arcoíris"
+>
+
+<span onclick="avaliar(this,1)">★</span>
+<span onclick="avaliar(this,2)">★</span>
+<span onclick="avaliar(this,3)">★</span>
+<span onclick="avaliar(this,4)">★</span>
+<span onclick="avaliar(this,5)">★</span>
+
+</div>
+
+<button
+class="zerar-avaliacao"
+onclick="avaliarZero(this)"
+>
+Limpar avaliação
+</button>
+
+
+<p class="price">
+R$70,00
+</p>
+
 <p>📏 30 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Coelinho Arcoíris',70,'30 cm','imagensgpt/coelho.png')">Adicionar 🛒</button>
-</div>
+
+<button
+class="btn"
+onclick="adicionarCarrinho(
+'Coelinho Arcoíris',
+70,
+'30 cm',
+'imagensgpt/coelho.png'
+)"
+>
+Adicionar 🛒
+</button>
+
 </div>
 
-<!-- Giraffa Nina -->
-<div class="card" data-nome="giraffa nina" data-preco="75" data-tamanho="35">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<a href="produto.html?nome=Giraffa%20Ninna&preco=100&tamanho=65%20cm&img=imagensgpt/giraffa.png" style="text-decoration: none; color: inherit;">
-  <img src="imagensgpt/giraffa.png">
-  <div class="card-body">
-  <h2>Giraffa Nina</h2>
+</div>
+
+
+
+<!-- GIRAFFA NINA -->
+
+<div
+class="card"
+data-nome="giraffa nina"
+data-preco="105"
+data-tamanho="65"
+>
+
+<div class="fav" onclick="favoritar(this)">
+🤍
+</div>
+
+<a
+href="produto.html?nome=Giraffa%20Nina&preco=105&tamanho=65%20cm&img=imagensgpt/giraffa.png"
+style="text-decoration:none;color:inherit;"
+>
+
+<img
+src="imagensgpt/giraffa.png"
+alt="Giraffa Nina"
+>
+
+<div class="card-body">
+
+<h2>Giraffa Nina</h2>
+
 </a>
-<p class="stars">⭐⭐⭐⭐</p>
-<p class="price">R$105,00</p>
+
+
+<div
+class="avaliacao"
+data-produto="Giraffa Nina"
+>
+
+<span onclick="avaliar(this,1)">★</span>
+<span onclick="avaliar(this,2)">★</span>
+<span onclick="avaliar(this,3)">★</span>
+<span onclick="avaliar(this,4)">★</span>
+<span onclick="avaliar(this,5)">★</span>
+
+</div>
+
+<button
+class="zerar-avaliacao"
+onclick="avaliarZero(this)"
+>
+Limpar avaliação
+</button>
+
+
+<p class="price">
+R$105,00
+</p>
+
 <p>📏 65 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Coelinho Arcoíris',100,'65 cm','imagensgpt/giraffa.png')">Adicionar 🛒</button>
-</div>
+
+<button
+class="btn"
+onclick="adicionarCarrinho(
+'Giraffa Nina',
+105,
+'65 cm',
+'imagensgpt/giraffa.png'
+)"
+>
+Adicionar 🛒
+</button>
+
 </div>
 
-<!-- Sapo Greg -->
-<div class="card" data-nome="sapo greg" data-preco="75" data-tamanho="35">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<a href="produto.html?nome=Sapo%20Greg&preco=75&tamanho=35%20cm&img=imagensgpt/sapinho.png" style="text-decoration: none; color: inherit;">
-  <img src="imagensgpt/sapinho.png">
-  <div class="card-body">
-  <h2>Sapo Greg</h2>
-</a>
-<p class="stars">⭐⭐⭐⭐</p>
-<p class="price">R$75,00</p>
-<p>📏35 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Sapo Greg',75,'35 cm','imagensgpt/sapinho.png')">Adicionar 🛒</button>
-</div>
-</div>
- 
-<!-- Porquinha Iza -->
-<div class="card" data-nome="porquinha iza" data-preco="75" data-tamanho="35">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<a href="produto.html?nome=Porquinha%20Iza&preco=75&tamanho=35%20cm&img=imagensgpt/porco.png" style="text-decoration: none; color: inherit;">
-  <img src="imagensgpt/porco.png">
-  <div class="card-body">
-  <h2>Porquinha Iza</h2>
-</a>
-<p class="stars">⭐⭐⭐⭐</p>
-<p class="price">R$75,00</p>
-<p>📏35 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Porquinha Iza',75,'35 cm','imagensgpt/porco.png')">Adicionar 🛒</button>
-</div>
 </div>
 
-<!-- Macaco Cris -->
-<div class="card" data-nome="macaco cris" data-preco="80" data-tamanho="40">
-<div class="fav" onclick="favoritar(this)">🤍</div>
-<a href="produto.html?nome=Macaco%20Cris&preco=80&tamanho=40%20cm&img=imagensgpt/macaco.png" style="text-decoration: none; color: inherit;">
-  <img src="imagensgpt/macaco.png">
-  <div class="card-body">
-  <h2>Macaco Cris</h2>
+
+
+<!-- SAPO GREG -->
+
+<div
+class="card"
+data-nome="sapo greg"
+data-preco="75"
+data-tamanho="35"
+>
+
+<div class="fav" onclick="favoritar(this)">
+🤍
+</div>
+
+<a
+href="produto.html?nome=Sapo%20Greg&preco=75&tamanho=35%20cm&img=imagensgpt/sapinho.png"
+style="text-decoration:none;color:inherit;"
+>
+
+<img
+src="imagensgpt/sapinho.png"
+alt="Sapo Greg"
+>
+
+<div class="card-body">
+
+<h2>Sapo Greg</h2>
+
 </a>
-<p class="stars">⭐⭐⭐⭐</p>
-<p class="price">R$80,00</p>
-<p>📏40 cm</p>
-<button class="btn" onclick="adicionarCarrinho('Macaco Cris',80,'40 cm','imagensgpt/macaco.png')">Adicionar 🛒</button>
+
+
+<div
+class="avaliacao"
+data-produto="Sapo Greg"
+>
+
+<span onclick="avaliar(this,1)">★</span>
+<span onclick="avaliar(this,2)">★</span>
+<span onclick="avaliar(this,3)">★</span>
+<span onclick="avaliar(this,4)">★</span>
+<span onclick="avaliar(this,5)">★</span>
+
 </div>
+
+<button
+class="zerar-avaliacao"
+onclick="avaliarZero(this)"
+>
+Limpar avaliação
+</button>
+
+
+<p class="price">
+R$75,00
+</p>
+
+<p>📏 35 cm</p>
+
+<button
+class="btn"
+onclick="adicionarCarrinho(
+'Sapo Greg',
+75,
+'35 cm',
+'imagensgpt/sapinho.png'
+)"
+>
+Adicionar 🛒
+</button>
+
 </div>
- 
+
+</div>
+
+
+
+<!-- PORQUINHA IZA -->
+
+<div
+class="card"
+data-nome="porquinha iza"
+data-preco="75"
+data-tamanho="35"
+>
+
+<div class="fav" onclick="favoritar(this)">
+🤍
+</div>
+
+<a
+href="produto.html?nome=Porquinha%20Iza&preco=75&tamanho=35%20cm&img=imagensgpt/porco.png"
+style="text-decoration:none;color:inherit;"
+>
+
+<img
+src="imagensgpt/porco.png"
+alt="Porquinha Iza"
+>
+
+<div class="card-body">
+
+<h2>Porquinha Iza</h2>
+
+</a>
+
+
+<div
+class="avaliacao"
+data-produto="Porquinha Iza"
+>
+
+<span onclick="avaliar(this,1)">★</span>
+<span onclick="avaliar(this,2)">★</span>
+<span onclick="avaliar(this,3)">★</span>
+<span onclick="avaliar(this,4)">★</span>
+<span onclick="avaliar(this,5)">★</span>
+
+</div>
+
+<button
+class="zerar-avaliacao"
+onclick="avaliarZero(this)"
+>
+Limpar avaliação
+</button>
+
+
+<p class="price">
+R$75,00
+</p>
+
+<p>📏 35 cm</p>
+
+<button
+class="btn"
+onclick="adicionarCarrinho(
+'Porquinha Iza',
+75,
+'35 cm',
+'imagensgpt/porco.png'
+)"
+>
+Adicionar 🛒
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- MACACO CRIS -->
+
+<div
+class="card"
+data-nome="macaco cris"
+data-preco="80"
+data-tamanho="40"
+>
+
+<div class="fav" onclick="favoritar(this)">
+🤍
+</div>
+
+<a
+href="produto.html?nome=Macaco%20Cris&preco=80&tamanho=40%20cm&img=imagensgpt/macaco.png"
+style="text-decoration:none;color:inherit;"
+>
+
+<img
+src="imagensgpt/macaco.png"
+alt="Macaco Cris"
+>
+
+<div class="card-body">
+
+<h2>Macaco Cris</h2>
+
+</a>
+
+
+<div
+class="avaliacao"
+data-produto="Macaco Cris"
+>
+
+<span onclick="avaliar(this,1)">★</span>
+<span onclick="avaliar(this,2)">★</span>
+<span onclick="avaliar(this,3)">★</span>
+<span onclick="avaliar(this,4)">★</span>
+<span onclick="avaliar(this,5)">★</span>
+
+</div>
+
+<button
+class="zerar-avaliacao"
+onclick="avaliarZero(this)"
+>
+Limpar avaliação
+</button>
+
+
+<p class="price">
+R$80,00
+</p>
+
+<p>📏 40 cm</p>
+
+<button
+class="btn"
+onclick="adicionarCarrinho(
+'Macaco Cris',
+80,
+'40 cm',
+'imagensgpt/macaco.png'
+)"
+>
+Adicionar 🛒
+</button>
+
+</div>
+
+</div>
+
+
 </main>
 
-<!-- CARRINHO -->
+
+
+<!-- =========================
+     CARRINHO
+========================= -->
 
 <div id="carrinhoBox">
 
-<button id="fecharCarrinho">⬅</button>
+<button id="fecharCarrinho">
+⬅
+</button>
 
 <h2>🛒 Carrinho</h2>
 
 <div id="listaCarrinho"></div>
 
-<p><b>Total: R$ <span id="totalCarrinho">0.00</span></b></p>
+<p>
+<b>
+Total: R$
+<span id="totalCarrinho">0.00</span>
+</b>
+</p>
 
-<button class="btn" onclick="limparCarrinho()">Limpar Carrinho</button>
-
-  <button class="btn" onclick="finalizarCompra()">
-    ✅ Finalizar Compra
+<button
+class="btn"
+onclick="limparCarrinho()"
+>
+Limpar Carrinho
 </button>
+
+
+<button
+class="btn"
+onclick="finalizarCompra()"
+>
+✅ Finalizar Compra
+</button>
+
 </div>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-<h3>Animaizinhos Encantados</h3>
-<p>🧸 Pelúcias fofinhas para todas as idades</p>
-<p>📱 WhatsApp: (19) 4008-8922</p>
+<h3>
+Animaizinhos Encantados
+</h3>
+
+<p>
+🧸 Pelúcias fofinhas para todas as idades
+</p>
+
+<p>
+📱 WhatsApp: (19) 4008-8922
+</p>
 
 </footer>
 
+
+
 <script>
 
-const usuarioLogado = localStorage.getItem("usuarioLogado");
+/* =========================
+   LOGIN
+========================= */
 
-if (!usuarioLogado) {
-    window.location.href = "login.html";
+const usuarioLogado =
+localStorage.getItem("usuarioLogado");
+
+if(!usuarioLogado){
+
+    window.location.href="login.html";
+
 }
 
-/* BUSCA */
+
+/* =========================
+   BUSCA
+========================= */
 
 function buscarProduto(){
 
-let filtro=document.getElementById("buscar").value.toLowerCase()
+    let filtro =
+    document
+    .getElementById("buscar")
+    .value
+    .toLowerCase();
 
-let cards=document.querySelectorAll(".card")
+    let cards =
+    document.querySelectorAll(".card");
 
-cards.forEach(card=>{
+    cards.forEach(card => {
 
-card.style.display=card.innerText.toLowerCase().includes(filtro)?"block":"none"
+        card.style.display =
+        card.innerText
+        .toLowerCase()
+        .includes(filtro)
+        ? "block"
+        : "none";
 
-})
+    });
 
 }
 
-/* LOGOUT */
+
+/* =========================
+   LOGOUT
+========================= */
 
 function logout(){
-    localStorage.removeItem("usuarioLogado");
+
+    localStorage.removeItem(
+        "usuarioLogado"
+    );
+
     window.location.href="login.html";
+
 }
 
-/* FAVORITOS */
 
-let favoritos = JSON.parse(localStorage.getItem("favoritos")) || []
+/* =========================
+   FAVORITOS
+========================= */
+
+let favoritos =
+JSON.parse(
+    localStorage.getItem("favoritos")
+) || [];
+
 
 function salvarFavoritos(){
-localStorage.setItem("favoritos",JSON.stringify(favoritos))
+
+    localStorage.setItem(
+        "favoritos",
+        JSON.stringify(favoritos)
+    );
+
 }
+
 
 function favoritar(el){
 
-let card = el.closest(".card")
+    let card =
+    el.closest(".card");
 
-let nome = card.querySelector("h2").innerText
-let preco = card.querySelector(".price").innerText
-let imagem = card.querySelector("img").src
+    let nome =
+    card.querySelector("h2").innerText;
 
-let index = favoritos.findIndex(i => i.nome === nome)
+    let preco =
+    card.querySelector(".price").innerText;
 
-if(index > -1){
+    let imagem =
+    card.querySelector("img").src;
 
-favoritos.splice(index,1)
-el.innerText = "🤍"
+    let index =
+    favoritos.findIndex(
+        i => i.nome === nome
+    );
 
-}else{
 
-favoritos.push({nome,preco,imagem})
-el.innerText = "❤️"
+    if(index > -1){
+
+        favoritos.splice(index,1);
+
+        el.innerText="🤍";
+
+    }else{
+
+        favoritos.push({
+            nome:nome,
+            preco:preco,
+            imagem:imagem
+        });
+
+        el.innerText="❤️";
+
+    }
+
+    salvarFavoritos();
 
 }
 
-salvarFavoritos()
 
-}
+/* =========================
+   BANNER
+========================= */
 
-const banner = document.querySelector(".banner-card");
+const banner =
+document.querySelector(".banner-card");
 
-banner.addEventListener("click", () => {
-    window.location.href = "promocoes.html";
-});
+banner.addEventListener(
+    "click",
+    () => {
+
+        window.location.href =
+        "promocoes.html";
+
+    }
+);
 
 
-const select = document.getElementById("ordenar");
-const container = document.getElementById("produtos");
+/* =========================
+   ORDENAÇÃO
+========================= */
 
-select.addEventListener("change", ordenarProdutos);
+const select =
+document.getElementById("ordenar");
 
-function ordenarProdutos() {
+const container =
+document.getElementById("produtos");
 
-    const cards = Array.from(container.querySelectorAll(".card"));
 
-    cards.sort((a, b) => {
+select.addEventListener(
+    "change",
+    ordenarProdutos
+);
 
-        const precoA = parseFloat(
-            a.querySelector(".price").textContent
-                .replace("R$", "")
-                .replace(".", "")
-                .replace(",", ".")
+
+function ordenarProdutos(){
+
+    const cards =
+    Array.from(
+        container.querySelectorAll(".card")
+    );
+
+
+    cards.sort((a,b) => {
+
+        const precoA =
+        parseFloat(
+            a.dataset.preco
         );
 
-        const precoB = parseFloat(
-            b.querySelector(".price").textContent
-                .replace("R$", "")
-                .replace(".", "")
-                .replace(",", ".")
+        const precoB =
+        parseFloat(
+            b.dataset.preco
         );
 
-        const tamanhoA = parseInt(
-            a.querySelector(".card-body p:nth-of-type(2)")
-                .textContent.replace(/[^\d]/g, "")
+        const tamanhoA =
+        parseInt(
+            a.dataset.tamanho
         );
 
-        const tamanhoB = parseInt(
-            b.querySelector(".card-body p:nth-of-type(2)")
-                .textContent.replace(/[^\d]/g, "")
+        const tamanhoB =
+        parseInt(
+            b.dataset.tamanho
         );
 
-        switch (select.value) {
+
+        switch(select.value){
 
             case "preco-desc":
+
                 return precoB - precoA;
 
+
             case "preco-asc":
+
                 return precoA - precoB;
 
+
             case "cm-desc":
+
                 return tamanhoB - tamanhoA;
 
+
             case "cm-asc":
+
                 return tamanhoA - tamanhoB;
 
+
             default:
+
                 return 0;
+
         }
+
     });
 
-    cards.forEach(card => container.appendChild(card));
+
+    cards.forEach(card => {
+
+        container.appendChild(card);
+
+    });
+
 }
+
+
+/* =========================
+   SISTEMA DE AVALIAÇÃO
+========================= */
+
+function avaliar(elemento, nota){
+
+    const avaliacao =
+    elemento.parentElement;
+
+    const produto =
+    avaliacao.dataset.produto;
+
+    const estrelas =
+    avaliacao.querySelectorAll("span");
+
+
+    /*
+       Remove todas as estrelas
+       que estavam selecionadas
+    */
+
+    estrelas.forEach(estrela => {
+
+        estrela.classList.remove(
+            "ativa"
+        );
+
+    });
+
+
+    /*
+       Ativa as estrelas
+       de acordo com a nota
+    */
+
+    estrelas.forEach(
+        (estrela,index) => {
+
+            if(index < nota){
+
+                estrela.classList.add(
+                    "ativa"
+                );
+
+            }
+
+        }
+    );
+
+
+    /*
+       Salva a avaliação
+       no navegador
+    */
+
+    localStorage.setItem(
+        "avaliacao_" + produto,
+        nota
+    );
+
+
+    atualizarNota(
+        avaliacao,
+        nota
+    );
+
+}
+
+
+/* =========================
+   ATUALIZAR TEXTO DA NOTA
+========================= */
+
+function atualizarNota(
+    avaliacao,
+    nota
+){
+
+    let texto =
+    avaliacao.parentElement
+    .querySelector(".nota");
+
+
+    if(!texto){
+
+        texto =
+        document.createElement("p");
+
+        texto.className="nota";
+
+        avaliacao.parentElement
+        .appendChild(texto);
+
+    }
+
+
+    if(nota === 0){
+
+        texto.innerText =
+        "Sem avaliação";
+
+    }else{
+
+        texto.innerText =
+        "Sua avaliação: " +
+        nota +
+        "/5 estrelas";
+
+    }
+
+}
+
+
+/* =========================
+   LIMPAR AVALIAÇÃO
+========================= */
+
+function avaliarZero(elemento){
+
+    const avaliacao =
+    elemento.parentElement;
+
+    const produto =
+    avaliacao.dataset.produto;
+
+    const estrelas =
+    avaliacao.querySelectorAll("span");
+
+
+    estrelas.forEach(estrela => {
+
+        estrela.classList.remove(
+            "ativa"
+        );
+
+    });
+
+
+    localStorage.removeItem(
+        "avaliacao_" + produto
+    );
+
+
+    atualizarNota(
+        avaliacao,
+        0
+    );
+
+}
+
+
+/* =========================
+   CARREGAR AVALIAÇÕES
+========================= */
+
+function carregarAvaliacoes(){
+
+    const avaliacoes =
+    document.querySelectorAll(
+        ".avaliacao"
+    );
+
+
+    avaliacoes.forEach(
+        avaliacao => {
+
+            const produto =
+            avaliacao.dataset.produto;
+
+
+            const nota =
+            localStorage.getItem(
+                "avaliacao_" + produto
+            );
+
+
+            if(nota){
+
+                const estrelas =
+                avaliacao.querySelectorAll(
+                    "span"
+                );
+
+
+                estrelas.forEach(
+                    (estrela,index) => {
+
+                        if(
+                            index <
+                            Number(nota)
+                        ){
+
+                            estrela.classList.add(
+                                "ativa"
+                            );
+
+                        }
+
+                    }
+                );
+
+
+                atualizarNota(
+                    avaliacao,
+                    Number(nota)
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/*
+   Carrega as avaliações
+   quando a página abre
+*/
+
+carregarAvaliacoes();
+
+
+/* =========================
+   FINALIZAR COMPRA
+========================= */
 
 function finalizarCompra(){
 
     if(carrinho.length === 0){
-        alert("Seu carrinho está vazio!");
+
+        alert(
+            "Seu carrinho está vazio!"
+        );
+
         return;
+
     }
 
-    let mensagem = "🧸 *Novo Pedido - Animaizinhos Encantados*%0A%0A";
+
+    let mensagem =
+    "🧸 *Novo Pedido - Animaizinhos Encantados*%0A%0A";
+
 
     let total = 0;
 
+
     carrinho.forEach(item => {
 
-        mensagem += `• ${item.nome}%0A`;
-        mensagem += `Tamanho: ${item.tamanho}%0A`;
-        mensagem += `Quantidade: ${item.qtd}%0A`;
-        mensagem += `Valor: R$ ${item.preco.toFixed(2)}%0A%0A`;
+        mensagem +=
+        `• ${item.nome}%0A`;
 
-        total += item.preco * item.qtd;
+        mensagem +=
+        `Tamanho: ${item.tamanho}%0A`;
+
+        mensagem +=
+        `Quantidade: ${item.qtd}%0A`;
+
+        mensagem +=
+        `Valor: R$ ${item.preco.toFixed(2)}%0A%0A`;
+
+
+        total +=
+        item.preco * item.qtd;
+
     });
 
-    mensagem += `💰 *Total: R$ ${total.toFixed(2)}*`;
+
+    mensagem +=
+    `💰 *Total: R$ ${total.toFixed(2)}*`;
+
 
     window.open(
         `https://wa.me/5519992831122?text=${mensagem}`,
@@ -699,10 +2092,17 @@ function finalizarCompra(){
     );
 
 }
-  
+
 </script>
 
-  <script src="carrinho.js"></script>
-  
+
+<!-- =========================
+     CARRINHO.JS
+========================= -->
+
+<script src="carrinho.js"></script>
+
+
 </body>
 </html>
+```
