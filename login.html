@@ -151,18 +151,41 @@ function acao(){
 
     }
 
-    usuarios.push({user, pass})
+    usuarios.push({
+    user,
+    pass
+});
 
-    localStorage.setItem("usuarios", JSON.stringify(usuarios))
+localStorage.setItem(
+    "usuarios",
+    JSON.stringify(usuarios)
+);
 
-    // cria carrinho e favoritos do usuário
-    localStorage.setItem("carrinho_"+user, JSON.stringify([]))
-    localStorage.setItem("favoritos_"+user, JSON.stringify([]))
+localStorage.setItem(
+    "carrinho_" + user,
+    JSON.stringify([])
+);
 
-    document.getElementById("erro").innerText =
-    "Conta criada com sucesso! 🎉"
+localStorage.setItem(
+    "favoritos_" + user,
+    JSON.stringify([])
+);
 
-    trocarModo()
+/* LOGIN AUTOMÁTICO APÓS CRIAR A CONTA */
+
+localStorage.setItem(
+    "usuarioLogado",
+    user
+);
+
+localStorage.setItem(
+    "logado",
+    "true"
+);
+
+/* volta para a loja */
+
+window.location.href = "index.html";
 
   }
 
