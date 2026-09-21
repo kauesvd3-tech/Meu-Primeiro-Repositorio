@@ -115,4 +115,457 @@
         }
 
         .fav {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 2;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, .12);
+        }
+
+        .card-body {
+            padding: 10px 18px;
+        }
+
+        .card h2 {
+            font-size: 20px;
+            margin-bottom: 7px;
+        }
+
+        .tamanho {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .preco-antigo {
+            color: #999;
+            text-decoration: line-through;
+            margin-top: 7px;
+        }
+
+        .price {
+            color: #ff5f52;
+            font-size: 23px;
+            font-weight: bold;
+            margin: 4px 0 12px;
+        }
+
+        /* ===== BOTÃO ===== */
+
+        .btn {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            background: linear-gradient(135deg, #ff6f61, #ff9472);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(255, 111, 97, .35);
+        }
+
+        /* ===== CARRINHO ===== */
+
+        #carrinhoBox {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 350px;
+            height: 100vh;
+            background: white;
+            z-index: 9999;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, .20);
+            transition: right .3s;
+        }
+
+        .cabecalhoCarrinho {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cabecalhoCarrinho h2 {
+            color: #ff6f61;
+        }
+
+        #fecharCarrinho {
+            border: none;
+            background: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        #listaCarrinho {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .itemCarrinho {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .itemCarrinho img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .itemCarrinho div {
+            flex: 1;
+            font-size: 14px;
+        }
+
+        .itemCarrinho button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .total {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .limpar {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            background: #eee;
+            color: #555;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* ===== RODAPÉ ===== */
+
+        footer {
+            background: #ff6f61;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        /* ===== RESPONSIVO ===== */
+
+        @media (max-width: 1000px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 29px;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            #carrinhoBox {
+                width: 100%;
+                right: -100%;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== CABEÇALHO ===== -->
+
+    <header>
+
+        <h1>🎉 Promoções Especiais 🎉</h1>
+
+        <p>Aproveite nossos descontos!</p>
+
+        <div class="topo">
+
+            <a href="index.html">
+                ⬅ Voltar para a Loja
+            </a>
+
+            <button id="abrirCarrinho">
+                🛒 Carrinho
+                <span id="contadorCarrinho">0</span>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ===== PRODUTOS ===== -->
+
+    <main class="container" id="produtos"></main>
+
+
+    <!-- ===== CARRINHO ===== -->
+
+    <div id="carrinhoBox">
+
+        <div class="cabecalhoCarrinho">
+
+            <h2>🛒 Meu Carrinho</h2>
+
+            <button id="fecharCarrinho">
+                ✕
+            </button>
+
+        </div>
+
+        <div id="listaCarrinho"></div>
+
+        <div class="total">
+
+            <span>Total:</span>
+
+            <span>
+                R$ <span id="totalCarrinho">0.00</span>
+            </span>
+
+        </div>
+
+        <button class="limpar" onclick="limparCarrinho()">
+            🗑️ Limpar carrinho
+        </button>
+
+    </div>
+
+
+    <!-- ===== RODAPÉ ===== -->
+
+    <footer>
+        🧸 Animaizinhos Encantados<br>
+        Aproveite nossas promoções!
+    </footer>
+
+
+    <script>
+
+        /* ===== PRODUTOS ===== */
+
+        const produtos = [
+
+            {
+                nome: "Guaxinim",
+                preco: 50,
+                antigo: 80,
+                tamanho: "30 cm",
+                imagem: "imagensgpt/guaxinim1.png"
+            },
+
+            {
+                nome: "Elefante",
+                preco: 60,
+                antigo: 95,
+                tamanho: "40 cm",
+                imagem: "imagensgpt/elefante1.png"
+            },
+
+            {
+                nome: "Boto Cor De Rosa",
+                preco: 70,
+                antigo: 110,
+                tamanho: "45 cm",
+                imagem: "imagensgpt/botocorderosa.jpeg"
+            },
+
+            {
+                nome: "Dinossauro",
+                preco: 65,
+                antigo: 100,
+                tamanho: "40 cm",
+                imagem: "imagensgpt/dinossauro.jpeg"
+            },
+
+            {
+                nome: "Coruja",
+                preco: 55,
+                antigo: 85,
+                tamanho: "35 cm",
+                imagem: "imagensgpt/coruja1.jpeg"
+            },
+
+            {
+                nome: "Gorila",
+                preco: 90,
+                antigo: 130,
+                tamanho: "55 cm",
+                imagem: "imagensgpt/gorila.jpeg"
+            },
+
+            {
+                nome: "Pato",
+                preco: 45,
+                antigo: 70,
+                tamanho: "30 cm",
+                imagem: "imagensgpt/pato.jpeg"
+            }
+
+        ];
+
+
+        /* ===== CRIAR PRODUTOS ===== */
+
+        const area = document.getElementById("produtos");
+
+        produtos.forEach(produto => {
+
+            const url =
+                `produto.html?nome=${encodeURIComponent(produto.nome)}` +
+                `&preco=${produto.preco}` +
+                `&tamanho=${encodeURIComponent(produto.tamanho)}` +
+                `&img=${encodeURIComponent(produto.imagem)}`;
+
+            area.innerHTML += `
+
+                <div class="card">
+
+                    <div class="fav" onclick="favoritar(this)">
+                        🤍
+                    </div>
+
+                    <a href="${url}"
+                       style="text-decoration:none;color:inherit">
+
+                        <img src="${produto.imagem}"
+                             alt="${produto.nome}">
+
+                        <div class="card-body">
+
+                            <h2>${produto.nome}</h2>
+
+                            <p class="tamanho">
+                                📏 ${produto.tamanho}
+                            </p>
+
+                            <p class="preco-antigo">
+                                R$ ${produto.antigo.toFixed(2).replace(".", ",")}
+                            </p>
+
+                            <p class="price">
+                                R$ ${produto.preco.toFixed(2).replace(".", ",")}
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                    <div class="card-body">
+
+                        <button
+                            class="btn"
+                            onclick="adicionarCarrinho(
+                                '${produto.nome}',
+                                ${produto.preco},
+                                '${produto.tamanho}',
+                                '${produto.imagem}'
+                            )">
+
+                            🛒 Adicionar ao carrinho
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        });
+
+
+        /* ===== FAVORITOS ===== */
+
+        let favoritos =
+            JSON.parse(localStorage.getItem("favoritos")) || [];
+
+
+        function favoritar(elemento) {
+
+            const card = elemento.closest(".card");
+
+            const nome =
+                card.querySelector("h2").innerText;
+
+            const preco =
+                card.querySelector(".price").innerText;
+
+            const imagem =
+                card.querySelector("img").src;
+
+            const index =
+                favoritos.findIndex(item => item.nome === nome);
+
+
+            if (index > -1) {
+
+                favoritos.splice(index, 1);
+
+                elemento.innerText = "🤍";
+
+            } else {
+
+                favoritos.push({
+                    nome: nome,
+                    preco: preco,
+                    imagem: imagem
+                });
+
+                elemento.innerText = "❤️";
+
+            }
+
+            localStorage.setItem(
+                "favoritos",
+                JSON.stringify(favoritos)
+            );
+
+        }
+
+    </script>
+
+
+    <!-- ===== SEU CARRINHO ===== -->
+
+    <script src="carrinho.js"></script>
+
+</body>
+
+</html>
 ```
