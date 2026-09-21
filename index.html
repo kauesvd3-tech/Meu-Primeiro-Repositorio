@@ -2045,21 +2045,34 @@ function finalizarCompra(){
 
     if(carrinho.length === 0){
 
-        alert(
-            "Seu carrinho está vazio!"
-        );
+        alert("Seu carrinho está vazio!");
 
         return;
-
     }
 
+    const usuarioLogado =
+    localStorage.getItem("usuarioLogado");
+
+    if(!usuarioLogado){
+
+        localStorage.setItem(
+            "checkoutPendente",
+            "true"
+        );
+
+        alert(
+            "Para finalizar a compra, você precisa criar uma conta ou fazer login."
+        );
+
+        window.location.href = "login.html";
+
+        return;
+    }
 
     let mensagem =
     "🧸 *Novo Pedido - Animaizinhos Encantados*%0A%0A";
 
-
     let total = 0;
-
 
     carrinho.forEach(item => {
 
@@ -2075,22 +2088,18 @@ function finalizarCompra(){
         mensagem +=
         `Valor: R$ ${item.preco.toFixed(2)}%0A%0A`;
 
-
         total +=
         item.preco * item.qtd;
 
     });
 
-
     mensagem +=
     `💰 *Total: R$ ${total.toFixed(2)}*`;
-
 
     window.open(
         `https://wa.me/5519992831122?text=${mensagem}`,
         "_blank"
     );
-
 }
 
 </script>
