@@ -1,523 +1,118 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promoções - Loja de Ursos</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <title>Promoções - Animaizinhos Encantados</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
 
     <style>
-       *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-    }
 
-    body{
-        font-family:'Roboto',sans-serif;
-        background:#fff4f7;
-    }
-
-    /* ================= HEADER ================= */
-    header{
-        background:linear-gradient(90deg,#ff6f61,#ff9472);
-        color:white;
-        text-align:center;
-        padding:35px 20px;
-        box-shadow:0 4px 15px rgba(0,0,0,.15);
-    }
-
-    header h1{
-        font-family:'Pacifico',cursive;
-        font-size:45px;
-        margin-bottom:10px;
-    }
-
-    /* ================= CONTAINER GRID ================= */
-    .container{
-        max-width:1200px;
-        margin:auto;
-        padding:20px;
-        display:grid;
-        /* Define 4 colunas fixas em telas grandes, reduzindo dinamicamente em telas menores */
-        grid-template-columns: repeat(4, 1fr);
-        gap:20px;
-    }
-
-    /* ================= CARD ================= */
-    .card{ 
-        position:relative; 
-        background:white;
-        border-radius:15px;
-        overflow:hidden;
-        box-shadow:0 6px 15px rgba(0,0,0,0.1);
-        transition:.3s;
-    }
-
-    .card:hover{
-        transform:translateY(-10px);
-    }
-
-    .card img{
-        width:100%;
-        height:250px;
-        object-fit:contain;
-        background:white;
-        padding:10px;
-    }
-
-    .card-body{
-        padding:15px;
-        text-align:center;
-    }
-
-    .card-body .btn{
-        display:block;
-        margin:10px auto 0;
-        width:100%;
-        max-width: 180px;
-        height: 45px;
-        border: none;
-        border-radius: 25px;
-        background: linear-gradient(90deg,#ff6f61,#ff9472);
-        color: white;
-        cursor: pointer;
-        font-size: 15px;
-    }
-      
-    .price{
-        color:#ff6f61;
-        font-weight:bold;
-        font-size:1.2rem;
-    }
-
-    .preco-antigo{
-        text-decoration: line-through;
-        color:#999;
-        font-size:0.9rem;
-    }
-
-    .stars{
-        color:gold;
-    }
-
-    /* ================= FAVORITOS ================= */
-    .fav{
-        position:absolute;
-        top:12px;
-        right:12px;
-        width:40px;
-        height:40px;
-        background:white;
-        border-radius:50%;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        font-size:22px;
-        cursor:pointer;
-        box-shadow:0 4px 10px rgba(0,0,0,.2);
-        z-index:2;
-    }
-
-/* ================= BOTÃO VOLTAR ================= */
-.btn-voltar {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: white;
-    color: #ff6f61;
-    padding: 10px 20px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 14px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    transition: 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    z-index: 10;
-}
-
-.btn-voltar:hover {
-    background: #fff0f5;
-    transform: scale(1.05);
-}
-
-/* Ajuste necessário na tag header para posicionamento correto */
-header {
-    position: relative;
-}
-
-/* Ajuste para telas de celular */
-@media(max-width:768px){
-    header {
-        padding-top: 70px; /* Dá espaço para o botão não cobrir o texto */
-    }
-    .btn-voltar {
-        left: 50%;
-        transform: translateX(-50%);
-        top: 15px;
-    }
-    .btn-voltar:hover {
-        transform: translateX(-50%) scale(1.05);
-    }
-}
-        
-    /* ================= RESPONSIVO ================= */
-    @media(max-width:1024px){
-        .container{
-            grid-template-columns: repeat(2, 1fr); /* 2 por fileira em tablets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    }
 
-    @media(max-width:600px){
-        .container{
-            grid-template-columns:1fr; /* 1 por fileira em celulares */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #fff0f5;
+            color: #444;
         }
-    }
-    </style>
-</head>
-<body>
 
-<header>
-    <h1>🎉 Promoções Especiais 🎉</h1>
-    <p>Aproveite nossos descontos!</p>
-</header>
-
-```html
-<!-- =========================
-     PRODUTOS EM PROMOÇÃO
-========================= -->
-
-<div class="container">
-
-    <!-- ================= GUAXINIM ================= -->
-    <div class="card">
-
-        <div class="fav" onclick="favoritar(this)">🤍</div>
-
-        <a
-            href="produto.html?nome=Guaxinim&preco=50&tamanho=40%20cm&img=imagensgpt/guaxinim1.png"
-            style="text-decoration:none;color:inherit;"
-        >
-
-            <img
-                src="imagensgpt/guaxinim1.png"
-                alt="Guaxinim"
-            >
-
-            <div class="card-body">
-                <h2>Guaxinim</h2>
-
-                <p class="preco-antigo">R$ 80,00</p>
-
-                <p class="price">R$ 50,00</p>
-            </div>
-
-        </a>
-
-        <div class="card-body">
-
-            <button
-                class="btn"
-                onclick="adicionarCarrinho(
-                    'Guaxinim',
-                    50,
-                    '40 cm',
-                    'imagensgpt/guaxinim1.png'
-                )"
-            >
-                Comprar 🛒
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= ELEFANTE ================= -->
-    <div class="card">
-
-        <div class="fav" onclick="favoritar(this)">🤍</div>
-
-        <a
-            href="produto.html?nome=Elefante&preco=60&tamanho=45%20cm&img=imagensgpt/elefante1.png"
-            style="text-decoration:none;color:inherit;"
-        >
-
-            <img
-                src="imagensgpt/elefante1.png"
-                alt="Elefante"
-            >
-
-            <div class="card-body">
-                <h2>Elefante</h2>
-
-                <p class="preco-antigo">R$ 95,00</p>
-
-                <p class="price">R$ 60,00</p>
-            </div>
-
-        </a>
-
-        <div class="card-body">
-
-            <button
-                class="btn"
-                onclick="adicionarCarrinho(
-                    'Elefante',
-                    60,
-                    '45 cm',
-                    'imagensgpt/elefante1.png'
-                )"
-            >
-                Comprar 🛒
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= BOTO COR DE ROSA ================= -->
-    <div class="card">
-
-        <div class="fav" onclick="favoritar(this)">🤍</div>
-
-        <a
-            href="produto.html?nome=Boto%20Cor%20De%20Rosa&preco=70&tamanho=50%20cm&img=imagensgpt/botocorderosa.jpeg"
-            style="text-decoration:none;color:inherit;"
-        >
-
-            <img
-                src="imagensgpt/botocorderosa.jpeg"
-                alt="Boto Cor de Rosa"
-            >
-
-            <div class="card-body">
-                <h2>Boto Cor De Rosa</h2>
-
-                <p class="preco-antigo">R$ 110,00</p>
-
-                <p class="price">R$ 70,00</p>
-            </div>
-
-        </a>
-
-        <div class="card-body">
-
-            <button
-                class="btn"
-                onclick="adicionarCarrinho(
-                    'Boto Cor De Rosa',
-                    70,
-                    '50 cm',
-                    'imagensgpt/botocorderosa.jpeg'
-                )"
-            >
-                Comprar 🛒
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= DINOSSAURO ================= -->
-    <div class="card">
-
-        <div class="fav" onclick="favoritar(this)">🤍</div>
-
-        <a
-            href="produto.html?nome=Dinossauro&preco=65&tamanho=45%20cm&img=imagensgpt/dinossauro.jpeg"
-            style="text-decoration:none;color:inherit;"
-        >
-
-            <img
-                src="imagensgpt/dinossauro.jpeg"
-                alt="Dinossauro"
-            >
-
-            <div class="card-body">
-                <h2>Dinossauro</h2>
-
-                <p class="preco-antigo">R$ 100,00</p>
-
-                <p class="price">R$ 65,00</p>
-            </div>
-
-        </a>
-
-        <div class="card-body">
-
-            <button
-                class="btn"
-                onclick="adicionarCarrinho(
-                    'Dinossauro',
-                    65,
-                    '45 cm',
-                    'imagensgpt/dinossauro.jpeg'
-                )"
-            >
-                Comprar 🛒
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= CORUJA ================= -->
-    <div class="card">
-
-        <div class="fav" onclick="favoritar(this)">🤍</div>
-
-        <a
-            href="produto.html?nome=Coruja&preco=55&tamanho=35%20cm&img=imagensgpt/coruja1.jpeg"
-            style="text-decoration:none;color:inherit;"
-        >
-
-            <img
-                src="imagensgpt/coruja1.jpeg"
-                alt="Coruja"
-            >
-
-            <div class="card-body">
-                <h2>Coruja</h2>
-
-                <p class="preco-antigo">R$ 85,00</p>
-
-                <p class="price">R$ 55,00</p>
-            </div>
-
-        </a>
-
-        <div class="card-body">
-
-            <button
-                class="btn"
-                onclick="adicionarCarrinho(
-                    'Coruja',
-                    55,
-                    '35 cm',
-                    'imagensgpt/coruja1.jpeg'
-                )"
-            >
-                Comprar 🛒
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= GORILA ================= -->
-    <div class="card">
-
-        <div class="fav" onclick="favoritar(this)">🤍</div>
-
-        <a
-            href="produto.html?nome=Gorila&preco=90&tamanho=55%20cm&img=imagensgpt/gorila.jpeg"
-            style="text-decoration:none;color:inherit;"
-        >
-
-            <img
-                src="imagensgpt/gorila.jpeg"
-                alt="Gorila"
-            >
-
-            <div class="card-body">
-                <h2>Gorila</h2>
-
-                <p class="preco-antigo">R$ 130,00</p>
-
-                <p class="price">R$ 90,00</p>
-            </div>
-
-        </a>
-
-        <div class="card-body">
-
-            <button
-                class="btn"
-                onclick="adicionarCarrinho(
-                    'Gorila',
-                    90,
-                    '55 cm',
-                    'imagensgpt/gorila.jpeg'
-                )"
-            >
-                Comprar 🛒
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= PATO ================= -->
-    <div class="card">
-
-        <div class="fav" onclick="favoritar(this)">🤍</div>
-
-        <a
-            href="produto.html?nome=Pato&preco=45&tamanho=30%20cm&img=imagensgpt/pato.jpeg"
-            style="text-decoration:none;color:inherit;"
-        >
-
-            <img
-                src="imagensgpt/pato.jpeg"
-                alt="Pato"
-            >
-
-            <div class="card-body">
-                <h2>Pato</h2>
-
-                <p class="preco-antigo">R$ 70,00</p>
-
-                <p class="price">R$ 45,00</p>
-            </div>
-
-        </a>
-
-        <div class="card-body">
-
-            <button
-                class="btn"
-                onclick="adicionarCarrinho(
-                    'Pato',
-                    45,
-                    '30 cm',
-                    'imagensgpt/pato.jpeg'
-                )"
-            >
-                Comprar 🛒
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-<a href="index.html" class="btn-voltar">⬅ Voltar para a Loja</a>
-    
-<script>
-function favoritar(elemento) {
-    if (elemento.innerText === "🤍") {
-        elemento.innerText = "❤️";
-    } else {
-        elemento.innerText = "🤍";
-    }
-}
-
-function voltar() {
-    window.location.href = "index.html";
-}
-    
-</script>
-
-</body>
-</html>
+        /* ===== CABEÇALHO ===== */
+
+        header {
+            background: linear-gradient(135deg, #ff6f61, #ff9472);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, .15);
+        }
+
+        header h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        .topo {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .topo a,
+        .topo button {
+            border: none;
+            border-radius: 25px;
+            padding: 12px 22px;
+            background: white;
+            color: #ff6f61;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .topo a:hover,
+        .topo button:hover {
+            transform: translateY(-2px);
+        }
+
+        #contadorCarrinho {
+            background: #ff3b30;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 7px;
+            font-size: 12px;
+        }
+
+        /* ===== PRODUTOS ===== */
+
+        .container {
+            width: 92%;
+            max-width: 1350px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            padding-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .10);
+            transition: .3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 230px;
+            object-fit: contain;
+        }
+
+        .fav {
+```
