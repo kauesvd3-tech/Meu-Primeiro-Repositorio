@@ -1,6 +1,11 @@
-let usuario = localStorage.getItem("usuarioLogado");
+let usuario =
+localStorage.getItem("usuarioLogado") || "visitante";
 
-let carrinho = JSON.parse(localStorage.getItem("carrinho_" + usuario)) || [];
+let carrinho =
+JSON.parse(
+    localStorage.getItem("carrinho_" + usuario)
+) || [];
+
 let carrinhoAberto = false;
 
 function salvarCarrinho() {
