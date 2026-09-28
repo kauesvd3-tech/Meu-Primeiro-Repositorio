@@ -476,6 +476,55 @@ footer{
 
 }
 
+/* =========================
+   FAVORITO (ESTILIZADO)
+========================= */
+
+.fav {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    font-size: 20px;
+    cursor: pointer;
+
+    background: white;
+    border-radius: 50%;
+
+    width: 40px;
+    height: 40px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    z-index: 5;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+/* Efeito ao passar o mouse */
+.fav:hover {
+    transform: scale(1.15);
+    background: #fff0f5; /* Fundo rosa bem clarinho */
+    box-shadow: 0 6px 15px rgba(255, 105, 180, 0.3);
+}
+
+/* Classe para quando o botão for clicado/ativo via JavaScript */
+.fav.ativo {
+    animation: pulsar 0.3s ease-in-out;
+    background: #fff;
+}
+
+/* Animação rápida de pulso ao favoritar */
+@keyframes pulsar {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1.15); }
+}
+   
 </style>
 </head>
 
@@ -605,7 +654,6 @@ footer{
 </div>
 
 </div>
-
 
 
 <!-- =========================
