@@ -417,6 +417,104 @@ header h1 {
     border-radius:10px;
 }
 
+   /* =========================
+   TELA DE FINALIZAR COMPRA (MODAL)
+========================= */
+.modal-checkout {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fundo escurecido atrás */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.conteudo-checkout {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.fechar-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #999;
+    transition: 0.2s;
+}
+
+.fechar-modal:hover {
+    color: #ff6f61;
+}
+
+.conteudo-checkout h2 {
+    color: #ff6f61;
+    margin-top: 0;
+}
+
+.total-pagar {
+    font-size: 1.3rem;
+    background: #fff0f5;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 20px 0;
+    color: #333;
+}
+
+.opcoes-pagamento {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-pagamento {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    background: white;
+    cursor: pointer;
+    text-align: left;
+    transition: 0.2s;
+    width: 100%;
+}
+
+.btn-pagamento span {
+    font-size: 24px;
+}
+
+.btn-pagamento strong {
+    display: block;
+    font-size: 16px;
+    color: #333;
+}
+
+.btn-pagamento small {
+    color: #777;
+}
+
+.btn-pagamento:hover {
+    border-color: #ff9472;
+    background: #fffbf9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
 
 /* =========================
    FOOTER
@@ -1607,7 +1705,45 @@ onclick="finalizarCompra()"
 
 </div>
 
+<div id="modalCheckout" class="modal-checkout" style="display: none;">
+    <div class="conteudo-checkout">
+        <button class="fechar-modal" onclick="fecharCheckout()">&times;</button>
+        
+        <h2>✨ Finalizar sua Compra ✨</h2>
+        <p class="total-pagar">Total a pagar: <strong>R$ <span id="checkoutTotal">0.00</span></strong></p>
+        
+        <h3>Escolha a forma de pagamento:</h3>
+        
+        <div class="opcoes-pagamento">
+            <!-- Opção PIX -->
+            <button class="btn-pagamento" onclick="processarPagamento('Pix')">
+                <span>📱</span>
+                <div>
+                    <strong>Pix</strong>
+                    <small>Aprovação imediata</small>
+                </div>
+            </button>
 
+            <!-- Opção Cartão -->
+            <button class="btn-pagamento" onclick="processarPagamento('Cartão de Crédito')">
+                <span>💳</span>
+                <div>
+                    <strong>Cartão de Crédito</strong>
+                    <small>Até 12x com juros</small>
+                </div>
+            </button>
+
+            <!-- Opção Boleto -->
+            <button class="btn-pagamento" onclick="processarPagamento('Boleto Bancário')">
+                <span>📄</span>
+                <div>
+                    <strong>Boleto Bancário</strong>
+                    <small>Processa em até 3 dias úteis</small>
+                </div>
+            </button>
+        </div>
+    </div>
+</div>
 
 <!-- =========================
      FOOTER
@@ -2073,68 +2209,47 @@ carregarAvaliacoes();
 /* =========================
    FINALIZAR COMPRA
 ========================= */
-
-function finalizarCompra(){
-
-    if(carrinho.length === 0){
-
+function finalizarCompra() {
+    if (carrinho.length === 0) {
         alert("Seu carrinho está vazio!");
-
         return;
     }
 
-    const usuarioLogado =
-    localStorage.getItem("usuarioLogado");
+    const usuarioLogado = localStorage.getItem("usuarioLogado");
 
-    if(!usuarioLogado){
-
-        localStorage.setItem(
-            "checkoutPendente",
-            "true"
-        );
-
-        alert(
-            "Para finalizar a compra, você precisa criar uma conta ou fazer login."
-        );
-
+    if (!usuarioLogado) {
+        localStorage.setItem("checkoutPendente", "true");
+        alert("Para finalizar a compra, você precisa criar uma conta ou fazer login.");
         window.location.href = "login.html";
-
         return;
     }
 
-    let mensagem =
-    "🧸 *Novo Pedido - Animaizinhos Encantados*%0A%0A";
-
+    // Calcula o total do carrinho
     let total = 0;
-
     carrinho.forEach(item => {
-
-        mensagem +=
-        `• ${item.nome}%0A`;
-
-        mensagem +=
-        `Tamanho: ${item.tamanho}%0A`;
-
-        mensagem +=
-        `Quantidade: ${item.qtd}%0A`;
-
-        mensagem +=
-        `Valor: R$ ${item.preco.toFixed(2)}%0A%0A`;
-
-        total +=
-        item.preco * item.qtd;
-
+        total += item.preco * item.qtd;
     });
 
-    mensagem +=
-    `💰 *Total: R$ ${total.toFixed(2)}*`;
+    // Atualiza o valor do total na tela de pagamento
+    document.getElementById("checkoutTotal").innerText = total.toFixed(2);
 
-    window.open(
-        `https://wa.me/5519992831122?text=${mensagem}`,
-        "_blank"
-    );
+    // Abre a tela de finalização de compra (modal)
+    document.getElementById("modalCheckout").style.display = "flex";
 }
 
+// Função para fechar a tela de pagamento
+function fecharCheckout() {
+    document.getElementById("modalCheckout").style.display = "none";
+}
+
+// Função simulando o processamento do pagamento escolhido
+function processarPagamento(metodo) {
+    alert(`Processando pagamento via ${metodo}... Obrigado pela sua compra! ✨`);
+    
+    // Aqui você pode limpar o carrinho e fechar a modal
+    localStorage.removeItem("carrinho"); // Se salvar o carrinho no localStorage
+    window.location.reload(); // Recarrega a página para zerar o estado
+}
 </script>
 
 
