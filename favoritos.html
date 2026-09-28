@@ -50,19 +50,24 @@ header h1{
 
 /* CARD */
 .card{
-  background:white;
+  background: #fff0f5; /* Mudado para a cor de fundo da página, eliminando a borda */
   border-radius:15px;
   overflow:hidden;
   box-shadow:0 6px 15px rgba(0,0,0,0.1);
   text-align:center;
 }
 
-card img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover; 
-  background: none; 
-  display: block; 
+.card img{
+  width:100%;
+  height:200px; /* Mantido o tamanho original que você gostava */
+  object-fit:contain; /* Mantido o urso inteiro sem cortar */
+  background:#fff0f5; /* Mesma cor do card, fazendo a borda "desaparecer" */
+}
+
+/* Adicione este bloco para a parte do texto continuar branca e bonita */
+.card-body{
+  padding:15px;
+  background: white; 
 }
 
 .card-body{
