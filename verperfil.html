@@ -99,27 +99,81 @@ left:20px;
 
 </div>
 
+<script src="banco.js"></script>
+
 <script>
 
-let usuario = localStorage.getItem("usuarioLogado")
+const usuarioLogado =
+localStorage.getItem("usuarioLogado");
+
+
+/* =========================
+   VERIFICAR LOGIN
+========================= */
+
+if(!usuarioLogado){
+
+    window.location.href =
+    "login.html";
+
+}
+
+
+/* =========================
+   BUSCAR USUÁRIO NO BANCO
+========================= */
+
+const usuario =
+BANCO.procurarPorUsuario(
+    usuarioLogado
+);
+
+
+/* =========================
+   VERIFICAR SE USUÁRIO EXISTE
+========================= */
 
 if(!usuario){
-window.location.href = "login.html"
+
+    BANCO.logout();
+
+    window.location.href =
+    "login.html";
+
 }
 
-document.getElementById("nomeUsuario").innerText = usuario
 
-let email = localStorage.getItem("email_"+usuario)
+/* =========================
+   MOSTRAR USUÁRIO
+========================= */
 
-if(email){
-document.getElementById("emailUsuario").innerText = email
-}else{
-document.getElementById("emailUsuario").innerText = "Não informado"
-}
+document
+.getElementById("nomeUsuario")
+.innerText =
+usuario.usuario;
+
+
+/* =========================
+   MOSTRAR EMAIL
+========================= */
+
+document
+.getElementById("emailUsuario")
+.innerText =
+usuario.email || "Não informado";
+
+
+/* =========================
+   LOGOUT
+========================= */
 
 function logout(){
-localStorage.removeItem("logado")
-window.location.href = "login.html"
+
+    BANCO.logout();
+
+    window.location.href =
+    "login.html";
+
 }
 
 </script>
