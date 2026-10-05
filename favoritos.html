@@ -108,7 +108,24 @@ header h1{
 </div>
 
 <script>
-let favoritos = JSON.parse(localStorage.getItem("favoritos")) || []
+let usuario =
+localStorage.getItem("usuarioLogado");
+
+if(!usuario){
+
+    window.location.href =
+    "login.html";
+
+}
+
+let favoritos =
+JSON.parse(
+
+    localStorage.getItem(
+        "favoritos_" + usuario
+    )
+
+) || [];
 
 function carregarFavoritos(){
   let lista = document.getElementById("listaFavoritos")
@@ -142,7 +159,14 @@ function carregarFavoritos(){
 
 function remover(index){
   favoritos.splice(index,1)
-  localStorage.setItem("favoritos", JSON.stringify(favoritos))
+ localStorage.setItem(
+
+    "favoritos_" + usuario,
+
+    JSON.stringify(favoritos)
+
+)
+
   carregarFavoritos()
 }
 
