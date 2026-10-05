@@ -1818,20 +1818,36 @@ function logout(){
    FAVORITOS
 ========================= */
 
+let usuarioAtual =
+localStorage.getItem("usuarioLogado");
+
 let favoritos =
 JSON.parse(
-    localStorage.getItem("favoritos")
+    localStorage.getItem(
+        "favoritos_" + usuarioAtual
+    )
 ) || [];
 
 
 function salvarFavoritos(){
 
+    let usuario =
+    localStorage.getItem(
+        "usuarioLogado"
+    );
+
+    if(!usuario) return;
+
     localStorage.setItem(
-        "favoritos",
+
+        "favoritos_" + usuario,
+
         JSON.stringify(favoritos)
+
     );
 
 }
+
 
 
 function favoritar(el){
