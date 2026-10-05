@@ -1,108 +1,325 @@
+/* =====================================================
+   CARRINHO
+===================================================== */
+
 let usuario =
 localStorage.getItem("usuarioLogado") || "visitante";
 
+
 let carrinho =
 JSON.parse(
-    localStorage.getItem("carrinho_" + usuario)
+
+    localStorage.getItem(
+        "carrinho_" + usuario
+    )
+
 ) || [];
+
 
 let carrinhoAberto = false;
 
-function salvarCarrinho() {
-    localStorage.setItem("carrinho_" + usuario, JSON.stringify(carrinho));
+
+/* =========================
+   SALVAR
+========================= */
+
+function salvarCarrinho(){
+
+    localStorage.setItem(
+
+        "carrinho_" +
+        usuario,
+
+        JSON.stringify(carrinho)
+
+    );
+
 }
 
-function adicionarCarrinho(nome, preco, tamanho, imagem) {
 
-    let item = carrinho.find(i => i.nome === nome);
+/* =========================
+   ADICIONAR
+========================= */
 
-    if (item) {
+function adicionarCarrinho(
+    nome,
+    preco,
+    tamanho,
+    imagem
+){
+
+    let item =
+    carrinho.find(
+        i => i.nome === nome
+    );
+
+
+    if(item){
+
         item.qtd++;
-    } else {
-        carrinho.push({
-            nome,
-            preco,
-            tamanho,
-            imagem,
-            qtd: 1
-        });
+
     }
 
+    else{
+
+        carrinho.push({
+
+            nome:
+            nome,
+
+            preco:
+            preco,
+
+            tamanho:
+            tamanho,
+
+            imagem:
+            imagem,
+
+            qtd:
+            1
+
+        });
+
+    }
+
+
     salvarCarrinho();
+
     atualizarCarrinho();
+
 }
 
-function atualizarCarrinho() {
 
-    let lista = document.getElementById("listaCarrinho");
-    let contador = document.getElementById("contadorCarrinho");
-    let totalSpan = document.getElementById("totalCarrinho");
+/* =========================
+   ATUALIZAR
+========================= */
 
-    if (!lista) return;
+function atualizarCarrinho(){
+
+    let lista =
+    document.getElementById(
+        "listaCarrinho"
+    );
+
+
+    let contador =
+    document.getElementById(
+        "contadorCarrinho"
+    );
+
+
+    let totalSpan =
+    document.getElementById(
+        "totalCarrinho"
+    );
+
+
+    if(!lista) return;
+
 
     lista.innerHTML = "";
 
+
     let total = 0;
 
-    carrinho.forEach((item, index) => {
 
-        let div = document.createElement("div");
-        div.className = "itemCarrinho";
+    carrinho.forEach(
+        (item,index) => {
 
-        div.innerHTML = `
-            <img src="${item.imagem}">
-            <div>
-                <b>${item.nome}</b><br>
-                ${item.tamanho}<br>
-                Qtd: ${item.qtd}
-            </div>
-            <button onclick="remover(${index})">❌</button>
-        `;
+            let div =
+            document.createElement(
+                "div"
+            );
 
-        lista.appendChild(div);
 
-        total += item.preco * item.qtd;
-    });
+            div.className =
+            "itemCarrinho";
 
-    contador.innerText = carrinho.length;
-    totalSpan.innerText = total.toFixed(2);
-}
 
-function remover(index) {
-    carrinho.splice(index, 1);
-    salvarCarrinho();
-    atualizarCarrinho();
-}
+            div.innerHTML = `
 
-function limparCarrinho() {
-    carrinho = [];
-    salvarCarrinho();
-    atualizarCarrinho();
-}
+                <img
+                    src="${item.imagem}"
+                    width="60"
+                >
 
-document.addEventListener("DOMContentLoaded", () => {
+                <div>
 
-    atualizarCarrinho();
+                    <b>
+                        ${item.nome}
+                    </b>
 
-    const abrir = document.getElementById("abrirCarrinho");
-    const fechar = document.getElementById("fecharCarrinho");
-    const box = document.getElementById("carrinhoBox");
+                    <br>
 
-  if (abrir) {
-    abrir.addEventListener("click", function () {
+                    ${item.tamanho}
 
-        console.log("Clique detectado!");
+                    <br>
 
-        box.style.right = carrinhoAberto ? "-320px" : "0";
-        carrinhoAberto = !carrinhoAberto;
+                    Quantidade:
+                    ${item.qtd}
 
-    });
-}
-    if (fechar) {
-        fechar.onclick = function () {
-            box.style.right = "-320px";
-            carrinhoAberto = false;
-        };
+                    <br>
+
+                    R$
+                    ${(item.preco * item.qtd)
+                    .toFixed(2)}
+
+                </div>
+
+                <button
+                    onclick="remover(${index})"
+                >
+                    ❌
+                </button>
+
+            `;
+
+
+            lista.appendChild(
+                div
+            );
+
+
+            total +=
+            item.preco *
+            item.qtd;
+
+        }
+    );
+
+
+    if(contador){
+
+        contador.innerText =
+        carrinho.reduce(
+            (s,item) =>
+            s + item.qtd,
+            0
+        );
+
     }
 
-});
+
+    if(totalSpan){
+
+        totalSpan.innerText =
+        total.toFixed(2);
+
+    }
+
+}
+
+
+/* =========================
+   REMOVER
+========================= */
+
+function remover(index){
+
+    carrinho.splice(
+        index,
+        1
+    );
+
+
+    salvarCarrinho();
+
+    atualizarCarrinho();
+
+}
+
+
+/* =========================
+   LIMPAR
+========================= */
+
+function limparCarrinho(){
+
+    carrinho = [];
+
+    salvarCarrinho();
+
+    atualizarCarrinho();
+
+}
+
+
+/* =========================
+   ABRIR / FECHAR
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        atualizarCarrinho();
+
+
+        const abrir =
+        document.getElementById(
+            "abrirCarrinho"
+        );
+
+
+        const fechar =
+        document.getElementById(
+            "fecharCarrinho"
+        );
+
+
+        const box =
+        document.getElementById(
+            "carrinhoBox"
+        );
+
+
+        if(abrir){
+
+            abrir.addEventListener(
+                "click",
+                function(){
+
+                    if(
+                        carrinhoAberto
+                    ){
+
+                        box.style.right =
+                        "-320px";
+
+                    }
+
+                    else{
+
+                        box.style.right =
+                        "0";
+
+                    }
+
+
+                    carrinhoAberto =
+                    !carrinhoAberto;
+
+                }
+            );
+
+        }
+
+
+        if(fechar){
+
+            fechar.onclick =
+            function(){
+
+                box.style.right =
+                "-320px";
+
+                carrinhoAberto =
+                false;
+
+            };
+
+        }
+
+    }
+);
