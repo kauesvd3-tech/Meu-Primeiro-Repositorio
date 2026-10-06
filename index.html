@@ -2301,48 +2301,212 @@ carregarAvaliacoes();
 /* =========================
    FINALIZAR COMPRA
 ========================= */
-function finalizarCompra() {
-    if (carrinho.length === 0) {
+
+function finalizarCompra(){
+
+    if(carrinho.length === 0){
+
         alert("Seu carrinho está vazio!");
         return;
+
     }
 
-    const usuarioLogado = localStorage.getItem("usuarioLogado");
+    const usuarioLogado =
+    localStorage.getItem("usuarioLogado");
 
-    if (!usuarioLogado) {
-        localStorage.setItem("checkoutPendente", "true");
-        alert("Para finalizar a compra, você precisa criar uma conta ou fazer login.");
-        window.location.href = "login.html";
+    if(!usuarioLogado){
+
+        localStorage.setItem(
+            "checkoutPendente",
+            "true"
+        );
+
+        alert(
+            "Para finalizar a compra, faça login ou crie uma conta."
+        );
+
+        window.location.href =
+        "login.html";
+
         return;
+
     }
 
-    // Calcula o total do carrinho
-    let total = 0;
+    let subtotal = 0;
+
     carrinho.forEach(item => {
-        total += item.preco * item.qtd;
+
+        subtotal +=
+        Number(item.preco) *
+        Number(item.qtd);
+
     });
 
-    // Atualiza o valor do total na tela de pagamento
-    document.getElementById("checkoutTotal").innerText = total.toFixed(2);
+    const taxa = 0;
 
-    // Abre a tela de finalização de compra (modal)
-    document.getElementById("modalCheckout").style.display = "flex";
+    const frete =
+    subtotal >= 300
+    ? 0
+    : 20;
+
+    const total =
+    subtotal + taxa + frete;
+
+
+    /* =========================
+       PREENCHER CHECKOUT
+    ========================= */
+
+    const subtotalElemento =
+    document.getElementById(
+        "subtotalCarrinho"
+    );
+
+    const taxaElemento =
+    document.getElementById(
+        "taxaCarrinho"
+    );
+
+    const freteElemento =
+    document.getElementById(
+        "freteCarrinho"
+    );
+
+    const totalElemento =
+    document.getElementById(
+        "totalFinalCarrinho"
+    );
+
+    const mensagemFrete =
+    document.getElementById(
+        "mensagemFrete"
+    );
+
+
+    if(subtotalElemento){
+
+        subtotalElemento.innerText =
+        subtotal.toFixed(2);
+
+    }
+
+
+    if(taxaElemento){
+
+        taxaElemento.innerText =
+        taxa.toFixed(2);
+
+    }
+
+
+    if(freteElemento){
+
+        freteElemento.innerText =
+        frete === 0
+        ? "GRÁTIS"
+        : "R$ " + frete.toFixed(2);
+
+    }
+
+
+    if(totalElemento){
+
+        totalElemento.innerText =
+        total.toFixed(2);
+
+    }
+
+
+    if(mensagemFrete){
+
+        mensagemFrete.innerText =
+        frete === 0
+        ? "🎉 Você ganhou frete grátis!"
+        : "🚚 Frete grátis nas compras acima de R$ 300,00";
+
+    }
+
+
+    /* =========================
+       ABRIR CHECKOUT
+    ========================= */
+
+    const modal =
+    document.getElementById(
+        "modalCheckout"
+    );
+
+    if(modal){
+
+        modal.style.display =
+        "flex";
+
+    }
+
 }
 
-// Função para fechar a tela de pagamento
-function fecharCheckout() {
-    document.getElementById("modalCheckout").style.display = "none";
+
+/* =========================
+   FECHAR CHECKOUT
+========================= */
+
+function fecharCheckout(){
+
+    const modal =
+    document.getElementById(
+        "modalCheckout"
+    );
+
+    if(modal){
+
+        modal.style.display =
+        "none";
+
+    }
+
 }
 
-// Função simulando o processamento do pagamento escolhido
-function processarPagamento(metodo) {
-    alert(`Processando pagamento via ${metodo}... Obrigado pela sua compra! ✨`);
-    
-    // Aqui você pode limpar o carrinho e fechar a modal
-    localStorage.removeItem("carrinho"); // Se salvar o carrinho no localStorage
-    window.location.reload(); // Recarrega a página para zerar o estado
+
+/* =========================
+   PAGAMENTO
+========================= */
+
+function processarPagamento(metodo){
+
+    if(carrinho.length === 0){
+
+        alert(
+            "Seu carrinho está vazio!"
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "Pagamento via " +
+        metodo +
+        " iniciado! ✨"
+    );
+
+
+    carrinho = [];
+
+    salvarCarrinho();
+
+    atualizarCarrinho();
+
+    fecharCheckout();
+
+
+    alert(
+        "Compra finalizada com sucesso! 🧸✨"
+    );
+
 }
 </script>
+
 
 <!-- =========================
      BANCO DE DADOS
