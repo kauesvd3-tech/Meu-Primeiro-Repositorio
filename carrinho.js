@@ -19,9 +19,23 @@ JSON.parse(
 let carrinhoAberto = false;
 
 
-/* =========================
-   SALVAR
-========================= */
+/* =====================================================
+   CONFIGURAÇÕES DO CARRINHO
+===================================================== */
+
+// Taxa de serviço: 5%
+const TAXA_SERVICO = 0.05;
+
+// Frete normal
+const VALOR_FRETE = 20;
+
+// Valor mínimo para frete grátis
+const FRETE_GRATIS_ACIMA_DE = 200;
+
+
+/* =====================================================
+   SALVAR CARRINHO
+===================================================== */
 
 function salvarCarrinho(){
 
@@ -37,9 +51,9 @@ function salvarCarrinho(){
 }
 
 
-/* =========================
-   ADICIONAR
-========================= */
+/* =====================================================
+   ADICIONAR PRODUTO
+===================================================== */
 
 function adicionarCarrinho(
     nome,
@@ -91,9 +105,9 @@ function adicionarCarrinho(
 }
 
 
-/* =========================
-   ATUALIZAR
-========================= */
+/* =====================================================
+   ATUALIZAR CARRINHO
+===================================================== */
 
 function atualizarCarrinho(){
 
@@ -109,9 +123,33 @@ function atualizarCarrinho(){
     );
 
 
+    let subtotalSpan =
+    document.getElementById(
+        "subtotalCarrinho"
+    );
+
+
+    let taxaSpan =
+    document.getElementById(
+        "taxaCarrinho"
+    );
+
+
+    let freteSpan =
+    document.getElementById(
+        "freteCarrinho"
+    );
+
+
     let totalSpan =
     document.getElementById(
         "totalCarrinho"
+    );
+
+
+    let mensagemFrete =
+    document.getElementById(
+        "mensagemFrete"
     );
 
 
@@ -121,8 +159,16 @@ function atualizarCarrinho(){
     lista.innerHTML = "";
 
 
-    let total = 0;
+    /* =================================================
+       SUBTOTAL
+    ================================================= */
 
+    let subtotal = 0;
+
+
+    /* =================================================
+       MOSTRAR PRODUTOS
+    ================================================= */
 
     carrinho.forEach(
         (item,index) => {
@@ -137,11 +183,17 @@ function atualizarCarrinho(){
             "itemCarrinho";
 
 
+            const valorItem =
+                item.preco *
+                item.qtd;
+
+
             div.innerHTML = `
 
                 <img
                     src="${item.imagem}"
                     width="60"
+                    alt="${item.nome}"
                 >
 
                 <div>
@@ -162,8 +214,7 @@ function atualizarCarrinho(){
                     <br>
 
                     R$
-                    ${(item.preco * item.qtd)
-                    .toFixed(2)}
+                    ${formatarMoeda(valorItem)}
 
                 </div>
 
@@ -181,39 +232,209 @@ function atualizarCarrinho(){
             );
 
 
-            total +=
-            item.preco *
-            item.qtd;
+            subtotal +=
+                valorItem;
 
         }
     );
 
 
+    /* =================================================
+       CONTADOR
+    ================================================= */
+
     if(contador){
 
         contador.innerText =
         carrinho.reduce(
+
             (s,item) =>
             s + item.qtd,
+
             0
+
         );
 
     }
 
 
+    /* =================================================
+       TAXA DE SERVIÇO
+    ================================================= */
+
+    const taxa =
+        subtotal *
+        TAXA_SERVICO;
+
+
+    /* =================================================
+       FRETE
+    ================================================= */
+
+    let frete = 0;
+
+
+    if(subtotal === 0){
+
+        frete = 0;
+
+    }
+
+    else if(
+        subtotal >=
+        FRETE_GRATIS_ACIMA_DE
+    ){
+
+        frete = 0;
+
+    }
+
+    else{
+
+        frete =
+        VALOR_FRETE;
+
+    }
+
+
+    /* =================================================
+       TOTAL FINAL
+    ================================================= */
+
+    const total =
+        subtotal +
+        taxa +
+        frete;
+
+
+    /* =================================================
+       MOSTRAR SUBTOTAL
+    ================================================= */
+
+    if(subtotalSpan){
+
+        subtotalSpan.innerText =
+        formatarMoeda(subtotal);
+
+    }
+
+
+    /* =================================================
+       MOSTRAR TAXA
+    ================================================= */
+
+    if(taxaSpan){
+
+        taxaSpan.innerText =
+        formatarMoeda(taxa);
+
+    }
+
+
+    /* =================================================
+       MOSTRAR FRETE
+    ================================================= */
+
+    if(freteSpan){
+
+        if(
+            subtotal >=
+            FRETE_GRATIS_ACIMA_DE
+        ){
+
+            freteSpan.innerText =
+            "GRÁTIS 🎉";
+
+        }
+
+        else if(subtotal > 0){
+
+            freteSpan.innerText =
+            "R$ " +
+            formatarMoeda(frete);
+
+        }
+
+        else{
+
+            freteSpan.innerText =
+            "R$ 0,00";
+
+        }
+
+    }
+
+
+    /* =================================================
+       MENSAGEM DO FRETE
+    ================================================= */
+
+    if(mensagemFrete){
+
+        if(
+            subtotal >=
+            FRETE_GRATIS_ACIMA_DE
+        ){
+
+            mensagemFrete.innerText =
+            "🎉 Você ganhou frete grátis!";
+
+        }
+
+        else if(subtotal > 0){
+
+            const falta =
+                FRETE_GRATIS_ACIMA_DE -
+                subtotal;
+
+
+            mensagemFrete.innerText =
+                "🚚 Compre mais R$ " +
+                formatarMoeda(falta) +
+                " e ganhe frete grátis!";
+
+        }
+
+        else{
+
+            mensagemFrete.innerText =
+            "";
+
+        }
+
+    }
+
+
+    /* =================================================
+       MOSTRAR TOTAL
+    ================================================= */
+
     if(totalSpan){
 
         totalSpan.innerText =
-        total.toFixed(2);
+        formatarMoeda(total);
 
     }
 
 }
 
 
-/* =========================
-   REMOVER
-========================= */
+/* =====================================================
+   FORMATAR MOEDA
+===================================================== */
+
+function formatarMoeda(valor){
+
+    return Number(valor)
+        .toFixed(2)
+        .replace(".", ",");
+
+}
+
+
+/* =====================================================
+   REMOVER PRODUTO
+===================================================== */
 
 function remover(index){
 
@@ -230,9 +451,9 @@ function remover(index){
 }
 
 
-/* =========================
-   LIMPAR
-========================= */
+/* =====================================================
+   LIMPAR CARRINHO
+===================================================== */
 
 function limparCarrinho(){
 
@@ -245,9 +466,67 @@ function limparCarrinho(){
 }
 
 
-/* =========================
-   ABRIR / FECHAR
-========================= */
+/* =====================================================
+   CALCULAR VALORES DO CARRINHO
+   Esta função pode ser usada pelo checkout
+===================================================== */
+
+function calcularValoresCarrinho(){
+
+    let subtotal = 0;
+
+
+    carrinho.forEach(item => {
+
+        subtotal +=
+            item.preco *
+            item.qtd;
+
+    });
+
+
+    const taxa =
+        subtotal *
+        TAXA_SERVICO;
+
+
+    const frete =
+        subtotal >=
+        FRETE_GRATIS_ACIMA_DE
+        ? 0
+        : subtotal > 0
+        ? VALOR_FRETE
+        : 0;
+
+
+    const total =
+        subtotal +
+        taxa +
+        frete;
+
+
+    return {
+
+        subtotal:
+        subtotal,
+
+        taxa:
+        taxa,
+
+        frete:
+        frete,
+
+        total:
+        total
+
+    };
+
+}
+
+
+/* =====================================================
+   ABRIR / FECHAR CARRINHO
+===================================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
@@ -273,6 +552,10 @@ document.addEventListener(
             "carrinhoBox"
         );
 
+
+        /* =============================================
+           ABRIR CARRINHO
+        ============================================= */
 
         if(abrir){
 
@@ -305,6 +588,10 @@ document.addEventListener(
 
         }
 
+
+        /* =============================================
+           FECHAR CARRINHO
+        ============================================= */
 
         if(fechar){
 
