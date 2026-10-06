@@ -540,6 +540,57 @@ footer{
     box-sizing:border-box;
 }
 
+   /* =========================
+   RESUMO DO CARRINHO
+========================= */
+
+.resumo-carrinho {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff0f5;
+    border-radius: 15px;
+}
+
+.linha-resumo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 8px 0;
+
+    color: #555;
+    font-size: 14px;
+}
+
+.linha-resumo strong {
+    color: #333;
+}
+
+.total-final {
+    margin-top: 10px;
+    padding-top: 15px;
+
+    border-top: 2px solid #ffccd9;
+
+    font-size: 18px;
+}
+
+.total-final strong {
+    color: #ff6f61;
+    font-size: 20px;
+}
+
+.mensagem-frete {
+    margin: 12px 0 0;
+
+    text-align: center;
+
+    color: #2e7d32;
+
+    font-size: 13px;
+    font-weight: bold;
+}
+
 
 /* =========================
    MOBILE
@@ -1710,7 +1761,32 @@ onclick="finalizarCompra()"
         <button class="fechar-modal" onclick="fecharCheckout()">&times;</button>
         
         <h2>✨ Finalizar sua Compra ✨</h2>
-        <p class="total-pagar">Total a pagar: <strong>R$ <span id="checkoutTotal">0.00</span></strong></p>
+       <div class="resumo-carrinho">
+
+    <div class="linha-resumo">
+        <span>Subtotal:</span>
+        <strong>R$ <span id="subtotalCarrinho">0,00</span></strong>
+    </div>
+
+    <div class="linha-resumo">
+        <span>Taxa de serviço:</span>
+        <strong>R$ <span id="taxaCarrinho">0,00</span></strong>
+    </div>
+
+    <div class="linha-resumo">
+        <span>Frete:</span>
+        <strong id="freteCarrinho">R$ 0,00</strong>
+    </div>
+
+    <div class="linha-resumo total-final">
+        <span>Total:</span>
+        <strong>R$ <span id="totalCarrinho">0,00</span></strong>
+    </div>
+
+    <p id="mensagemFrete" class="mensagem-frete"></p>
+
+</div>
+
         
         <h3>Escolha a forma de pagamento:</h3>
         
