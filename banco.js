@@ -951,8 +951,3 @@ if (elementoTotal) {
             .toFixed(2)
             .replace(".", ",");
 }
-
-
-Mas o principal erro que estava impedindo sua finalização é este: seu finalizarCompra() antigo procurava checkoutTotal, mas esse ID não existe no HTML. O código acima corrige isso e também corrige a limpeza do carrinho por usuário.
-
-Também não precisa manter a função finalizarCompra() do <script> do HTML. Apague aquela versão do HTML, porque ela será fornecida pelo carrinho.js.
