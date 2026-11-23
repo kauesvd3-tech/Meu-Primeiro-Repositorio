@@ -1,28 +1,35 @@
+
 /* =====================================================
    BANCO DE USUÁRIOS
-   Sistema simples usando localStorage
+   Animaizinhos Encantados
+   Sistema usando localStorage
 ===================================================== */
-
-
-/* =========================
-   CONFIGURAÇÃO
-========================= */
 
 const BANCO = {
 
-
     /* =========================
-       PEGAR TODOS OS USUÁRIOS
+       OBTER TODOS OS USUÁRIOS
     ========================= */
 
     obterUsuarios: function() {
 
-        return JSON.parse(
-            localStorage.getItem("usuarios")
-        ) || [];
+        try {
+
+            const dados = localStorage.getItem("usuarios");
+
+            const usuarios = dados ? JSON.parse(dados) : [];
+
+            return Array.isArray(usuarios) ? usuarios : [];
+
+        } catch (erro) {
+
+            console.error("Erro ao carregar usuários:", erro);
+
+            return [];
+
+        }
 
     },
-
 
     /* =========================
        SALVAR USUÁRIOS
@@ -37,77 +44,61 @@ const BANCO = {
 
     },
 
-
     /* =========================
-       CADASTRAR USUÁRIO
+       VERIFICAR DUPLICIDADE
     ========================= */
 
-    cadastrar: function(usuario, email, senha) {
+    usuarioExiste: function(usuario, email, telefone) {
 
-        usuario = usuario.trim();
-        email = email.trim().toLowerCase();
-        senha = senha.trim();
+        const usuarios = this.obterUsuarios();
 
+        const nome = (usuario || "").trim().toLowerCase();
 
-        /* Verifica campos */
+        const emailNormalizado = (email || "").trim().toLowerCase();
 
-        if (!usuario || !email || !senha) {
+        const telefoneNormalizado = (telefone || "").replace(/\D/g, "");
 
-            return {
-                sucesso: false,
-                mensagem: "Preencha todos os campos."
-            };
+        return usuarios.some(u =>
 
-        }
+            (u.usuario || "").toLowerCase() === nome ||
 
+            (u.email || "").toLowerCase() === emailNormalizado ||
 
-        /* Pega usuários existentes */
+            (
+                telefoneNormalizado &&
+                (u.telefone || "").replace(/\D/g, "") === telefoneNormalizado
+            )
 
-        const usuarios =
-            this.obterUsuarios();
+        );
 
+    },
 
-        /* Verifica se usuário já existe */
+    /* =========================
+       CRIAR USUÁRIO
+       COMPATÍVEL COM LOGIN.HTML
+    ========================= */
 
-        const usuarioExiste =
-            usuarios.some(
-                u =>
-                    u.usuario.toLowerCase() ===
-                    usuario.toLowerCase()
-            );
+    criarUsuario: function(dados) {
 
+        const usuario = (dados.usuario || "").trim();
 
-        if (usuarioExiste) {
+        const email = (dados.email || "").trim().toLowerCase();
 
-            return {
-                sucesso: false,
-                mensagem: "Esse usuário já existe."
-            };
+        const telefone = (dados.telefone || "").replace(/\D/g, "");
 
-        }
+        const senha = dados.senha || "";
 
+        if (!usuario || !email || !telefone || !senha) {
 
-        /* Verifica se email já existe */
-
-        const emailExiste =
-            usuarios.some(
-                u =>
-                    u.email.toLowerCase() ===
-                    email
-            );
-
-
-        if (emailExiste) {
-
-            return {
-                sucesso: false,
-                mensagem: "Esse email já está cadastrado."
-            };
+            throw new Error("Preencha todos os campos.");
 
         }
 
+        if (this.usuarioExiste(usuario, email, telefone)) {
 
-        /* Cria usuário */
+            throw new Error("Usuário, e-mail ou telefone já cadastrado.");
+
+        }
 
         const novoUsuario = {
 
@@ -117,94 +108,105 @@ const BANCO = {
 
             email: email,
 
+            telefone: telefone,
+
             senha: senha
 
         };
 
+        const usuarios = this.obterUsuarios();
 
-        /* Adiciona ao banco */
+        usuarios.push(novoUsuario);
 
-        usuarios.push(
-            novoUsuario
-        );
+        this.salvarUsuarios(usuarios);
 
-
-        /* Salva */
-
-        this.salvarUsuarios(
-            usuarios
-        );
-
-
-        return {
-            sucesso: true,
-            mensagem: "Conta criada com sucesso!",
-            usuario: novoUsuario
-        };
+        return novoUsuario;
 
     },
 
-
     /* =========================
-       FAZER LOGIN
+       CADASTRO ANTIGO
+       MANTIDO PARA COMPATIBILIDADE
     ========================= */
 
-    login: function(usuario, senha) {
+    cadastrar: function(usuario, email, senha) {
 
-        usuario = usuario.trim();
-        senha = senha.trim();
+        try {
 
+            const novoUsuario = this.criarUsuario({
 
-        const usuarios =
-            this.obterUsuarios();
+                usuario: usuario,
 
+                email: email,
 
-        const encontrado =
-            usuarios.find(
-                u =>
-                    (
-                        u.usuario.toLowerCase() ===
-                        usuario.toLowerCase()
-                    ||
-                        u.email.toLowerCase() ===
-                        usuario.toLowerCase()
-                    )
-                    &&
-                    u.senha === senha
-            );
+                telefone: "",
 
+                senha: senha
 
-        /* Usuário não encontrado */
-
-        if (!encontrado) {
+            });
 
             return {
+
+                sucesso: true,
+
+                mensagem: "Conta criada com sucesso!",
+
+                usuario: novoUsuario
+
+            };
+
+        } catch (erro) {
+
+            return {
+
                 sucesso: false,
-                mensagem: "Usuário/email ou senha incorretos."
+
+                mensagem: erro.message
+
             };
 
         }
 
+    },
 
-        /* Salva usuário logado */
+    /* =========================
+       PROCURAR USUÁRIO
+       USUÁRIO, EMAIL OU TELEFONE
+    ========================= */
 
-        localStorage.setItem(
-            "usuarioLogado",
-            encontrado.usuario
-        );
+    procurarUsuario: function(login) {
 
+        if (!login) {
+            return null;
+        }
 
-        return {
-            sucesso: true,
-            mensagem: "Login realizado com sucesso!",
-            usuario: encontrado
-        };
+        const usuarios = this.obterUsuarios();
+
+        const identificador = login.trim().toLowerCase();
+
+        const telefone = login.replace(/\D/g, "");
+
+        return usuarios.find(u => {
+
+            const mesmoUsuario =
+                (u.usuario || "").toLowerCase() === identificador;
+
+            const mesmoEmail =
+                (u.email || "").toLowerCase() === identificador;
+
+            const mesmoTelefone =
+                telefone.length >= 10 &&
+                (u.telefone || "").replace(/\D/g, "") === telefone;
+
+            return mesmoUsuario || mesmoEmail || mesmoTelefone;
+
+        }) || null;
 
     },
 
-
     /* =========================
-       PROCURAR POR USUÁRIO
+       PROCURAR SOMENTE PELO NOME
+       MANTIDO PARA COMPATIBILIDADE
     ========================= */
 
     procurarPorUsuario: function(usuario) {
@@ -213,19 +215,66 @@ const BANCO = {
             return null;
         }
 
-
-        const usuarios =
-            this.obterUsuarios();
-
-
-        return usuarios.find(
-            u =>
-                u.usuario.toLowerCase() ===
-                usuario.toLowerCase()
-        ) || null;
+        return this.procurarUsuario(usuario);
 
     },
 
+    /* =========================
+       FAZER LOGIN
+       COMPATÍVEL COM LOGIN.HTML
+    ========================= */
+
+    fazerLogin: function(usuario) {
+
+        if (!usuario || !usuario.usuario) {
+
+            throw new Error("Usuário inválido.");
+
+        }
+
+        localStorage.setItem(
+            "usuarioLogado",
+            usuario.usuario
+        );
+
+        return true;
+
+    },
+
+    /* =========================
+       LOGIN ANTIGO
+       MANTIDO PARA COMPATIBILIDADE
+    ========================= */
+
+    login: function(usuario, senha) {
+
+        const encontrado = this.procurarUsuario(usuario);
+
+        if (!encontrado || encontrado.senha !== senha.trim()) {
+
+            return {
+
+                sucesso: false,
+
+                mensagem: "Usuário, e-mail, telefone ou senha incorretos."
+
+            };
+
+        }
+
+        this.fazerLogin(encontrado);
+
+        return {
+
+            sucesso: true,
+
+            mensagem: "Login realizado com sucesso!",
+
+            usuario: encontrado
+
+        };
+
+    },
 
     /* =========================
        PEGAR USUÁRIO LOGADO
@@ -233,51 +282,35 @@ const BANCO = {
 
     usuarioLogado: function() {
 
-        const nome =
-            localStorage.getItem(
-                "usuarioLogado"
-            );
-
+        const nome = localStorage.getItem("usuarioLogado");
 
         if (!nome) {
             return null;
         }
 
-
-        return this.procurarPorUsuario(
-            nome
-        );
+        return this.procurarPorUsuario(nome);
 
     },
 
-
     /* =========================
-       VERIFICAR LOGIN
+       VERIFICAR SE ESTÁ LOGADO
     ========================= */
 
     estaLogado: function() {
 
-        return !!localStorage.getItem(
-            "usuarioLogado"
-        );
+        return !!this.usuarioLogado();
 
     },
 
-
     /* =========================
-       LOGOUT
+       FAZER LOGOUT
     ========================= */
 
     logout: function() {
 
-        /* Remove somente o login */
-
-        localStorage.removeItem(
-            "usuarioLogado"
-        );
+        localStorage.removeItem("usuarioLogado");
 
     },
-
 
     /* =========================
        EXCLUIR CONTA
@@ -285,56 +318,42 @@ const BANCO = {
 
     excluirConta: function() {
 
-        const usuarioLogado =
-            localStorage.getItem(
-                "usuarioLogado"
-            );
-
+        const usuarioLogado = localStorage.getItem("usuarioLogado");
 
         if (!usuarioLogado) {
 
             return {
+
                 sucesso: false,
+
                 mensagem: "Nenhum usuário está logado."
+
             };
 
         }
 
+        let usuarios = this.obterUsuarios();
 
-        let usuarios =
-            this.obterUsuarios();
+        usuarios = usuarios.filter(u =>
 
+            (u.usuario || "").toLowerCase() !== usuarioLogado.toLowerCase()
 
-        usuarios =
-            usuarios.filter(
-                u =>
-                    u.usuario.toLowerCase() !==
-                    usuarioLogado.toLowerCase()
-            );
-
-
-        this.salvarUsuarios(
-            usuarios
         );
 
+        this.salvarUsuarios(usuarios);
 
-        /* Remove login */
+        localStorage.removeItem("usuarioLogado");
 
-        localStorage.removeItem(
-            "usuarioLogado"
-        );
+        localStorage.removeItem("carrinho_" + usuarioLogado);
 
-
-        /* Remove carrinho */
-
-        localStorage.removeItem(
-            "carrinho_" + usuarioLogado
-        );
-
+        localStorage.removeItem("favoritos_" + usuarioLogado);
 
         return {
+
             sucesso: true,
+
             mensagem: "Conta excluída com sucesso."
+
         };
 
     }
