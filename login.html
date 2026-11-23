@@ -401,26 +401,21 @@ function trocarModo(){
     document
     .getElementById("erro")
     .innerText = "";
-
-
+    
     document
     .getElementById("sucesso")
     .innerText = "";
 
-
     if(modoLogin){
-
         document
         .getElementById("titulo")
         .innerText =
         "🧸 Login";
 
-
         document
         .getElementById("loginCampos")
         .style.display =
         "block";
-
 
         document
         .getElementById("cadastroCampos")
@@ -428,27 +423,22 @@ function trocarModo(){
             "mostrar"
         );
 
-
         document
         .getElementById("toggle")
         .innerText =
         "Não tem conta? Criar conta";
-
     }
 
     else{
-
         document
         .getElementById("titulo")
         .innerText =
         "✨ Criar Conta";
 
-
         document
         .getElementById("loginCampos")
         .style.display =
         "none";
-
 
         document
         .getElementById("cadastroCampos")
@@ -456,21 +446,15 @@ function trocarModo(){
             "mostrar"
         );
 
-
         document
         .getElementById("toggle")
         .innerText =
         "Já tem conta? Fazer login";
-
     }
-
 }
-
-
 /* =====================================================
    CADASTRAR
 ===================================================== */
-
 function cadastrar(){
 
     const usuario =
@@ -479,7 +463,6 @@ function cadastrar(){
     .value
     .trim();
 
-
     const email =
     document
     .getElementById("novoEmail")
@@ -487,19 +470,16 @@ function cadastrar(){
     .trim()
     .toLowerCase();
 
-
     const telefone =
     document
     .getElementById("novoTelefone")
     .value
     .replace(/\D/g,"");
 
-
     const senha =
     document
     .getElementById("novaSenha")
     .value;
-
 
     const confirmar =
     document
@@ -626,156 +606,101 @@ function cadastrar(){
         senha
 
     });
-
-
     /* =========================
        CRIAR DADOS DO USUÁRIO
     ========================= */
-
     localStorage.setItem(
-
         "carrinho_" +
         usuario,
-
         JSON.stringify([])
-
     );
-
-
+    
     localStorage.setItem(
-
         "favoritos_" +
         usuario,
-
         JSON.stringify([])
-
     );
-
-
     /* =========================
        LOGIN AUTOMÁTICO
     ========================= */
-
     BANCO.fazerLogin(
         novoUsuario
     );
-
-
+    
     sucesso.innerText =
     "Conta criada com sucesso!";
 
-
     setTimeout(() => {
-
         window.location.href =
         "index.html";
-
     },800);
-
 }
-
-
 /* =====================================================
    ENTRAR
 ===================================================== */
-
 function entrar(){
-
+    
     const login =
     document
     .getElementById("login")
     .value
     .trim();
 
-
     const senha =
     document
     .getElementById("senhaLogin")
     .value;
-
-
+    
     const erro =
     document
     .getElementById("erro");
 
-
     erro.innerText = "";
-
-
+    
     if(!login || !senha){
-
         erro.innerText =
         "Digite seu login e senha.";
-
         return;
-
-    }
-
-
+}
+    
     const usuario =
     BANCO.procurarUsuario(
         login
     );
-
-
+    
     if(!usuario){
-
         erro.innerText =
         "Usuário, e-mail ou telefone não encontrado.";
-
         return;
-
-    }
-
-
+}
     if(usuario.senha !== senha){
-
         erro.innerText =
         "Senha incorreta.";
-
         return;
-
     }
-
-
     /* =========================
        LOGIN
     ========================= */
-
     BANCO.fazerLogin(
         usuario
     );
-
-
     window.location.href =
     "index.html";
-
 }
-
-
 /* =====================================================
    ENTER PARA ENTRAR
 ===================================================== */
-
 document.addEventListener(
     "keydown",
     function(event){
-
         if(
             event.key === "Enter" &&
             modoLogin
         ){
-
             entrar();
-
         }
-
     }
 );
-
 </script>
-
-
 </body>
-
 </html>
