@@ -1,706 +1,475 @@
+
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
->
+<title>Login - Animaizinhos Encantados</title>
 
-<title>
-Login - Animaizinhos Encantados
-</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Ribeye&display=swap" rel="stylesheet">
 
-<link
-<link href="https://googleapis.com" rel="stylesheet">
-
-<link
-rel="stylesheet"
-href="fundo.css"
->
+<link rel="stylesheet" href="fundo.css">
 
 <style>
-
-*{
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-body{
-
-    font-family:'Roboto',sans-serif;
-
-    margin:0;
-
-    min-height:100vh;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    background:
-    linear-gradient(
-        135deg,
-        #ff9a9e,
-        #fecfef
-    );
-
-    padding:20px;
-
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff9a9e, #fecfef);
+    padding: 20px;
 }
 
-.box{
-
-    background:white;
-
-    padding:35px;
-
-    border-radius:25px;
-
-    box-shadow:
-    0 10px 30px
-    rgba(0,0,0,.20);
-
-    width:100%;
-
-    max-width:400px;
-
-    text-align:center;
-
+.box {
+    background: white;
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.20);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
 }
 
-h1{
-
-    font-family:'Ribeye';
-
-    color:#ff6f61;
-
-    margin-top:0;
-
-    margin-bottom:25px;
-
+h1 {
+    font-family: 'Ribeye', cursive;
+    color: #ff6f61;
+    margin-top: 0;
+    margin-bottom: 25px;
 }
 
-input{
-
-    width:100%;
-
-    padding:13px;
-
-    margin:7px 0;
-
-    border-radius:20px;
-
-    border:1px solid #ddd;
-
-    outline:none;
-
-    font-size:15px;
-
+input {
+    width: 100%;
+    padding: 13px;
+    margin: 7px 0;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-size: 15px;
 }
 
-input:focus{
-
-    border-color:#ff6f61;
-
-    box-shadow:
-    0 0 5px
-    rgba(255,111,97,.25);
-
+input:focus {
+    border-color: #ff6f61;
+    box-shadow: 0 0 5px rgba(255,111,97,.25);
 }
 
-button{
-
-    width:100%;
-
-    padding:13px;
-
-    margin-top:10px;
-
-    border:none;
-
-    border-radius:20px;
-
-    background:
-    linear-gradient(
-        90deg,
-        #ff6f61,
-        #ff9472
-    );
-
-    color:white;
-
-    cursor:pointer;
-
-    font-size:16px;
-
-    font-weight:bold;
-
+button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #ff6f61, #ff9472);
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
 }
 
-button:hover{
-
-    opacity:.9;
-
-    transform:scale(1.01);
-
+button:hover {
+    opacity: .9;
+    transform: scale(1.01);
 }
 
-.toggle{
-
-    margin-top:18px;
-
-    color:#ff6f61;
-
-    cursor:pointer;
-
-    font-size:14px;
-
+.toggle {
+    margin-top: 18px;
+    color: #ff6f61;
+    cursor: pointer;
+    font-size: 14px;
 }
 
-.erro{
-
-    color:#e53935;
-
-    font-size:14px;
-
-    min-height:20px;
-
+.erro {
+    color: #e53935;
+    font-size: 14px;
+    min-height: 20px;
 }
 
-.sucesso{
-
-    color:#2e7d32;
-
-    font-size:14px;
-
+.sucesso {
+    color: #2e7d32;
+    font-size: 14px;
 }
 
-.separador{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    margin:20px 0;
-
-    color:#999;
-
-    font-size:13px;
-
+.separador {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    color: #999;
+    font-size: 13px;
 }
 
 .separador::before,
-.separador::after{
-
-    content:"";
-
-    height:1px;
-
-    background:#ddd;
-
-    flex:1;
-
+.separador::after {
+    content: "";
+    height: 1px;
+    background: #ddd;
+    flex: 1;
 }
 
-.info-login{
-
-    color:#777;
-
-    font-size:13px;
-
-    line-height:1.5;
-
+.info-login {
+    color: #777;
+    font-size: 13px;
+    line-height: 1.5;
 }
 
-.campo-cadastro{
-
-    display:none;
-
+.campo-cadastro {
+    display: none;
 }
 
-.mostrar{
-
-    display:block;
-
+.campo-cadastro.mostrar {
+    display: block;
 }
 
+button:disabled {
+    opacity: .6;
+    cursor: wait;
+}
 </style>
-
 </head>
-
 
 <body>
 
-
 <div class="box">
 
-
-<h1 id="titulo">
-🧸 Login
-</h1>
-
-
-<!-- =========================
-     CAMPOS DE LOGIN
-========================= -->
+<h1 id="titulo">🧸 Login</h1>
 
 <div id="loginCampos">
 
+    <input
+        type="text"
+        id="login"
+        placeholder="Usuário, e-mail ou telefone"
+        autocomplete="username"
+    >
 
-<input
-type="text"
-id="login"
-placeholder="Usuário, e-mail ou telefone"
-autocomplete="username"
->
+    <input
+        type="password"
+        id="senhaLogin"
+        placeholder="Senha"
+        autocomplete="current-password"
+    >
 
+    <button type="button" onclick="entrar()">
+        Entrar 🧸
+    </button>
 
-<input
-type="password"
-id="senhaLogin"
-placeholder="Senha"
-autocomplete="current-password"
->
+    <div class="separador">ou</div>
 
-
-<button onclick="entrar()">
-
-Entrar 🧸
-
-</button>
-
-
-<div class="separador">
-
-ou
+    <p class="info-login">
+        Você pode entrar usando seu
+        <strong>usuário</strong>,
+        <strong>e-mail</strong> ou
+        <strong>telefone</strong>.
+    </p>
 
 </div>
 
+<div id="cadastroCampos" class="campo-cadastro">
 
-<p class="info-login">
+    <input
+        type="text"
+        id="novoUsuario"
+        placeholder="Nome de usuário"
+        autocomplete="username"
+    >
 
-Você pode entrar usando seu
-<strong>usuário</strong>,
-<strong>e-mail</strong> ou
-<strong>telefone</strong>.
+    <input
+        type="email"
+        id="novoEmail"
+        placeholder="E-mail"
+        autocomplete="email"
+    >
 
+    <input
+        type="tel"
+        id="novoTelefone"
+        placeholder="Telefone (DDD + número)"
+        autocomplete="tel"
+    >
+
+    <input
+        type="password"
+        id="novaSenha"
+        placeholder="Criar senha"
+        autocomplete="new-password"
+    >
+
+    <input
+        type="password"
+        id="confirmarSenha"
+        placeholder="Confirmar senha"
+        autocomplete="new-password"
+    >
+
+    <button type="button" onclick="cadastrar()">
+        Criar minha conta ✨
+    </button>
+
+</div>
+
+<p
+    class="toggle"
+    id="toggle"
+    onclick="trocarModo()"
+>
+    Não tem conta? Criar conta
 </p>
 
+<p class="erro" id="erro"></p>
+<p class="sucesso" id="sucesso"></p>
 
 </div>
 
-
-<!-- =========================
-     CAMPOS DE CADASTRO
-========================= -->
-
-<div
-id="cadastroCampos"
-class="campo-cadastro"
->
-
-
-<input
-type="text"
-id="novoUsuario"
-placeholder="Nome de usuário"
->
-
-
-<input
-type="email"
-id="novoEmail"
-placeholder="E-mail"
->
-
-
-<input
-type="tel"
-id="novoTelefone"
-placeholder="Telefone (DDD + número)"
->
-
-
-<input
-type="password"
-id="novaSenha"
-placeholder="Criar senha"
->
-
-
-<input
-type="password"
-id="confirmarSenha"
-placeholder="Confirmar senha"
->
-
-
-<button onclick="cadastrar()">
-
-Criar minha conta ✨
-
-</button>
-
-
-</div>
-
-
-<p
-class="toggle"
-id="toggle"
-onclick="trocarModo()"
->
-
-Não tem conta?
-Criar conta
-
-</p>
-
-
-<p
-class="erro"
-id="erro"
-></p>
-
-
-<p
-class="sucesso"
-id="sucesso"
-></p>
-
-
-</div>
-
-
+<!-- BANCO DE DADOS -->
 <script src="banco.js"></script>
-
 
 <script>
 
-
 let modoLogin = true;
+let processando = false;
 
+/* =========================
+   MENSAGENS
+========================= */
 
-/* =====================================================
+function mostrarErro(mensagem) {
+    document.getElementById("erro").innerText = mensagem;
+    document.getElementById("sucesso").innerText = "";
+}
+
+function mostrarSucesso(mensagem) {
+    document.getElementById("sucesso").innerText = mensagem;
+    document.getElementById("erro").innerText = "";
+}
+
+/* =========================
    TROCAR LOGIN / CADASTRO
-===================================================== */
+========================= */
 
-function trocarModo(){
+function trocarModo() {
 
     modoLogin = !modoLogin;
 
+    document.getElementById("erro").innerText = "";
+    document.getElementById("sucesso").innerText = "";
 
-    document
-    .getElementById("erro")
-    .innerText = "";
-    
-    document
-    .getElementById("sucesso")
-    .innerText = "";
+    if (modoLogin) {
 
-    if(modoLogin){
-        document
-        .getElementById("titulo")
-        .innerText =
-        "🧸 Login";
+        document.getElementById("titulo").innerText = "🧸 Login";
 
-        document
-        .getElementById("loginCampos")
-        .style.display =
-        "block";
+        document.getElementById("loginCampos").style.display = "block";
 
-        document
-        .getElementById("cadastroCampos")
-        .classList.remove(
-            "mostrar"
-        );
+        document.getElementById("cadastroCampos").classList.remove("mostrar");
 
-        document
-        .getElementById("toggle")
-        .innerText =
-        "Não tem conta? Criar conta";
-    }
+        document.getElementById("toggle").innerText =
+            "Não tem conta? Criar conta";
 
-    else{
-        document
-        .getElementById("titulo")
-        .innerText =
-        "✨ Criar Conta";
+    } else {
 
-        document
-        .getElementById("loginCampos")
-        .style.display =
-        "none";
+        document.getElementById("titulo").innerText = "✨ Criar Conta";
 
-        document
-        .getElementById("cadastroCampos")
-        .classList.add(
-            "mostrar"
-        );
+        document.getElementById("loginCampos").style.display = "none";
 
-        document
-        .getElementById("toggle")
-        .innerText =
-        "Já tem conta? Fazer login";
+        document.getElementById("cadastroCampos").classList.add("mostrar");
+
+        document.getElementById("toggle").innerText =
+            "Já tem conta? Fazer login";
     }
 }
-/* =====================================================
-   CADASTRAR
-===================================================== */
-function cadastrar(){
 
-    const usuario =
-    document
-    .getElementById("novoUsuario")
-    .value
-    .trim();
+/* =========================
+   CADASTRAR USUÁRIO
+========================= */
 
-    const email =
-    document
-    .getElementById("novoEmail")
-    .value
-    .trim()
-    .toLowerCase();
+function cadastrar() {
 
-    const telefone =
-    document
-    .getElementById("novoTelefone")
-    .value
-    .replace(/\D/g,"");
+    if (processando) return;
 
-    const senha =
-    document
-    .getElementById("novaSenha")
-    .value;
+    try {
 
-    const confirmar =
-    document
-    .getElementById("confirmarSenha")
-    .value;
+        const usuario = document.getElementById("novoUsuario").value.trim();
 
+        const email = document.getElementById("novoEmail").value.trim().toLowerCase();
 
-    const erro =
-    document
-    .getElementById("erro");
+        const telefone = document.getElementById("novoTelefone").value.replace(/\D/g, "");
 
+        const senha = document.getElementById("novaSenha").value;
 
-    const sucesso =
-    document
-    .getElementById("sucesso");
+        const confirmar = document.getElementById("confirmarSenha").value;
 
-
-    erro.innerText = "";
-
-    sucesso.innerText = "";
-
-
-    /* =========================
-       VALIDAÇÕES
-    ========================= */
-
-
-    if(
-        !usuario ||
-        !email ||
-        !telefone ||
-        !senha ||
-        !confirmar
-    ){
-
-        erro.innerText =
-        "Preencha todos os campos.";
-
-        return;
-
-    }
-
-
-    if(
-        !email.includes("@") ||
-        !email.includes(".")
-    ){
-
-        erro.innerText =
-        "Digite um e-mail válido.";
-
-        return;
-
-    }
-
-
-    if(telefone.length < 10){
-
-        erro.innerText =
-        "Digite um telefone válido.";
-
-        return;
-
-    }
-
-
-    if(senha.length < 6){
-
-        erro.innerText =
-        "A senha precisa ter pelo menos 6 caracteres.";
-
-        return;
-
-    }
-
-
-    if(senha !== confirmar){
-
-        erro.innerText =
-        "As senhas não são iguais.";
-
-        return;
-
-    }
-
-
-    /* =========================
-       VERIFICAR DUPLICIDADE
-    ========================= */
-
-    if(
-        BANCO.usuarioExiste(
-            usuario,
-            email,
-            telefone
-        )
-    ){
-
-        erro.innerText =
-        "Usuário, e-mail ou telefone já cadastrado.";
-
-        return;
-
-    }
-
-
-    /* =========================
-       CRIAR USUÁRIO
-    ========================= */
-
-    const novoUsuario =
-    BANCO.criarUsuario({
-
-        usuario:
-        usuario,
-
-        email:
-        email,
-
-        telefone:
-        telefone,
-
-        senha:
-        senha
-
-    });
-    /* =========================
-       CRIAR DADOS DO USUÁRIO
-    ========================= */
-    localStorage.setItem(
-        "carrinho_" +
-        usuario,
-        JSON.stringify([])
-    );
-    
-    localStorage.setItem(
-        "favoritos_" +
-        usuario,
-        JSON.stringify([])
-    );
-    /* =========================
-       LOGIN AUTOMÁTICO
-    ========================= */
-    BANCO.fazerLogin(
-        novoUsuario
-    );
-    
-    sucesso.innerText =
-    "Conta criada com sucesso!";
-
-    setTimeout(() => {
-        window.location.href =
-        "index.html";
-    },800);
-}
-/* =====================================================
-   ENTRAR
-===================================================== */
-function entrar(){
-    
-    const login =
-    document
-    .getElementById("login")
-    .value
-    .trim();
-
-    const senha =
-    document
-    .getElementById("senhaLogin")
-    .value;
-    
-    const erro =
-    document
-    .getElementById("erro");
-
-    erro.innerText = "";
-    
-    if(!login || !senha){
-        erro.innerText =
-        "Digite seu login e senha.";
-        return;
-}
-    
-    const usuario =
-    BANCO.procurarUsuario(
-        login
-    );
-    
-    if(!usuario){
-        erro.innerText =
-        "Usuário, e-mail ou telefone não encontrado.";
-        return;
-}
-    if(usuario.senha !== senha){
-        erro.innerText =
-        "Senha incorreta.";
-        return;
-    }
-    /* =========================
-       LOGIN
-    ========================= */
-    BANCO.fazerLogin(
-        usuario
-    );
-    window.location.href =
-    "index.html";
-}
-/* =====================================================
-   ENTER PARA ENTRAR
-===================================================== */
-document.addEventListener(
-    "keydown",
-    function(event){
-        if(
-            event.key === "Enter" &&
-            modoLogin
-        ){
-            entrar();
+        if (!usuario || !email || !telefone || !senha || !confirmar) {
+            mostrarErro("Preencha todos os campos.");
+            return;
         }
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            mostrarErro("Digite um e-mail válido.");
+            return;
+        }
+
+        if (telefone.length < 10 || telefone.length > 13) {
+            mostrarErro("Digite um telefone válido com DDD.");
+            return;
+        }
+
+        if (senha.length < 6) {
+            mostrarErro("A senha precisa ter pelo menos 6 caracteres.");
+            return;
+        }
+
+        if (senha !== confirmar) {
+            mostrarErro("As senhas não são iguais.");
+            return;
+        }
+
+        if (
+            typeof BANCO === "undefined" ||
+            typeof BANCO.usuarioExiste !== "function" ||
+            typeof BANCO.criarUsuario !== "function" ||
+            typeof BANCO.fazerLogin !== "function"
+        ) {
+            mostrarErro("Erro ao carregar o banco de dados. Verifique o arquivo banco.js.");
+            return;
+        }
+
+        if (BANCO.usuarioExiste(usuario, email, telefone)) {
+            mostrarErro("Usuário, e-mail ou telefone já cadastrado.");
+            return;
+        }
+
+        processando = true;
+
+        const botao = document.querySelector("#cadastroCampos button");
+        botao.disabled = true;
+
+        const novoUsuario = BANCO.criarUsuario({
+            usuario: usuario,
+            email: email,
+            telefone: telefone,
+            senha: senha
+        });
+
+        if (!novoUsuario) {
+            throw new Error("Não foi possível criar o usuário.");
+        }
+
+        /* CRIAR CARRINHO E FAVORITOS */
+
+        localStorage.setItem(
+            "carrinho_" + usuario,
+            JSON.stringify([])
+        );
+
+        localStorage.setItem(
+            "favoritos_" + usuario,
+            JSON.stringify([])
+        );
+
+        /* FAZER LOGIN AUTOMATICAMENTE */
+
+        BANCO.fazerLogin(novoUsuario);
+
+        mostrarSucesso("Conta criada com sucesso! Redirecionando...");
+
+        /* IR PARA A PÁGINA PRINCIPAL */
+
+        setTimeout(function() {
+            window.location.replace("index.html");
+        }, 800);
+
+    } catch (erro) {
+
+        console.error("Erro no cadastro:", erro);
+
+        mostrarErro(
+            "Não foi possível criar sua conta. Verifique o banco de dados."
+        );
+
+        processando = false;
+
+        const botao = document.querySelector("#cadastroCampos button");
+
+        botao.disabled = false;
     }
-);
+}
+
+/* =========================
+   FAZER LOGIN
+========================= */
+
+function entrar() {
+
+    try {
+
+        const login = document.getElementById("login").value.trim();
+
+        const senha = document.getElementById("senhaLogin").value;
+
+        if (!login || !senha) {
+            mostrarErro("Digite seu login e senha.");
+            return;
+        }
+
+        if (
+            typeof BANCO === "undefined" ||
+            typeof BANCO.procurarUsuario !== "function" ||
+            typeof BANCO.fazerLogin !== "function"
+        ) {
+            mostrarErro("Erro ao carregar o banco de dados.");
+            return;
+        }
+
+        const usuario = BANCO.procurarUsuario(login);
+
+        if (!usuario) {
+            mostrarErro("Usuário, e-mail ou telefone não encontrado.");
+            return;
+        }
+
+        if (usuario.senha !== senha) {
+            mostrarErro("Senha incorreta.");
+            return;
+        }
+
+        BANCO.fazerLogin(usuario);
+
+        window.location.replace("index.html");
+
+    } catch (erro) {
+
+        console.error("Erro no login:", erro);
+
+        mostrarErro("Ocorreu um erro ao entrar. Verifique o banco de dados.");
+    }
+}
+
+/* =========================
+   ENTER PARA ENTRAR
+========================= */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+
+        if (modoLogin) {
+            entrar();
+        } else {
+            cadastrar();
+        }
+
+    }
+
+});
+
 </script>
+
 </body>
 </html>
