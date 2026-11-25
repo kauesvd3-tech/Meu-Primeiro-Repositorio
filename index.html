@@ -1950,7 +1950,7 @@ const containerChuva = document.getElementById("chuva-ursos-container");
 const containerExplosao = document.getElementById("explosao-laco-container");
 const btnAcessorios = document.getElementById("btn-acessorios");
 
-// 1. Chuva contínua de ursinhos e laços
+// 1. Chuva de ursinhos e laços (cai por 5s, pausa por 10s)
 const itensChuva = ["🧸", "🎀"];
 
 function criarItemCaindo() {
@@ -1965,7 +1965,7 @@ function criarItemCaindo() {
     const tamanho = Math.random() * 20 + 20;
     item.style.fontSize = `${tamanho}px`;
 
-    const duracao = Math.random() * 4 + 4;
+    const duracao = Math.random() * 2 + 3;
     item.style.animationDuration = `${duracao}s`;
 
     containerChuva.appendChild(item);
@@ -1975,7 +1975,17 @@ function criarItemCaindo() {
     }, duracao * 1000);
 }
 
-setInterval(criarItemCaindo, 450);
+function cicloChuva() {
+    const intervalo = setInterval(criarItemCaindo, 400);
+
+    setTimeout(() => {
+        clearInterval(intervalo);
+        setTimeout(cicloChuva, 10000);
+    }, 5000);
+}
+
+cicloChuva();
+
 
 // 2. Explosão do laço gigante ao clicar em Acessórios
 function dispararExplosaoLaco() {
